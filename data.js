@@ -121,6 +121,13 @@ const BOT_REFS = [
 // ------------------------------------------------------------
 const NEWS = [
   {
+    slug:"thailand-opens-its-market-to-locally-listed-bitcoin-and-ether-etfs",
+    t:"Thailand opens its market to locally listed Bitcoin and Ether ETFs",
+    s:"Market Intel",
+    d:"Just now",
+    body:"Thai regulators have cleared the way for Bitcoin and Ether exchange-traded funds to list on domestic exchanges, a shift that widens access for retail investors who until now had to use offshore platforms. The approval covers funds backed directly by the two largest cryptocurrencies, and local asset managers are expected to file products in the coming months. The move follows similar openings across Asia, where Hong Kong and Singapore have already established regulated crypto fund markets. Analysts note that domestic listing lowers friction and tax uncertainty for Thai investors, though participation will still be limited to brokerage accounts that meet the regulator's suitability rules. The decision is part of a broader regional pattern in which authorities are choosing regulated wrappers over outright bans, aiming to capture fees and oversight rather than push activity offshore."
+  },
+  {
     slug:"bitcoin-etf-inflows-record",
     t:"Bitcoin ETF inflows surge to record highs this week",
     s:"Market Intel", d:"2 hours ago",
