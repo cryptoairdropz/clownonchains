@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+
+  <!-- ======================== SEO TAG LINE ======================== -->
+  <title>ClownOnChains — Web3 Airdrops, Trading Bots &amp; Crypto Academy</title>
+  <meta name="description" content="ClownOnChains is a Web3 portal for airdrop alpha, trading bots, and crypto academy. Track Solana / EVM airdrops, learn on-chain trading, and join the community. Not financial advice." />
+  <meta name="keywords" content="Web3, airdrop, crypto, Solana, trading bot, referral, academy, DeFi, on-chain" />
+  <meta name="author" content="ClownOnChains Portal" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://YOUR-DOMAIN-HERE.tld/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://YOUR-DOMAIN-HERE.tld/" />
+  <meta property="og:title" content="ClownOnChains — Web3 Airdrops, Trading Bots & Crypto Academy" />
+  <meta property="og:description" content="Track airdrops, run trading bots, learn on-chain. Your cozy corner of Web3." />
+  <meta property="og:image" content="https://YOUR-DOMAIN-HERE.tld/assets/og-cover.png" />
+  <meta property="og:site_name" content="ClownOnChains" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://YOUR-DOMAIN-HERE.tld/" />
+  <meta name="twitter:title" content="ClownOnChains — Web3 Airdrops, Trading Bots & Crypto Academy" />
+  <meta name="twitter:description" content="Track airdrops, run trading bots, learn on-chain. Your cozy corner of Web3." />
+  <meta name="twitter:image" content="https://YOUR-DOMAIN-HERE.tld/assets/og-cover.png" />
+  <meta name="twitter:site" content="@clownonchains" />
+
+  <!-- Theme + favicon -->
+  <meta name="theme-color" content="#171009" />
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png" />
+
+  <!-- Preload key assets -->
+  <!-- JSON-LD structured data (helps Google understand the site) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "ClownOnChains",
+    "description": "Web3 portal for airdrop alpha, trading bots, and crypto academy.",
+    "url": "https://YOUR-DOMAIN-HERE.tld/",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://YOUR-DOMAIN-HERE.tld/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "ClownOnChains",
+    "url": "https://YOUR-DOMAIN-HERE.tld/",
+    "logo": "https://YOUR-DOMAIN-HERE.tld/assets/favicon.svg",
+    "sameAs": []
+  }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ========================= ticker ========================= -->
+  <div class="ticker" aria-label="Cryptocurrency prices">
+    <div class="ticker-inner" id="ticker"></div>
+  </div>
+
+  <!-- ========================= nav ========================= -->
+  <nav class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="/" aria-label="ClownOnChains home">
+        <span class="brand-badge">◆</span>
+        <span>Clown<span class="accent">OnChains</span></span>
+      </a>
+      <div class="nav-links">
+        <a href="#referrals">Exchange</a>
+        <a href="#bots">Web3 Bots</a>
+        <a href="#airdrop">Airdrops</a>
+        <a href="#news">News</a>
+        <a href="#edu">Learn</a>
+        <a href="#community">Community</a>
+      </div>
+      <button class="btn" type="button">Wallet Connect</button>
+    </div>
+  </nav>
+
+  <!-- ========================= hero ========================= -->
+  <header class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap" style="position:relative">
+      <h1>Master the <span class="grad">On-Chain</span> Chaos</h1>
+      <p>Your cozy corner of Web3 — warm airdrop alpha, trading bots by the fire, and lessons that actually teach. Stay ahead of the trend.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#airdrop">Browse Airdrops</a>
+        <a class="btn ghost" href="#edu">Start Learning</a>
+      </div>
+    </div>
+    <div class="stats" aria-label="Portal statistics">
+      <div class="stat-tile"><div class="n">3</div><div class="l">Airdrops tracked</div></div>
+      <div class="stat-tile"><div class="n">4</div><div class="l">Referral partners</div></div>
+      <div class="stat-tile"><div class="n">6</div><div class="l">Academy lessons</div></div>
+      <div class="stat-tile"><div class="n" id="stat-threads">0</div><div class="l">Community posts</div></div>
+    </div>
+  </header>
+
+  <!-- ========================= main ========================= -->
+  <main class="wrap" style="padding-bottom:40px">
+
+    <!-- Referrals -->
+    <section class="block" id="referrals" aria-label="Referral exchange partners">
+      <div class="section-head">
+        <div class="section-title"><span class="ic">🎁</span> Referral Exchange Hub</div>
+      </div>
+      <p class="section-sub">Partner exchanges with tracked clicks — every claim counts.</p>
+      <div class="grid cols-4" id="referrals"></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Bots -->
+    <section class="block" id="bots" aria-labelledby="bots-title">
+      <div class="section-head">
+        <div class="section-title" id="bots-title"><span class="ic">⌨️</span> Web3 Trading Bots</div>
+        <span class="pill"><span class="dot"></span> Solana RPC: Connected (12ms)</span>
+      </div>
+      <div class="split uneven">
+        <div class="card bot-card">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px">
+            <div>
+              <div class="bot-title">HYPE-USD Sniper <span class="tag-active" id="hype-tag">Active</span></div>
+              <div style="color:var(--text-dim);font-size:13px;margin-top:3px">Multi-indicator trend following</div>
+            </div>
+          </div>
+          <div class="stat-grid">
+            <div class="stat"><div class="k">Supertrend</div><div class="v up">BULL (95, 5)</div></div>
+            <div class="stat"><div class="k">RSI (14)</div><div class="v">62.4 — Neutral</div></div>
+            <div class="stat"><div class="k">Bollinger Bands</div><div class="v warn">Squeeze</div></div>
+            <div class="stat"><div class="k">PNL (24h)</div><div class="v up">+$452.10</div></div>
+          </div>
+          <div class="chart"><span class="lbl">HYPE-USD 15m</span><span id="chart-bars" style="display:flex;flex:1;gap:3px;align-items:flex-end;height:100%"></span></div>
+          <button class="btn ghost" style="justify-content:center;width:100%;margin-top:12px;padding:10px 0;border-radius:12px" id="hype-btn">⏸ Pause Bot</button>
+        </div>
+        <div class="card bot-card" style="display:flex;flex-direction:column">
+          <div class="bot-title">⚡ Raydium Sniper</div>
+          <div style="color:var(--text-dim);font-size:13px;margin:4px 0 14px">Solana Liquidity Pool Automation</div>
+          <div style="flex:1">
+            <div class="kv"><span class="k">Target Pools</span><span class="v">New pairs</span></div>
+            <div class="kv"><span class="k">Slippage</span><span class="v">15%</span></div>
+            <div class="kv"><span class="k">Gas Priority</span><span class="v" style="color:var(--amber)">High (0.01 SOL)</span></div>
+          </div>
+          <button class="btn primary" style="justify-content:center;margin-top:16px;width:100%;padding:11px 0;border-radius:12px" id="ray-btn">⏸ Stop Engine</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Airdrops -->
+    <section class="block" id="airdrop" aria-label="Airdrop list">
+      <div class="section-head">
+        <div class="section-title"><span class="ic">⏰</span> Airdrop Radar</div>
+        <div class="chips" id="air-chips">
+          <button class="chip on" data-f="All">All</button>
+          <button class="chip" data-f="Farming">Farming</button>
+          <button class="chip" data-f="Claiming">Claiming</button>
+          <button class="chip" data-f="Snapshot">Snapshot</button>
+        </div>
+      </div>
+      <div class="air-grid" id="air-grid"></div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- News -->
+    <section class="block" id="news" aria-label="Latest crypto news">
+      <div class="section-head">
+        <div class="section-title"><span class="ic">📡</span> Latest Intel</div>
+      </div>
+      <div class="split even">
+        <div class="card" id="news-list"></div>
+        <div class="card" style="background:rgba(240,179,94,.07);border-color:rgba(240,179,94,.3)">
+          <div style="font-family:ui-serif,Georgia,serif;font-size:17px;font-weight:700;margin-bottom:6px">🔥 Tip of the day</div>
+          <p style="margin:0;color:var(--text-dim);font-size:14px">Never sign a transaction you don't understand, and approve tokens in limited amounts only. Real airdrops appear in your wallet — never in your DMs.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- Academy + Community -->
+    <section class="block split uneven">
+      <div id="edu" aria-label="Crypto academy lessons">
+        <div class="section-head">
+          <div class="section-title"><span class="ic">📖</span> Academy</div>
+          <div class="chips" id="tut-chips">
+            <button class="chip on" data-f="All">All</button>
+            <button class="chip" data-f="Beginner">Beginner</button>
+            <button class="chip" data-f="Intermediate">Intermediate</button>
+            <button class="chip" data-f="Advanced">Advanced</button>
+          </div>
+        </div>
+        <div class="grid cols-2" id="tut-grid"></div>
+      </div>
+      <div id="community" aria-label="Discussion threads">
+        <div class="section-head">
+          <div class="section-title"><span class="ic">💬</span> Discussion</div>
+        </div>
+        <div class="card" style="display:flex;flex-direction:column;height:100%">
+          <div id="threads"></div>
+          <div class="form-grid" style="margin-top:auto;padding-top:12px">
+            <input class="field" id="t-author" placeholder="Your name (optional)" maxlength="40" />
+            <input class="field" id="t-title" placeholder="Thread title" maxlength="140" />
+            <textarea class="field" id="t-body" placeholder="Say something… (be free, it's the open discussion)"></textarea>
+            <button class="btn primary" style="justify-content:center" id="t-post">New Thread</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========================= footer ========================= -->
+  <footer>
+    <div class="wrap foot-inner">
+      <div class="foot-brand"><span style="color:var(--amber)">◆</span> Clown<span style="color:var(--amber)">OnChains</span></div>
+      <div>© 2026 ClownOnChains Portal. Not financial advice.</div>
+    </div>
+  </footer>
+
+  <!-- ========================= modal ========================= -->
+  <div class="overlay" id="overlay" role="dialog" aria-modal="true" aria-label="Tutorial reader">
+    <div class="modal reader">
+      <button class="modal-close" type="button" onclick="closeModal()">✕</button>
+      <span class="tut-level" id="m-level"></span>
+      <h1 id="m-title"></h1>
+      <div class="tut-meta" id="m-meta"></div>
+      <div class="reader-body" id="m-body"></div>
+    </div>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
