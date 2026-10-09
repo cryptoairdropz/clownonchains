@@ -47,21 +47,59 @@ const slug = (t) =>
     .trim()
     .replace(/\s+/g, '-');
 
-const inlineMd = (t) => esc(t).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+const inlineMd = (t) =>
+  esc(t)
+    .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
+    .replace(/(^|\s)\*([^*]+)\*/g, '$1<em>$2</em>')
+    .replace(/`([^`]+)`/g, '<code>$1</code>');
 
+/**
+ * Markdown ringan -> HTML.
+ * Mendukung: ## / ### heading, - / * / 1. list, > kutipan, **tebal**, *miring*,
+ * `kode`, dan paragraf yang dipisah baris kosong.
+ */
 function mdToHtml(text) {
-  return text.split('\n\n').map((p) => {
-    const lines = p.split('\n').filter(Boolean);
-    const isList = lines.length > 1 && lines.every((l) => /^\s*[-*\d]/.test(l));
-    if (isList) {
-      const items = lines
-        .map((l) => inlineMd(l.replace(/^\s*[-*]\s*/, '').replace(/^\s*\d+\.\s*/, '')))
-        .map((li) => `<li>${li}</li>`)
-        .join('');
-      return `<ul>${items}</ul>`;
+  const blocks = String(text).split(/\n\s*\n/);
+  const out = [];
+
+  for (const raw of blocks) {
+    const block = raw.trim();
+    if (!block) continue;
+
+    // heading
+    const h = block.match(/^(#{2,3})\s+(.+)$/);
+    if (h && !block.includes('\n')) {
+      const lvl = h[1].length;
+      out.push(`<h${lvl}>${inlineMd(h[2].trim())}</h${lvl}>`);
+      continue;
     }
-    return `<p>${lines.map(inlineMd).join('<br/>')}</p>`;
-  }).join('\n');
+
+    // kutipan
+    if (/^>\s?/.test(block)) {
+      const q = block.split('\n').map((l) => l.replace(/^>\s?/, '')).join(' ');
+      out.push(`<blockquote>${inlineMd(q)}</blockquote>`);
+      continue;
+    }
+
+    const lines = block.split('\n').map((l) => l.trim()).filter(Boolean);
+
+    // daftar berpoin / bernomor
+    const isUl = lines.length > 1 && lines.every((l) => /^[-*]\s+/.test(l));
+    const isOl = lines.length > 1 && lines.every((l) => /^\d+[.)]\s+/.test(l));
+    if (isUl || isOl) {
+      const tag = isUl ? 'ul' : 'ol';
+      const items = lines
+        .map((l) => l.replace(/^[-*]\s+/, '').replace(/^\d+[.)]\s+/, ''))
+        .map((li) => `<li>${inlineMd(li)}</li>`)
+        .join('');
+      out.push(`<${tag}>${items}</${tag}>`);
+      continue;
+    }
+
+    out.push(`<p>${lines.map(inlineMd).join('<br/>')}</p>`);
+  }
+
+  return out.join('\n');
 }
 
 const todayISO = new Date().toISOString().slice(0, 10);
@@ -797,9 +835,7 @@ ${NAV}
         <div class="tut-meta">${esc(n.s)} · ${esc(n.d)} · Not financial advice</div>
       </header>
 
-      <div class="reader-body" style="font-size:16px">
-        <p>${esc(n.body)}</p>
-      </div>
+      <div class="reader-body">${mdToHtml(n.body)}</div>
 
       <nav class="pager" aria-label="Article navigation">
         ${prev ? `<a class="card hover" href="/news/${prev.slug}/"><span class="tut-meta" style="margin:0">← Previous</span><span class="tut-title">${esc(prev.t)}</span></a>` : '<span></span>'}
@@ -1010,7 +1046,7 @@ ${NAV}
         <div class="tut-meta">🕐 ${t.min} min read · Updated ${todayISO} · Not financial advice</div>
       </header>
 
-      <div class="reader-body" style="font-size:16px">${mdToHtml(t.body)}</div>
+      <div class="reader-body">${mdToHtml(t.body)}</div>
 
       <aside class="card" style="margin:30px 0;background:rgba(240,179,94,.07);border-color:rgba(240,179,94,.3)">
         <strong style="color:#fff7ea">Safety first.</strong>

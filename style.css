@@ -118,8 +118,63 @@ textarea.field{resize:vertical;min-height:72px}
 .modal-close{position:absolute;top:18px;right:18px;background:var(--panel-raised);border:1px solid var(--border);color:var(--text-dim);width:34px;height:34px;border-radius:999px;display:grid;place-items:center;cursor:pointer;font-size:15px}
 .modal-close:hover{color:var(--text)}
 .reader h1{font-family:ui-serif,Georgia,serif;font-size:26px;letter-spacing:-.01em;margin:8px 0 4px}
-.reader-body{margin-top:18px}.reader-body p{margin:0 0 14px}.reader-body li{margin:0 0 7px 22px}
-.reader-body strong{color:#fff7ea}
+.reader-body{margin-top:18px;font-size:16.5px;line-height:1.8}
+.reader-body p{margin:0 0 20px}
+.reader-body p:last-child{margin-bottom:0}
+.reader-body h2{
+  font-family:ui-serif,Georgia,serif;font-size:21px;font-weight:700;color:#fbf3e6;
+  letter-spacing:-.01em;margin:34px 0 12px;padding-top:6px;
+}
+.reader-body h3{
+  font-family:ui-sans-serif,system-ui,sans-serif;font-size:16.5px;font-weight:700;color:var(--peach);
+  margin:26px 0 10px;
+}
+.reader-body ul,.reader-body ol{margin:0 0 20px;padding-left:22px}
+.reader-body li{margin:0 0 9px;line-height:1.7}
+.reader-body li::marker{color:var(--amber)}
+.reader-body strong{color:#fff7ea;font-weight:700}
+.reader-body em{color:var(--peach);font-style:italic}
+.reader-body code{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13.5px;color:var(--amber);
+  background:rgba(240,179,94,.10);border:1px solid rgba(240,179,94,.22);
+  padding:2px 7px;border-radius:6px;
+}
+.reader-body blockquote{
+  margin:0 0 20px;padding:14px 20px;
+  border-left:3px solid var(--amber);
+  background:rgba(240,179,94,.06);border-radius:0 12px 12px 0;
+  color:var(--text-dim);font-style:italic;
+}
+.reader-body blockquote p{margin:0}
+/* paragraf pembuka sedikit lebih besar, gaya feature */
+.reader-body > p:first-of-type{font-size:17.5px;color:#e9dcc8}
+
+/* ===== v9: gaya penulisan — gen alpha friendly, tidak kaku ===== */
+.reader-body > p:first-of-type::first-letter{
+  float:left;font-family:ui-serif,Georgia,serif;font-size:52px;line-height:.86;
+  font-weight:700;color:var(--amber);padding:6px 10px 0 0;
+}
+@media(max-width:560px){
+  .reader-body > p:first-of-type::first-letter{font-size:40px;padding:4px 8px 0 0}
+}
+.reader-body h2{
+  position:relative;padding-left:16px;
+}
+.reader-body h2::before{
+  content:"";position:absolute;left:0;top:.28em;bottom:.28em;width:3px;border-radius:2px;
+  background:linear-gradient(180deg,var(--peach),rgba(240,179,94,.25));
+}
+/* pull-quote: paragraf yang isinya 1-2 kalimat pendek diberi aksen */
+.reader-body p.pull{
+  font-family:ui-serif,Georgia,serif;font-size:19px;line-height:1.55;color:#fbf3e6;
+  font-style:italic;padding:4px 0 4px 18px;border-left:3px solid var(--amber);
+  margin:26px 0;
+}
+/* jarak antar bagian lebih lega, biar tidak terasa seperti dinding teks */
+.reader-body h2:first-child{margin-top:0}
+.reader-body ul li strong{color:var(--peach)}
+/* angka / istilah penting */
+.reader-body p strong{background:linear-gradient(transparent 62%,rgba(240,179,94,.18) 62%)}
 .state-box{text-align:center;padding:48px 0;color:var(--text-dim)}
 .state-box .big{font-size:17px;font-weight:700;margin-bottom:6px}
 footer{background:var(--bg-deep);border-top:1px solid var(--border-soft);padding:30px 0;margin-top:30px}

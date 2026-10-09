@@ -25,14 +25,6 @@
   },
   {
     "source": "CoinDesk",
-    "title": "Zcash developers set January target for quantum-resistant payments after ‘bunker mode’ scare",
-    "link": "https://www.coindesk.com/tech/2026/10/09/zcash-developers-set-january-target-for-quantum-resistant-payments-after-bunker-mode-scare",
-    "guid": "39ffaa1a-584c-45f2-8c5e-0a7ceffe3536",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.257868+00:00"
-  },
-  {
-    "source": "CoinDesk",
     "title": "Trump's Iran pledge underpins crypto gains as bitcoin bears face liquidation pressure",
     "link": "https://www.coindesk.com/daybook-us/2026/10/09/trump-s-iran-pledge-underpins-crypto-gains-as-bitcoin-bears-face-liquidation-pressure",
     "guid": "2555b0d5-5f30-4722-8dca-4945684434a9",
@@ -305,10 +297,50 @@
   },
   {
     "source": "CoinDesk",
+    "title": "Ledger investigates potential wallet tampering after reports of $86 million in crypto stolen",
+    "link": "https://www.coindesk.com/business/2026/10/09/ledger-investigates-potential-wallet-tampering-after-reports-of-usd86-million-in-crypto-stolen",
+    "guid": "a789ac80-84ae-4f33-a5ad-558a40deaad3",
+    "summary": "",
+    "fetched_at": "2026-10-09T19:37:58.971750+00:00"
+  },
+  {
+    "source": "CoinDesk",
     "title": "Thailand opens door to locally listed bitcoin and ether ETFs",
     "link": "https://www.coindesk.com/policy/2026/10/09/thailand-opens-door-to-locally-listed-bitcoin-and-ether-etfs",
     "guid": "a47b365a-c336-4cc9-a4e4-d1c72b286db0",
     "summary": "",
-    "fetched_at": "2026-10-09T19:02:37.142760+00:00"
+    "fetched_at": "2026-10-09T19:37:58.971827+00:00"
+  },
+  {
+    "source": "Cointelegraph",
+    "title": "THORChain exec accuses Tether of temporarily freezing USDT vaults",
+    "link": "https://cointelegraph.com/news/thorchain-tether-freezing-usdt-addresses?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "guid": "https://cointelegraph.com/news/thorchain-tether-freezing-usdt-addresses",
+    "summary": "",
+    "fetched_at": "2026-10-09T19:37:59.007834+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "Zcash developers set January target for quantum-resistant payments after ‘bunker mode’ scare",
+    "link": "https://www.coindesk.com/tech/2026/10/09/zcash-developers-set-january-target-for-quantum-resistant-payments-after-bunker-mode-scare",
+    "guid": "39ffaa1a-584c-45f2-8c5e-0a7ceffe3536",
+    "summary": "",
+    "fetched_at": "2026-10-09T20:12:09.136794+00:00"
+  },
+  {
+    "source": "Decrypt",
+    "title": "OpenAI and Anthropic Are Quietly Rehearsing for the Day After an AI Catastrophe",
+    "link": "https://decrypt.co/380621/openai-anthropic-quietly-rehearsing-ai-catastrophe",
+    "guid": "https://decrypt.co/?p=380621",
+    "summary": "",
+    "fetched_at": "2026-10-09T20:12:09.177662+00:00"
+  },
+  {
+    "source": "Bitcoin Magazine",
+    "title": "Here’s How Not To Screw up Your Bitcoin Privacy",
+    "link": "https://bitcoinmagazine.com/news/seth-for-privacy-bitcoin-tips",
+    "guid": "https://bitcoinmagazine.com/?p=55756",
+    "summary": "",
+    "fetched_at": "2026-10-09T20:12:09.438362+00:00"
   }
 ]

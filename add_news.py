@@ -123,13 +123,42 @@ def main():
     if not body:
         fail("body kosong")
 
-    body = " ".join(body.split())
+    # Normalisasi TANPA menghapus struktur paragraf:
+    # - rapikan spasi di dalam baris
+    # - jaga baris kosong sebagai pemisah paragraf
+    # - maksimal satu baris kosong berturut-turut
+    raw_lines = [re.sub(r"[ \t]+", " ", ln).strip() for ln in body.replace("\r\n", "\n").split("\n")]
+    cleaned, blank = [], False
+    for ln in raw_lines:
+        if ln:
+            cleaned.append(ln)
+            blank = False
+        elif not blank:
+            cleaned.append("")
+            blank = True
+    body = "\n".join(cleaned).strip()
+
     words = len(body.split())
     if words < MIN_WORDS:
         fail(f"body terlalu pendek ({words} kata, minimal {MIN_WORDS})")
     if len(body) > MAX_BODY_CHARS:
-        body = body[:MAX_BODY_CHARS].rsplit(" ", 1)[0] + "."
+        body = body[:MAX_BODY_CHARS].rsplit("\n", 1)[0].rstrip() + "\n"
         print(f"  ! body dipotong ke {MAX_BODY_CHARS} char", file=sys.stderr)
+
+    # paragraf harus ada — artikel satu blok panjang tidak diterima
+    n_paras = len([b for b in re.split(r"\n\s*\n", body) if b.strip()])
+    if n_paras < 3:
+        fail(
+            f"hanya {n_paras} paragraf — minimal 3. Pisahkan dengan baris kosong "
+            "(\\n\\n) dan gunakan '## Subjudul' bila perlu."
+        )
+
+    # bersihkan artefak skill sitasi yang tidak boleh tampil di website
+    body = re.sub(r"\[\d+\]", "", body)                     # marker [1] [2]
+    body = re.sub(r"(?im)^\s*##\s*Sources\s*$.*$", "", body)  # heading "## Sources"
+    body = re.sub(r"(?m)^\s*\[\d+\]\s*https?://\S+\s*$", "", body)  # baris daftar sumber
+    body = re.sub(r"[ \t]{2,}", " ", body)
+    body = re.sub(r"\n{3,}", "\n\n", body).strip()
 
     src = read_data()
     have_slugs = existing_slugs(src)
