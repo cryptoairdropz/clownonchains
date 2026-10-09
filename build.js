@@ -1,7 +1,7 @@
 /**
- * build.js — Static site generator untuk ClownOnChains (v2)
+ * build.js — Static site generator untuk ClownOnChains (v4)
  *
- * Struktur baru: home ringan (hero + navigasi) + topic pages terpisah.
+ * Struktur: home ringan (hero + navigasi) + topic pages terpisah.
  * Sumber data: data.js  (edit di sana, lalu jalankan `node build.js`)
  * Output:      dist/    (upload ke Cloudflare Pages)
  */
@@ -11,6 +11,16 @@ const path = require('path');
 const ROOT = __dirname;
 const DIST = path.join(ROOT, 'dist');
 const SITE = 'https://cryptoairdropz.com';
+
+/* Versi aset: hash pendek dari style.css. Setiap kali CSS berubah, hash
+   berubah, jadi URL /style.css?v=xxxx berubah dan browser WAJIB ambil ulang
+   — memperbaiki bug cache 7-hari yang membuat pengunjung lama melihat CSS usang. */
+const CSS_VER = (() => {
+  try {
+    const css = fs.readFileSync(path.join(ROOT, 'style.css'));
+    return require('crypto').createHash('sha1').update(css).digest('hex').slice(0, 8);
+  } catch (e) { return '1'; }
+})();
 
 /* ------------------------------------------------------------------ */
 /* 1. Muat data dari data.js                                           */
@@ -70,7 +80,7 @@ const NAV = `  <nav class="nav">
     <div class="nav-links">
       <a href="/airdrops/">Airdrops</a>
       <a href="/exchanges/">Exchanges</a>
-      <a href="/bots/">Bots</a>
+      <a href="/web3-tools/">Web3 Tools</a>
       <a href="/news/">News</a>
       <a href="/academy/">Academy</a>
       <a href="/community/">Community</a>
@@ -129,7 +139,7 @@ function head(o) {
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <link rel="alternate" type="application/rss+xml" title="ClownOnChains Academy" href="/feed.xml" />${blocks}
-  <link rel="stylesheet" href="/style.css" />
+  <link rel="stylesheet" href="/style.css?v=${CSS_VER}" />
 </head>`;
 }
 
@@ -158,10 +168,10 @@ function buildHome(d) {
       accent: 'var(--peach)',
     },
     {
-      href: '/bots/',
+      href: '/web3-tools/',
       icon: '⌨️',
-      title: 'Trading Bots',
-      desc: 'Indicator stacks and bot spec sheets — Supertrend, RSI, Bollinger.',
+      title: 'Web3 Tools',
+      desc: `${d.BOT_REFS.length} bots — multichain, bridge and liquidity pool tools.`,
       accent: 'var(--green)',
     },
     {
@@ -182,7 +192,7 @@ function buildHome(d) {
       href: '/community/',
       icon: '💬',
       title: 'Community',
-      desc: 'Open discussion — share alpha, ask questions, post threads.',
+      desc: 'Join the discussion — email updates and Twitter.',
       accent: 'var(--peach)',
     },
   ];
@@ -199,7 +209,7 @@ function buildHome(d) {
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     name: 'ClownOnChains',
-    description: 'Web3 portal: airdrops, exchanges, trading bots, news, and crypto academy.',
+    description: 'Web3 portal: airdrops, exchanges, web3 tools, news, and crypto academy.',
     url: `${SITE}/`,
     inLanguage: 'en',
     potentialAction: {
@@ -245,7 +255,7 @@ ${NAV}
     <div class="wrap" style="position:relative">
       <p class="hero-eyebrow">Web3 Portal</p>
       <h1>Master the <span class="grad">On-Chain</span> Chaos</h1>
-      <p class="hero-sub">Airdrop radar, exchange referrals, trading bot dashboards, and a crypto
+      <p class="hero-sub">Airdrop radar, exchange referrals, web3 tools, and a crypto
         academy that actually teaches — wallet safety, airdrop farming, DeFi mechanics and
         indicator setups in plain English.</p>
       <div class="hero-actions">
@@ -272,7 +282,7 @@ ${NAV}
     </section>
   </main>
 ${FOOTER}
-  <script src="/app.js" defer></script>
+  <script src="/app.js?v=${CSS_VER}" defer></script>
 </body>
 </html>
 `;
@@ -288,6 +298,13 @@ function buildAirdrops(d) {
   const airdropsHtml = d.AIRDROPS.map((a) => {
     const live = /farm/i.test(a.status);
     const soon = /claim/i.test(a.status);
+    const stepsHtml = a.steps ? `
+      <div class="air-steps">
+        <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin:0 0 10px">How to join</h4>
+        <ol style="margin:0;padding-left:20px;color:var(--text-dim);font-size:13.5px;line-height:1.7">
+          ${a.steps.map((s) => `<li>${esc(s)}</li>`).join('')}
+        </ol>
+      </div>` : '';
     return `
         <article class="card hover air-card" data-status="${airStatus(a.status)}">
           <div class="air-top">
@@ -304,6 +321,7 @@ function buildAirdrops(d) {
             <span class="air-time ${live ? 'badge-live' : soon ? 'badge-soon' : ''}">${esc(a.tf)}</span>
             ${a.url ? `<a class="tut-meta" style="margin:0" href="${esc(a.url)}" target="_blank" rel="noopener nofollow">Open →</a>` : ''}
           </div>
+          ${stepsHtml}
         </article>`;
   }).join('');
 
@@ -318,8 +336,8 @@ function buildAirdrops(d) {
 
   return `${head({
     title: 'Crypto Airdrops 2026 — Tracker & Farming Guide | ClownOnChains',
-    desc: 'Track the latest crypto airdrops with status and deadlines. LayerZero, zkSync, Scroll and more. Learn how to farm airdrops safely and avoid scams.',
-    keywords: 'crypto airdrops 2026, airdrop tracker, airdrop farming, layerzero airdrop, zksync airdrop, scroll airdrop',
+    desc: 'Track the latest crypto airdrops with status and deadlines. LayerZero, zkSync, Scroll, Grass and more. Learn how to farm airdrops safely and avoid scams.',
+    keywords: 'crypto airdrops 2026, airdrop tracker, airdrop farming, layerzero airdrop, zksync airdrop, scroll airdrop, grass airdrop',
     canonical: `${SITE}/airdrops/`,
     jsonld: breadcrumbLd,
   })}
@@ -351,7 +369,7 @@ ${NAV}
     </div>
   </main>
 ${FOOTER}
-  <script src="/app.js" defer></script>
+  <script src="/app.js?v=${CSS_VER}" defer></script>
 </body>
 </html>
 `;
@@ -365,10 +383,11 @@ function buildExchanges(d) {
         <article class="card hover ref-card">
           <div class="ref-name">${esc(r.name)}</div>
           <p class="ref-desc">${esc(r.desc)}</p>
-          <div class="ref-code"><span class="ref-label">Referral code</span><code>${esc(r.code)}</code></div>
           <div class="ref-meta">
             <div class="ref-bonus">${esc(r.bonus)}</div>
-            <a class="btn primary" href="${esc(r.url)}" target="_blank" rel="noopener nofollow sponsored">Sign up</a>
+            <a class="ref-link" href="${esc(r.url)}" target="_blank" rel="noopener nofollow sponsored">
+              Sign up <span class="ref-here">HERE</span> <span class="ref-code-inline">(${esc(r.code)})</span>
+            </a>
           </div>
         </article>`).join('');
 
@@ -412,15 +431,15 @@ ${FOOTER}
 }
 
 /* ------------------------------------------------------------------ */
-/* 7. Topic: Bots                                                      */
+/* 7. Topic: Web3 Tools (formerly Bots)                                 */
 /* ------------------------------------------------------------------ */
-function buildBots(d) {
+function buildWeb3Tools(d) {
   const breadcrumbLd = {
     '@context': 'https://schema.org',
     '@type': 'BreadcrumbList',
     itemListElement: [
       { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
-      { '@type': 'ListItem', position: 2, name: 'Bots', item: `${SITE}/bots/` },
+      { '@type': 'ListItem', position: 2, name: 'Web3 Tools', item: `${SITE}/web3-tools/` },
     ],
   };
 
@@ -435,19 +454,19 @@ function buildBots(d) {
             <article class="card hover bot-ref-card">
               <div class="bot-ref-name">${esc(b.name)}</div>
               <p class="bot-ref-desc">${esc(b.desc)}</p>
-              <div class="ref-code"><span class="ref-label">Code</span><code>${esc(b.code)}</code></div>
-              <a class="btn primary" style="width:100%;justify-content:center" href="${esc(b.url)}"
-                 target="_blank" rel="noopener nofollow sponsored">Open Bot</a>
+              <a class="ref-link" href="${esc(b.url)}" target="_blank" rel="noopener nofollow sponsored">
+                Use ${esc(b.name)} <span class="ref-here">HERE</span> <span class="ref-code-inline">(${esc(b.code)})</span>
+              </a>
             </article>`).join('')}
         </div>
       </section>`;
   }).join('');
 
   return `${head({
-    title: 'Web3 Trading Bots — Telegram Bots & Referral Codes | ClownOnChains',
-    desc: 'Web3 trading bots with referral codes: Dawn, Cove, CopyFomo, Maestro, GMGN, OKX Web3, Axiom and Zenith. Multichain, bridge and liquidity pool bots.',
+    title: 'Web3 Trading Tools — Telegram Bots & Referral Codes | ClownOnChains',
+    desc: 'Web3 trading tools with referral codes: Dawn, Cove, CopyFomo, Maestro, GMGN, OKX Web3, Axiom and Zenith. Multichain, bridge and liquidity pool tools.',
     keywords: 'web3 trading bot, telegram trading bot, solana sniper bot, crypto copy trading, referral code',
-    canonical: `${SITE}/bots/`,
+    canonical: `${SITE}/web3-tools/`,
     jsonld: breadcrumbLd,
   })}
 <body>
@@ -455,12 +474,12 @@ ${NAV}
   <main class="wrap" style="padding:44px 18px 20px">
     <header style="max-width:1120px;margin:0 auto 26px">
       <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:14px">
-        <a href="/">Home</a> › <span>Bots</span>
+        <a href="/">Home</a> › <span>Web3 Tools</span>
       </nav>
       <h1 style="font-family:ui-serif,Georgia,serif;font-size:clamp(30px,5vw,46px);letter-spacing:-.02em;margin:0 0 10px;color:#fbf3e6">
-        Web3 Trading Bots</h1>
+        Web3 Trading Tools</h1>
       <p style="color:var(--text-dim);font-size:16.5px;margin:0;max-width:640px">
-        ${d.BOT_REFS.length} vetted bots with referral codes. Multichain, bridge and liquidity
+        ${d.BOT_REFS.length} vetted tools with referral codes. Multichain, bridge and liquidity
         pool categories. Always do your own research — trading bots carry high risk.
       </p>
     </header>
@@ -474,13 +493,13 @@ ${FOOTER}
 }
 
 /* ------------------------------------------------------------------ */
-/* 8. Topic: News                                                      */
+/* 8. Topic: News (index + artikel parafrase)                           */
 /* ------------------------------------------------------------------ */
 function buildNews(d) {
   const newsHtml = d.NEWS.map((n) => `
         <article class="news-item">
-          <h3 class="news-title" style="margin:0;font-size:14.5px">
-            ${n.u ? `<a href="${esc(n.u)}" target="_blank" rel="noopener nofollow">${esc(n.t)}</a>` : esc(n.t)}
+          <h3 class="news-title" style="margin:0;font-size:15px">
+            <a href="/news/${n.slug}/">${esc(n.t)}</a>
           </h3>
           <div class="news-meta">${esc(n.s)} · ${esc(n.d)}</div>
         </article>`).join('');
@@ -512,6 +531,7 @@ ${NAV}
         Latest Intel</h1>
       <p style="color:var(--text-dim);font-size:16.5px;margin:0;max-width:640px">
         ${d.NEWS.length} latest stories — market intel, network upgrades, and safety reminders.
+        All articles are paraphrased and hosted on our site.
       </p>
     </header>
     <div class="split even" style="max-width:1120px;margin:0 auto">
@@ -532,7 +552,79 @@ ${FOOTER}
 }
 
 /* ------------------------------------------------------------------ */
-/* 9. Topic: Academy index                                             */
+/* 9. News article (parafrase, no redirect)                            */
+/* ------------------------------------------------------------------ */
+function buildNewsArticle(n, d) {
+  const url = `${SITE}/news/${n.slug}/`;
+  const idx = d.NEWS.indexOf(n);
+  const prev = d.NEWS[idx - 1];
+  const next = d.NEWS[idx + 1];
+
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'NewsArticle',
+    headline: n.t,
+    description: n.body.slice(0, 160),
+    inLanguage: 'en',
+    datePublished: todayISO,
+    dateModified: todayISO,
+    articleSection: 'Crypto News',
+    author: { '@type': 'Organization', name: 'ClownOnChains', url: `${SITE}/` },
+    publisher: { '@type': 'Organization', name: 'ClownOnChains', logo: { '@type': 'ImageObject', url: `${SITE}/assets/favicon.svg` } },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'News', item: `${SITE}/news/` },
+      { '@type': 'ListItem', position: 3, name: n.t, item: url },
+    ],
+  };
+
+  return `${head({
+    title: `${n.t} | ClownOnChains`,
+    desc: n.body.slice(0, 160),
+    keywords: `${n.t.toLowerCase()}, crypto news, market intel`,
+    canonical: url,
+    ogType: 'article',
+    jsonld: [articleLd, breadcrumbLd],
+  })}
+<body>
+${NAV}
+  <main class="wrap" style="padding:34px 18px 10px">
+    <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:18px">
+      <a href="/">Home</a> › <a href="/news/">News</a> › <span>${esc(n.t)}</span>
+    </nav>
+
+    <article class="reader" style="max-width:760px;margin:0 auto">
+      <header>
+        <h1 style="font-family:ui-serif,Georgia,serif;font-size:clamp(28px,4.4vw,42px);letter-spacing:-.02em;margin:10px 0 8px;color:#fbf3e6">
+          ${esc(n.t)}
+        </h1>
+        <div class="tut-meta">${esc(n.s)} · ${esc(n.d)} · Not financial advice</div>
+      </header>
+
+      <div class="reader-body" style="font-size:16px">
+        <p>${esc(n.body)}</p>
+      </div>
+
+      <nav class="pager" aria-label="Article navigation">
+        ${prev ? `<a class="card hover" href="/news/${prev.slug}/"><span class="tut-meta" style="margin:0">← Previous</span><span class="tut-title">${esc(prev.t)}</span></a>` : '<span></span>'}
+        ${next ? `<a class="card hover" href="/news/${next.slug}/" style="text-align:right"><span class="tut-meta" style="margin:0">Next →</span><span class="tut-title">${esc(next.t)}</span></a>` : '<span></span>'}
+      </nav>
+    </article>
+  </main>
+${FOOTER}
+</body>
+</html>
+`;
+}
+
+/* ------------------------------------------------------------------ */
+/* 10. Topic: Academy index                                             */
 /* ------------------------------------------------------------------ */
 function buildAcademyIndex(d) {
   const levels = ['Beginner', 'Intermediate', 'Advanced'];
@@ -588,7 +680,7 @@ ${FOOTER}
 }
 
 /* ------------------------------------------------------------------ */
-/* 10. Topic: Community                                                 */
+/* 11. Topic: Community (email + Twitter)                               */
 /* ------------------------------------------------------------------ */
 function buildCommunity(d) {
   const breadcrumbLd = {
@@ -601,48 +693,65 @@ function buildCommunity(d) {
   };
 
   return `${head({
-    title: 'Community Discussion — Open Crypto Forum | ClownOnChains',
-    desc: 'Open community discussion for crypto and Web3. Share alpha, ask questions, post threads about airdrops, exchanges, bots and DeFi.',
-    keywords: 'crypto community, web3 discussion, airdrop forum, crypto alpha',
+    title: 'Community — Join ClownOnChains | Email Updates & Twitter',
+    desc: 'Join the ClownOnChains community. Subscribe for email updates and follow us on Twitter @ClownonChains for the latest airdrop alpha and web3 news.',
+    keywords: 'crypto community, web3 discussion, airdrop forum, crypto alpha, twitter',
     canonical: `${SITE}/community/`,
     jsonld: breadcrumbLd,
   })}
 <body>
 ${NAV}
   <main class="wrap" style="padding:44px 18px 20px">
-    <header style="max-width:760px;margin:0 auto 26px">
+    <header style="max-width:760px;margin:0 auto 30px">
       <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:14px">
         <a href="/">Home</a> › <span>Community</span>
       </nav>
       <h1 style="font-family:ui-serif,Georgia,serif;font-size:clamp(30px,5vw,46px);letter-spacing:-.02em;margin:0 0 10px;color:#fbf3e6">
-        Discussion</h1>
+        Join the Community</h1>
       <p style="color:var(--text-dim);font-size:16.5px;margin:0;max-width:640px">
-        Open discussion — share alpha, ask questions, post threads. Be free, it's the open
-        discussion. Threads are stored locally in your browser.
+        Stay updated with the latest airdrop alpha, exchange referrals, and web3 tools.
+        Subscribe with your email or follow us on Twitter.
       </p>
     </header>
-    <div class="card" style="max-width:760px;margin:0 auto;display:flex;flex-direction:column;height:100%">
-      <div id="threads"></div>
-      <div class="form-grid" style="margin-top:auto;padding-top:12px">
-        <label class="sr-only" for="t-author">Your name</label>
-        <input class="field" id="t-author" placeholder="Your name (optional)" maxlength="40" />
-        <label class="sr-only" for="t-title">Thread title</label>
-        <input class="field" id="t-title" placeholder="Thread title" maxlength="140" />
-        <label class="sr-only" for="t-body">Your message</label>
-        <textarea class="field" id="t-body" placeholder="Say something… (be free, it's the open discussion)"></textarea>
-        <button class="btn primary" style="justify-content:center" id="t-post" type="button">New Thread</button>
-      </div>
+
+    <div style="max-width:760px;margin:0 auto;display:grid;gap:20px">
+      <section class="card" aria-labelledby="h-email">
+        <h2 id="h-email" style="font-family:ui-serif,Georgia,serif;font-size:20px;margin:0 0 8px;color:#fbf3e6">
+          📧 Email Updates</h2>
+        <p style="color:var(--text-dim);font-size:14.5px;margin:0 0 16px">
+          Get notified when we add new airdrops, exchange codes, or web3 tools. No spam — just alpha.
+        </p>
+        <form class="form-grid" id="email-form">
+          <label class="sr-only" for="email-input">Email address</label>
+          <input class="field" id="email-input" type="email" placeholder="your@email.com" required />
+          <button class="btn primary" style="justify-content:center" type="submit">Subscribe</button>
+        </form>
+        <p id="email-msg" style="font-size:13px;color:var(--green);margin:10px 0 0;display:none">
+          ✓ Thanks! You're on the list.
+        </p>
+      </section>
+
+      <section class="card" aria-labelledby="h-twitter">
+        <h2 id="h-twitter" style="font-family:ui-serif,Georgia,serif;font-size:20px;margin:0 0 8px;color:#fbf3e6">
+          🐦 Twitter / X</h2>
+        <p style="color:var(--text-dim);font-size:14.5px;margin:0 0 16px">
+          Follow us for real-time updates, airdrop alerts, and community discussions.
+        </p>
+        <a class="btn primary" style="justify-content:center" href="https://x.com/ClownonChains" target="_blank" rel="noopener nofollow">
+          Follow @ClownonChains on X →
+        </a>
+      </section>
     </div>
   </main>
 ${FOOTER}
-  <script src="/app.js" defer></script>
+  <script src="/app.js?v=${CSS_VER}" defer></script>
 </body>
 </html>
 `;
 }
 
 /* ------------------------------------------------------------------ */
-/* 11. Halaman tutorial (1 URL per topik)                               */
+/* 12. Halaman tutorial (1 URL per topik)                              */
 /* ------------------------------------------------------------------ */
 function buildTutorial(t, d) {
   const url = `${SITE}/academy/${slug(t.title)}/`;
@@ -731,23 +840,25 @@ ${NAV}
             Use this lesson</h2>
         </div>
         <p style="margin:0 0 18px;color:var(--text-dim);font-size:14.5px">
-          Referral codes and bots mentioned throughout this article, in one place.
+          Referral codes and tools mentioned throughout this article, in one place.
         </p>
         <div class="playbook-grid">
           <section>
             <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin:0 0 10px">Exchange codes</h3>
             ${d.EXCHANGE_REFS.map((r) => `<div class="playbook-row">
               <span class="playbook-name">${esc(r.name)}</span>
-              <code>${esc(r.code)}</code>
-              <a href="${esc(r.url)}" target="_blank" rel="noopener nofollow sponsored">Sign up</a>
+              <a href="${esc(r.url)}" target="_blank" rel="noopener nofollow sponsored">
+                <span class="ref-here">HERE</span> <span class="ref-code-inline">(${esc(r.code)})</span>
+              </a>
             </div>`).join('')}
           </section>
           <section>
-            <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin:0 0 10px">Bot codes</h3>
+            <h3 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin:0 0 10px">Web3 tool codes</h3>
             ${d.BOT_REFS.map((r) => `<div class="playbook-row">
               <span class="playbook-name">${esc(r.name)}</span>
-              <code>${esc(r.code)}</code>
-              <a href="${esc(r.url)}" target="_blank" rel="noopener nofollow sponsored">Open</a>
+              <a href="${esc(r.url)}" target="_blank" rel="noopener nofollow sponsored">
+                <span class="ref-here">HERE</span> <span class="ref-code-inline">(${esc(r.code)})</span>
+              </a>
             </div>`).join('')}
           </section>
         </div>
@@ -769,19 +880,18 @@ ${FOOTER}
 }
 
 /* ------------------------------------------------------------------ */
-/* 12. Sitemap + robots + feed + 404                                   */
+/* 13. Sitemap + robots + feed + 404                                   */
 /* ------------------------------------------------------------------ */
 function buildSitemap(d) {
   const urls = [
     `<url><loc>${SITE}/</loc><lastmod>${todayISO}</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>`,
     `<url><loc>${SITE}/airdrops/</loc><lastmod>${todayISO}</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>`,
     `<url><loc>${SITE}/exchanges/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
-    `<url><loc>${SITE}/bots/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
+    `<url><loc>${SITE}/web3-tools/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
     `<url><loc>${SITE}/news/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
     `<url><loc>${SITE}/academy/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
     `<url><loc>${SITE}/community/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
-    ...d.EXCHANGE_REFS.map((r) => `<url><loc>${SITE}/exchanges/#${slug(r.name)}</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`),
-    ...d.BOT_REFS.map((r) => `<url><loc>${SITE}/bots/#${slug(r.name)}</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>`),
+    ...d.NEWS.map((n) => `<url><loc>${SITE}/news/${n.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`),
     ...d.TUTORIALS.map((t) =>
       `<url><loc>${SITE}/academy/${slug(t.title)}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`),
   ];
@@ -863,7 +973,7 @@ ${FOOTER}
 `;
 
 /* ------------------------------------------------------------------ */
-/* 13. Tulis ke disk                                                    */
+/* 14. Tulis ke disk                                                    */
 /* ------------------------------------------------------------------ */
 function write(rel, content) {
   const p = path.join(DIST, rel);
@@ -880,8 +990,11 @@ function build() {
   built.push(write('index.html', buildHome(d)));
   built.push(write('airdrops/index.html', buildAirdrops(d)));
   built.push(write('exchanges/index.html', buildExchanges(d)));
-  built.push(write('bots/index.html', buildBots(d)));
+  built.push(write('web3-tools/index.html', buildWeb3Tools(d)));
   built.push(write('news/index.html', buildNews(d)));
+  for (const n of d.NEWS) {
+    built.push(write(`news/${n.slug}/index.html`, buildNewsArticle(n, d)));
+  }
   built.push(write('academy/index.html', buildAcademyIndex(d)));
   built.push(write('community/index.html', buildCommunity(d)));
   for (const t of d.TUTORIALS) {
@@ -910,7 +1023,7 @@ function build() {
   }
 
   console.log(`✓ built ${built.length} files → dist/`);
-  console.log(`  pages: home + 6 topics + ${d.TUTORIALS.length} tutorials + 404`);
+  console.log(`  pages: home + 6 topics + ${d.NEWS.length} articles + ${d.TUTORIALS.length} tutorials + 404`);
   built.forEach((b) => console.log(`   ${b}`));
 }
 

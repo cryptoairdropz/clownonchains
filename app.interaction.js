@@ -6,8 +6,7 @@
  * This file only adds progressive enhancement:
  *   - airdrop status filters
  *   - academy level filters
- *   - deterministic decorative chart
- *   - localStorage discussion threads (per-browser demo)
+ *   - email subscribe (local confirmation)
  */
 (function () {
   'use strict';
@@ -63,79 +62,16 @@
     }
   }
 
-  /* ---------- decorative chart (deterministic, no API) ---------- */
-  var chartBars = $('#chart-bars');
-  if (chartBars) {
-    var s = 42;
-    var rand = function () {
-      s |= 0; s = (s + 0x6d2b79f5) | 0;
-      var t = Math.imul(s ^ (s >>> 15), 1 | s);
-      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
-      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-    var html = '';
-    for (var i = 0; i < 26; i++) {
-      var h = 22 + rand() * 62;
-      var up = rand() > 0.42;
-      html += '<div class="bar ' + (up ? 'up' : 'down') + '" style="height:' + h.toFixed(0) + '%"></div>';
-    }
-    chartBars.innerHTML = html;
-  }
-
-  /* ---------- localStorage discussion (per-browser demo) ---------- */
-  var threadHost = $('#threads');
-  if (!threadHost) return;
-
-  var esc = function (s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+  /* ---------- email subscribe (local confirmation) ---------- */
+  var emailForm = $('#email-form');
+  if (emailForm) {
+    emailForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var input = $('#email-input');
+      var msg = $('#email-msg');
+      if (!input || !input.value.trim()) return;
+      if (msg) msg.style.display = 'block';
+      input.value = '';
     });
-  };
-  var ago = function (ts) {
-    var sec = Math.max(1, Math.floor((Date.now() - ts) / 1000));
-    if (sec < 60) return sec + 's ago';
-    var m = Math.floor(sec / 60); if (m < 60) return m + 'm ago';
-    var h = Math.floor(m / 60); if (h < 24) return h + 'h ago';
-    return Math.floor(h / 24) + 'd ago';
-  };
-
-  var SEED = [
-    { id: 1, author: 'CryptoNinja', title: 'Is anyone else seeing this massive cup and handle on HYPE?', body: 'Weekly chart is painting something beautiful. Targets above $110 if it breaks out.', createdAt: Date.now() - 86400000, replies: [
-      { author: 'Web3Dev', body: 'Volume confirms it. Watching the $98 level.', createdAt: Date.now() - 82800000 }] },
-    { id: 2, author: 'AirdropHunter', title: 'Just claimed the new ecosystem drop! Check your wallets.', body: 'Went live about an hour ago. Revoke old approvals before claiming.', createdAt: Date.now() - 7200000, replies: [] },
-  ];
-
-  var load = function () {
-    try {
-      var raw = localStorage.getItem('cc-threads');
-      var arr = raw ? JSON.parse(raw) : null;
-      return Array.isArray(arr) && arr.length ? arr : SEED;
-    } catch (e) { return SEED; }
-  };
-  var save = function (t) { try { localStorage.setItem('cc-threads', JSON.stringify(t)); } catch (e) {} };
-
-  var threads = load();
-
-  var renderThreads = function () {
-    threadHost.innerHTML = threads.slice(0, 5).map(function (t) {
-      return '<div class="thread-row"><div class="thread-title">' + esc(t.title) + '</div>' +
-        '<div class="thread-meta"><span class="avatar"></span> ' + esc(t.author) +
-        ' · 💬 ' + t.replies.length + (t.replies.length === 1 ? ' reply' : ' replies') + '</div></div>';
-    }).join('') || '<div style="color:var(--text-faint);font-size:13.5px;padding:6px 0 10px">No threads yet. Start the first one.</div>';
-
-    var stat = $('#stat-threads');
-    if (stat) stat.textContent = threads.reduce(function (n, t) { return n + 1 + t.replies.length; }, 0);
-  };
-  renderThreads();
-
-  $('#t-post').addEventListener('click', function () {
-    var title = $('#t-title').value.trim();
-    var body = $('#t-body').value.trim();
-    if (!title || !body) return;
-    var author = $('#t-author').value.trim() || 'Anon';
-    threads.unshift({ id: Date.now(), author: author, title: title, body: body, createdAt: Date.now(), replies: [] });
-    $('#t-title').value = ''; $('#t-body').value = '';
-    save(threads);
-    renderThreads();
-  });
+  }
 })();

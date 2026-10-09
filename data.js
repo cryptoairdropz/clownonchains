@@ -20,11 +20,11 @@ const EXCHANGE_REFS = [
   { name:"MEXC",     url:"https://promote.mexc.com/r/pPBkDZ6m",          code:"pPBkDZ6m",    bonus:"Up to $1,000", desc:"Fast listing new tokens." },
 ];
 
-// Bot trading — multichain (no bridge)
+// Web3 tools — multichain (no bridge)
 const BOT_REFS = [
   { name:"Dawn",     url:"https://t.me/DawnTradeBot?start=ref-kiseryott",     code:"ref-kiseryott", category:"Multichain (no bridge)", desc:"Telegram trading bot, multichain." },
   { name:"Cove",     url:"https://t.me/cove_trading_bot?start=ref_kiseryott", code:"ref_kiseryott", category:"Multichain (no bridge)", desc:"Copy trading on Solana + EVM." },
-  { name:"CopyFomo", url:"https://t.me/copyfomo_bot?start=ref_kiseryott",    code:"ref_kiseryott", category:"Multichain (no bridge)", desc:"FOMO copy trading bot." },
+  { name:"CopyFomo", url:"https://t.me/copyfomo_bot?start=ref_kiseryott",    code:"ref-kiseryott", category:"Multichain (no bridge)", desc:"FOMO copy trading bot." },
   { name:"Maestro",  url:"https://t.me/maestro?start=r-bay_mach",            code:"r-bay_mach",   category:"Multichain bridge", desc:"Bridge + sniper + copy trading." },
   { name:"GMGN",     url:"https://gmgn.ai/r/degengem",                        code:"degengem",     category:"Multichain bridge", desc:"AI-powered trading terminal." },
   { name:"OKX Web3", url:"https://web3.okx.com/join/CLOWNZ",                  code:"CLOWNZ",      category:"Multichain bridge", desc:"OKX Web3 wallet + bot." },
@@ -36,12 +36,36 @@ const AIRDROPS = [
   { name:"LayerZero", status:"Checking snapshot", tf:"TBA", tag:"Infrastructure", url:"https://layerzero.network" },
   { name:"zkSync Era", status:"Claiming soon", tf:"2 days left", tag:"L2 Rollup", url:"https://zksync.io" },
   { name:"Scroll", status:"Farming active", tf:"Q4 2026", tag:"zkEVM", url:"https://scroll.io" },
+  { name:"Grass", status:"Stage 2 — 17% allocation", tf:"Ongoing", tag:"DePIN", url:"https://app.getgrass.io/register/?referralCode=6qvU6wx412SV6Vl",
+    steps:[
+      "Register at app.getgrass.io with referral code 6qvU6wx412SV6Vl",
+      "Download the browser extension",
+      "Install the desktop node application",
+      "Run the node 24/7 to earn points",
+      "Stay connected for more than 100 hours to maximize rewards"
+    ] },
 ];
 
+// News articles — paraphrased, no external redirects
 const NEWS = [
-  { t:"Bitcoin ETF inflows surge to record highs this week", s:"CoinDesk", d:"2 hours ago", u:"https://www.coindesk.com" },
-  { t:"Solana network upgrade promises reduced latency for bots", s:"Solana", d:"5 hours ago", u:"https://solana.com/news" },
-  { t:"HYPE-USD pair shows bullish divergence on the weekly chart", s:"Editorial", d:"12 hours ago", u:"" },
+  {
+    slug:"bitcoin-etf-inflows-record",
+    t:"Bitcoin ETF inflows surge to record highs this week",
+    s:"CoinDesk", d:"2 hours ago",
+    body:"Spot Bitcoin exchange-traded funds saw unprecedented inflows this week, with institutional demand pushing total assets under management to new heights. Analysts point to growing confidence among traditional investors as a key driver. The surge comes amid broader market optimism and increasing adoption of Bitcoin as a legitimate asset class. Experts suggest this trend could continue as more financial institutions gain exposure to cryptocurrency markets."
+  },
+  {
+    slug:"solana-network-upgrade",
+    t:"Solana network upgrade promises reduced latency for bots",
+    s:"Solana", d:"5 hours ago",
+    body:"The Solana network has rolled out a significant upgrade aimed at reducing transaction latency, a move that directly benefits automated trading bots and high-frequency traders. The upgrade optimizes block propagation and validator communication, resulting in faster confirmation times. Developers report noticeable improvements in bot execution speed and reduced slippage. This enhancement strengthens Solana's position as a leading chain for decentralized trading applications."
+  },
+  {
+    slug:"hype-usd-bullish-divergence",
+    t:"HYPE-USD pair shows bullish divergence on the weekly chart",
+    s:"Editorial", d:"12 hours ago",
+    body:"The HYPE-USD trading pair is displaying a bullish divergence on the weekly timeframe, suggesting a potential trend reversal. Technical analysts note that while price has made lower lows, key momentum indicators are forming higher lows — a classic signal of weakening selling pressure. Traders are watching key resistance levels closely, with a breakout likely to trigger significant upward movement. As always, manage risk carefully and never invest more than you can afford to lose."
+  },
 ];
 
 const TUTORIALS = [

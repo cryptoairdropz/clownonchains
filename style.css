@@ -224,3 +224,30 @@ section.block.split.uneven{align-items:start}
   transition:all .15s;
 }
 .playbook-row a:hover{background:rgba(240,179,94,.14);border-color:var(--amber)}
+
+/* ===== v4: modern & cozy UI/UX ===== */
+.air-steps{
+  margin-top:12px;padding-top:12px;border-top:1px dashed var(--border);
+}
+.ref-link{
+  display:inline-flex;align-items:center;gap:6px;
+  font-size:13px;font-weight:600;color:var(--amber);
+  text-decoration:none;padding:6px 14px;
+  border:1px solid rgba(240,179,94,.35);border-radius:999px;
+  transition:all .15s;
+}
+.ref-link:hover{background:rgba(240,179,94,.14);border-color:var(--amber)}
+.ref-here{
+  color:#fff7ea;font-weight:800;
+  border-bottom:2px solid var(--amber);
+  padding-bottom:1px;
+}
+.ref-code-inline{
+  color:var(--text-dim);font-size:12px;font-weight:500;
+}
+
+/* email form */
+#email-form{display:flex;gap:10px;align-items:center}
+#email-form .field{flex:1}
+#email-form .btn{flex-shrink:0}
+@media(max-width:480px){#email-form{flex-direction:column}#email-form .btn{width:100%}}
