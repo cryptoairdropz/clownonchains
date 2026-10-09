@@ -1,0 +1,752 @@
+[
+ {
+  "slug": "binance",
+  "name": "Binance",
+  "code": "RMCTNB5R",
+  "url": "https://www.binance.com/join?ref=RMCTNB5R",
+  "kind": "exchange",
+  "feeTaker": "0.10%",
+  "feeMaker": "0.10%",
+  "disc": "20%",
+  "pairs": "350+",
+  "bonus": "20% lifetime fee discount + up to $100 in bonuses",
+  "tagline": "The largest exchange in the world, with the deepest liquidity",
+  "why": [
+   "Deepest liquidity anywhere — the smallest slippage on large orders",
+   "350+ pairs, and almost every new token lists here first",
+   "Binance Academy is free if you want structured learning",
+   "Mobile app and support in most major languages"
+  ],
+  "watch": [
+   "KYC verification is mandatory before trading",
+   "Enable 2FA — large exchanges are prime phishing targets",
+   "Check your local regulatory status before depositing serious money"
+  ],
+  "steps": [
+   "Open the Binance referral link",
+   "Sign up with email or phone number",
+   "Code RMCTNB5R fills in automatically — confirm it is not changed",
+   "Complete KYC (ID plus a selfie)",
+   "Enable 2FA with Google Authenticator",
+   "Deposit and start trading"
+  ],
+  "faq": [
+   [
+    "Is the Binance referral code still active?",
+    "Yes. RMCTNB5R is active and gives new accounts a 20% fee discount for life."
+   ],
+   [
+    "How much is the Binance signup bonus?",
+    "Up to $100 in vouchers, released after you complete verification and hit certain trading volume thresholds."
+   ],
+   [
+    "Does the 20% fee discount expire?",
+    "No. Referral fee discounts do not have an expiry date as long as the account stays active."
+   ],
+   [
+    "Do I need KYC to use a referral code?",
+    "For trading, yes. Without KYC you cannot deposit fiat or trade spot."
+   ]
+  ]
+ },
+ {
+  "slug": "bybit",
+  "name": "Bybit",
+  "code": "BYBIT313",
+  "url": "https://partner.bybit.com/b/BYBIT313",
+  "kind": "exchange",
+  "feeTaker": "0.055%",
+  "feeMaker": "0.02%",
+  "disc": "20%",
+  "pairs": "500+",
+  "bonus": "Up to $30,000 in rewards + fee discount",
+  "tagline": "The strongest choice for futures and leveraged trading",
+  "why": [
+   "The most competitive futures fees among major exchanges",
+   "Deep perpetual order books keep slippage low",
+   "Built-in copy trading lets you mirror profitable traders automatically",
+   "No major user-fund breach since it launched"
+  ],
+  "watch": [
+   "High leverage can liquidate an account in minutes",
+   "Understand funding rates before opening a perpetual position",
+   "Copy trading is not a guarantee of profit"
+  ],
+  "steps": [
+   "Open the Bybit referral link",
+   "Sign up with email",
+   "Code BYBIT313 fills in automatically",
+   "Complete KYC level 1",
+   "Enable 2FA",
+   "Deposit USDT and start trading"
+  ],
+  "faq": [
+   [
+    "How much is the Bybit referral bonus?",
+    "Up to $30,000 in staged rewards, depending on your deposit and trading volume."
+   ],
+   [
+    "Why choose Bybit over Binance?",
+    "Bybit's futures fees are lower and its derivatives interface is cleaner, which matters if you trade perps rather than spot."
+   ],
+   [
+    "Is Bybit safe for larger balances?",
+    "Bybit publishes proof of reserves and has not suffered a major user-fund loss since 2018."
+   ],
+   [
+    "Does Bybit have copy trading?",
+    "Yes, for both spot and futures."
+   ]
+  ]
+ },
+ {
+  "slug": "bingx",
+  "name": "BingX",
+  "code": "6XOZMMGL",
+  "url": "https://bingx.pro/invite/6XOZMMGL/",
+  "kind": "exchange",
+  "feeTaker": "0.10%",
+  "feeMaker": "0.10%",
+  "disc": "20%",
+  "pairs": "800+",
+  "bonus": "Up to $1,000 in bonuses + fee discount",
+  "tagline": "Copy-trading focused, and one of the friendliest for beginners",
+  "why": [
+   "The most approachable copy trading on the market",
+   "800+ pairs, including small caps you will not find on the majors",
+   "Low minimum deposit",
+   "Simple interface for people just starting out"
+  ],
+  "watch": [
+   "Small-cap pairs have thin liquidity and wide slippage",
+   "Check a trader's full track record before copying, not just the last month",
+   "Micro-cap tokens carry extreme risk"
+  ],
+  "steps": [
+   "Open the BingX referral link",
+   "Sign up with email or phone",
+   "Code 6XOZMMGL fills in automatically",
+   "Complete KYC",
+   "Deposit as little as $10",
+   "Trade or follow a copy trader"
+  ],
+  "faq": [
+   [
+    "What is BingX known for?",
+    "BingX is built around copy trading, letting users automatically mirror another trader's strategy."
+   ],
+   [
+    "What is the minimum deposit on BingX?",
+    "Around $10, which is far lower than most major exchanges."
+   ],
+   [
+    "Is BingX copy trading good for beginners?",
+    "It can be a starting point, but understand the risk — a trader who was profitable last year is not guaranteed to be profitable next year."
+   ],
+   [
+    "Does code 6XOZMMGL give a fee discount?",
+    "Yes, it applies a fee discount to new accounts that register through the referral link."
+   ]
+  ]
+ },
+ {
+  "slug": "bitget",
+  "name": "Bitget",
+  "code": "7jl483901696997809300",
+  "url": "https://partner.bitgetapp.com/bg/7jl483901696997809300",
+  "kind": "exchange",
+  "feeTaker": "0.10%",
+  "feeMaker": "0.10%",
+  "disc": "20%",
+  "pairs": "900+",
+  "bonus": "Up to $5,500 in bonuses + fee discount",
+  "tagline": "Strong on copy trading and early listings of new tokens",
+  "why": [
+   "Copy trading with built-in fund protection",
+   "900+ pairs, and new tokens often list here earlier than on Binance",
+   "Regular reward and airdrop programs",
+   "Low fiat deposit fees"
+  ],
+  "watch": [
+   "New tokens are extremely volatile",
+   "Check daily volume before touching a small-cap pair",
+   "Verify the exchange's regulatory status in your jurisdiction"
+  ],
+  "steps": [
+   "Open the Bitget referral link",
+   "Sign up with email",
+   "The code fills in automatically from the link",
+   "Complete KYC",
+   "Enable 2FA",
+   "Deposit and start trading"
+  ],
+  "faq": [
+   [
+    "How much is the Bitget referral bonus?",
+    "Up to $5,500 in staged rewards for new users who meet the volume requirements."
+   ],
+   [
+    "What does Bitget offer over BingX?",
+    "Bitget lists more trading pairs and includes fund protection on copy trading positions."
+   ],
+   [
+    "Does Bitget list new tokens early?",
+    "Yes, Bitget is among the fastest exchanges to list new tokens, often ahead of Binance."
+   ],
+   [
+    "Is this Bitget referral code official?",
+    "The code comes from Bitget's official partner program and is registered in their system."
+   ]
+  ]
+ },
+ {
+  "slug": "gate-io",
+  "name": "Gate.io",
+  "code": "MONADSSS",
+  "url": "https://www.gate.io/signup/MONADSSS",
+  "kind": "exchange",
+  "feeTaker": "0.20%",
+  "feeMaker": "0.20%",
+  "disc": "20%",
+  "pairs": "1,700+",
+  "bonus": "Up to $100 in bonuses + fee discount",
+  "tagline": "The widest altcoin selection of any major exchange",
+  "why": [
+   "1,700+ pairs — the broadest altcoin coverage available",
+   "Lists micro-cap tokens you cannot buy anywhere else",
+   "Operating since 2013, one of the oldest exchanges still running",
+   "Built-in earn and staking products"
+  ],
+  "watch": [
+   "Fees are higher than Binance and Bybit",
+   "Micro-cap tokens can be almost entirely illiquid",
+   "Delisting risk on small tokens is real"
+  ],
+  "steps": [
+   "Open the Gate.io referral link",
+   "Sign up with email",
+   "Code MONADSSS fills in automatically",
+   "Verify your identity",
+   "Enable 2FA",
+   "Deposit and start trading"
+  ],
+  "faq": [
+   [
+    "Why are Gate.io fees higher?",
+    "Gate.io supports 1,700+ pairs including micro-caps that no major exchange carries, which raises operating costs."
+   ],
+   [
+    "Is Gate.io safe?",
+    "Gate.io has operated since 2013 without a significant loss of user funds. Still enable 2FA."
+   ],
+   [
+    "How much is the MONADSSS bonus?",
+    "Up to $100 in vouchers and deposit bonuses for new users."
+   ],
+   [
+    "Is Gate.io good for altcoins?",
+    "It has one of the most complete altcoin selections on the market."
+   ]
+  ]
+ },
+ {
+  "slug": "okx",
+  "name": "OKX",
+  "code": "ENJOYDISCOUNT",
+  "url": "https://www.okx.com/join/ENJOYDISCOUNT",
+  "kind": "exchange",
+  "feeTaker": "0.10%",
+  "feeMaker": "0.08%",
+  "disc": "20%",
+  "pairs": "400+",
+  "bonus": "Mystery Box + fee discount",
+  "tagline": "The best Web3 wallet integration of any major exchange",
+  "why": [
+   "Built-in Web3 wallet gives you DEX and DeFi access from the same app",
+   "Maker fees are lower than Binance",
+   "Full derivatives product suite",
+   "Mystery Box for new users"
+  ],
+  "watch": [
+   "The Web3 features require understanding self-custody",
+   "Watch the network when transferring between chains",
+   "Enable 2FA and whitelist withdrawal addresses"
+  ],
+  "steps": [
+   "Open the OKX referral link",
+   "Sign up with email or phone",
+   "Code ENJOYDISCOUNT fills in automatically",
+   "Complete KYC",
+   "Open your Mystery Box in the rewards menu",
+   "Enable 2FA and start trading"
+  ],
+  "faq": [
+   [
+    "What is the OKX Mystery Box?",
+    "A reward containing vouchers, tokens or bonuses for new users who register through a referral link."
+   ],
+   [
+    "What does OKX offer over Binance?",
+    "OKX has a fully integrated Web3 wallet, which makes accessing DEXes and DeFi far easier from inside the app."
+   ],
+   [
+    "Are OKX fees cheaper?",
+    "OKX maker fees are 0.08%, slightly below Binance at 0.10%."
+   ],
+   [
+    "Is ENJOYDISCOUNT active?",
+    "Yes, the code is active and applies a fee discount to new accounts."
+   ]
+  ]
+ },
+ {
+  "slug": "mexc",
+  "name": "MEXC",
+  "code": "pPBkDZ6m",
+  "url": "https://promote.mexc.com/r/pPBkDZ6m",
+  "kind": "exchange",
+  "feeTaker": "0.05%",
+  "feeMaker": "0.00%",
+  "disc": "20%",
+  "pairs": "2,800+",
+  "bonus": "Up to $1,000 in bonuses + fee discount",
+  "tagline": "The fastest new-token listings, often ahead of every other exchange",
+  "why": [
+   "2,800+ pairs — the largest count in the market",
+   "0% maker fees on spot",
+   "Fastest new-token listings anywhere",
+   "KYC not required for basic trading in many jurisdictions"
+  ],
+  "watch": [
+   "The 0% maker fee has volume conditions — read the current fee page",
+   "Heavy micro-cap exposure means rug-pull risk",
+   "Without KYC, account recovery is harder"
+  ],
+  "steps": [
+   "Open the MEXC referral link",
+   "Sign up with email",
+   "Code pPBkDZ6m fills in automatically",
+   "Enable 2FA",
+   "Deposit USDT",
+   "Start trading"
+  ],
+  "faq": [
+   [
+    "Why does MEXC list tokens first?",
+    "MEXC runs a faster listing process with lighter requirements, so new tokens frequently appear here before Binance."
+   ],
+   [
+    "Is MEXC really 0% maker fee?",
+    "For spot trading, yes, subject to volume conditions. Check MEXC's current fee page for details."
+   ],
+   [
+    "How much is the pPBkDZ6m bonus?",
+    "Up to $1,000 in staged bonuses for new users."
+   ],
+   [
+    "Is MEXC safe?",
+    "MEXC has operated since 2018. Because it carries so many micro-caps, your real risk is usually the token you pick rather than the exchange."
+   ]
+  ]
+ },
+ {
+  "slug": "dawn",
+  "name": "Dawn",
+  "code": "ref-kiseryott",
+  "url": "https://t.me/DawnTradeBot?start=ref-kiseryott",
+  "kind": "bot",
+  "feeTaker": "1%",
+  "feeMaker": "—",
+  "disc": "10%",
+  "pairs": "Multichain",
+  "bonus": "Trading fee discount via referral code",
+  "tagline": "Multichain Telegram trading bot with no bridging required",
+  "why": [
+   "Trade straight from Telegram without opening a browser",
+   "Multichain without manual bridging",
+   "Fast enough to snipe new tokens",
+   "No extra app to install"
+  ],
+  "watch": [
+   "A Telegram bot is not your wallet — funds sit with the bot",
+   "Fees are higher than a centralised exchange",
+   "Only use money you are prepared to lose"
+  ],
+  "steps": [
+   "Open the Dawn referral link in Telegram",
+   "Press Start",
+   "Code ref-kiseryott attaches automatically",
+   "Create the bot's built-in wallet or import one",
+   "Deposit SOL or ETH",
+   "Start trading"
+  ],
+  "faq": [
+   [
+    "Is Dawn safe to use?",
+    "Telegram bots hold your funds in the bot's wallet, not your own. That is a real risk. Keep the balance limited."
+   ],
+   [
+    "Why use Dawn instead of an exchange?",
+    "Speed. A Telegram bot can execute in seconds on tokens that are not listed on any exchange yet."
+   ],
+   [
+    "What does multichain without bridging mean?",
+    "You can trade across several chains without manually moving assets between networks."
+   ],
+   [
+    "What are Dawn's fees?",
+    "Around 1% per trade, higher than a centralised exchange but in line with comparable bots."
+   ]
+  ]
+ },
+ {
+  "slug": "cove",
+  "name": "Cove",
+  "code": "ref_kiseryott",
+  "url": "https://t.me/cove_trading_bot?start=ref_kiseryott",
+  "kind": "bot",
+  "feeTaker": "1%",
+  "feeMaker": "—",
+  "disc": "10%",
+  "pairs": "Solana + EVM",
+  "bonus": "Fee discount via referral code",
+  "tagline": "Solana and EVM copy trading, run from Telegram",
+  "why": [
+   "Automatically mirror wallets that are performing well",
+   "Works across Solana and EVM chains",
+   "Compact Telegram interface",
+   "Track PnL without leaving the chat"
+  ],
+  "watch": [
+   "A wallet that was profitable yesterday may not be tomorrow",
+   "Slippage is heavy on thin tokens",
+   "Funds are held by the bot"
+  ],
+  "steps": [
+   "Open the Cove referral link",
+   "Press Start in Telegram",
+   "Code ref_kiseryott attaches automatically",
+   "Create or import a wallet",
+   "Deposit SOL",
+   "Pick a wallet to copy"
+  ],
+  "faq": [
+   [
+    "What is Cove copy trading?",
+    "Cove lets you automatically mirror another wallet's transactions without doing your own analysis."
+   ],
+   [
+    "Is copy trading guaranteed to profit?",
+    "No. A wallet that performed well historically can turn unprofitable. The risk stays yours."
+   ],
+   [
+    "Which chains does Cove support?",
+    "Solana and EVM networks including Ethereum, Base and BSC."
+   ],
+   [
+    "What are Cove's fees?",
+    "Around 1% per trade."
+   ]
+  ]
+ },
+ {
+  "slug": "copyfomo",
+  "name": "CopyFomo",
+  "code": "ref-kiseryott",
+  "url": "https://t.me/copyfomo_bot?start=ref-kiseryott",
+  "kind": "bot",
+  "feeTaker": "1%",
+  "feeMaker": "—",
+  "disc": "10%",
+  "pairs": "Multichain",
+  "bonus": "Fee discount via referral code",
+  "tagline": "FOMO copy-trading bot built for new tokens",
+  "why": [
+   "Designed to catch new tokens faster",
+   "Built-in copy trading",
+   "Trending-token notifications",
+   "Lightweight, runs entirely in Telegram"
+  ],
+  "watch": [
+   "New tokens are the highest-risk category in crypto",
+   "A large share of new tokens end in a rug pull",
+   "Never use funds you cannot afford to lose entirely"
+  ],
+  "steps": [
+   "Open the CopyFomo referral link",
+   "Press Start",
+   "Code ref-kiseryott attaches automatically",
+   "Set up your wallet",
+   "Deposit",
+   "Start copy trading"
+  ],
+  "faq": [
+   [
+    "What makes CopyFomo different?",
+    "CopyFomo focuses on speed for new-token entries and on trending-token signals."
+   ],
+   [
+    "Are new tokens safe?",
+    "No new token is safe. Most fail or rug pull. This is the highest-risk corner of crypto."
+   ],
+   [
+    "What is the minimum deposit?",
+    "It varies, but generally the equivalent of a few tens of dollars."
+   ],
+   [
+    "Is there a CopyFomo referral code?",
+    "Yes, ref-kiseryott is active and applies a fee discount."
+   ]
+  ]
+ },
+ {
+  "slug": "maestro",
+  "name": "Maestro",
+  "code": "r-bay_mach",
+  "url": "https://t.me/maestro?start=r-bay_mach",
+  "kind": "bot",
+  "feeTaker": "1%",
+  "feeMaker": "—",
+  "disc": "10%",
+  "pairs": "Multichain",
+  "bonus": "Fee discount via referral code",
+  "tagline": "Bridge, sniper and copy trading in a single bot",
+  "why": [
+   "The most complete feature set: bridge, sniper and copy trading",
+   "Long-running with a large user base",
+   "Support for many chains",
+   "Sniper built for new listings"
+  ],
+  "watch": [
+   "More features means a wider risk surface",
+   "The built-in bridge still carries contract risk",
+   "Funds sit with the bot"
+  ],
+  "steps": [
+   "Open the Maestro referral link",
+   "Press Start",
+   "Code r-bay_mach attaches automatically",
+   "Create a wallet",
+   "Deposit",
+   "Choose a feature: sniper, bridge or copy trading"
+  ],
+  "faq": [
+   [
+    "What can Maestro do?",
+    "Bridge between chains, snipe new tokens, and copy trade — all from one Telegram bot."
+   ],
+   [
+    "Is Maestro safe?",
+    "Maestro is one of the oldest and most widely used bots. Remember your funds are in the bot's wallet, not your own."
+   ],
+   [
+    "What are Maestro's fees?",
+    "Around 1% per trade, plus separate bridge costs."
+   ],
+   [
+    "Is r-bay_mach active?",
+    "Yes, the code is active and applies a fee discount."
+   ]
+  ]
+ },
+ {
+  "slug": "gmgn",
+  "name": "GMGN",
+  "code": "degengem",
+  "url": "https://gmgn.ai/r/degengem",
+  "kind": "bot",
+  "feeTaker": "1%",
+  "feeMaker": "—",
+  "disc": "10%",
+  "pairs": "Solana",
+  "bonus": "Fee discount via referral code",
+  "tagline": "AI-powered trading terminal built for Solana",
+  "why": [
+   "Deep on-chain analytics per wallet and per token",
+   "Automatic smart-money wallet detection",
+   "A web terminal, not just a Telegram bot",
+   "Transparent holder and token distribution data"
+  ],
+  "watch": [
+   "Good data does not guarantee profit",
+   "Solana tokens are extremely volatile",
+   "Watch slippage and MEV exposure"
+  ],
+  "steps": [
+   "Open the GMGN referral link",
+   "Create an account",
+   "Code degengem attaches automatically",
+   "Connect a Solana wallet",
+   "Explore token data",
+   "Start trading"
+  ],
+  "faq": [
+   [
+    "What is GMGN's main advantage?",
+    "GMGN provides deep on-chain data — who bought, when, and how much — that ordinary exchanges do not show."
+   ],
+   [
+    "Is GMGN Solana only?",
+    "Yes, GMGN focuses entirely on the Solana ecosystem."
+   ],
+   [
+    "What is smart money on GMGN?",
+    "A label for wallets that have been consistently profitable historically, so you can follow or monitor them."
+   ],
+   [
+    "What are GMGN's fees?",
+    "Around 1% per trade."
+   ]
+  ]
+ },
+ {
+  "slug": "okx-web3",
+  "name": "OKX Web3",
+  "code": "CLOWNZ",
+  "url": "https://web3.okx.com/join/CLOWNZ",
+  "kind": "bot",
+  "feeTaker": "0.3%",
+  "feeMaker": "0.3%",
+  "disc": "10%",
+  "pairs": "Multichain",
+  "bonus": "Bonuses and fee discount via referral code",
+  "tagline": "A self-custody Web3 wallet with built-in trading tools",
+  "why": [
+   "Built by a major exchange, so more accountable than an anonymous bot",
+   "Self-custody wallet — the funds stay yours",
+   "DEX and bridge access in one app",
+   "Support for many chains"
+  ],
+  "watch": [
+   "Self-custody means you are responsible for your seed phrase",
+   "DEX smart contract risk still applies",
+   "Web3 features are more complex than a standard exchange"
+  ],
+  "steps": [
+   "Open the OKX Web3 referral link",
+   "Sign up or log in to your OKX account",
+   "Code CLOWNZ attaches automatically",
+   "Create or import a Web3 wallet",
+   "Back up the seed phrase offline",
+   "Start trading"
+  ],
+  "faq": [
+   [
+    "How is OKX Web3 different from regular OKX?",
+    "OKX Web3 is a self-custody wallet, so you hold the funds rather than the exchange."
+   ],
+   [
+    "Is OKX Web3 safer than a Telegram bot?",
+    "For holding funds, yes, because it is self-custody. In exchange, you are fully responsible for your seed phrase."
+   ],
+   [
+    "Which chains are supported?",
+    "Dozens, including Ethereum, Solana, Base, Arbitrum and BSC."
+   ],
+   [
+    "Is CLOWNZ active?",
+    "Yes, the code is active for the OKX Web3 referral program."
+   ]
+  ]
+ },
+ {
+  "slug": "axiom",
+  "name": "Axiom",
+  "code": "rawrr",
+  "url": "https://axiom.trade/@rawrr",
+  "kind": "bot",
+  "feeTaker": "1%",
+  "feeMaker": "—",
+  "disc": "10%",
+  "pairs": "Solana",
+  "bonus": "Fee discount via referral code",
+  "tagline": "A fast-execution Solana trading bot",
+  "why": [
+   "Fast execution on Solana",
+   "Clean interface focused on getting the trade done",
+   "Copy trading and sniping built in",
+   "Popular among Solana degen communities"
+  ],
+  "watch": [
+   "Solana only, no other chains",
+   "Solana tokens carry high risk",
+   "Funds sit with the bot rather than your own wallet"
+  ],
+  "steps": [
+   "Open the Axiom referral link",
+   "Connect a Solana wallet",
+   "Code rawrr attaches automatically",
+   "Deposit SOL",
+   "Pick a token or start copy trading",
+   "Trade"
+  ],
+  "faq": [
+   [
+    "What is Axiom's advantage?",
+    "Execution speed on Solana, which matters for new tokens that move within seconds."
+   ],
+   [
+    "Is Axiom Solana only?",
+    "Yes, Axiom is focused entirely on Solana."
+   ],
+   [
+    "What are Axiom's fees?",
+    "Around 1% per trade."
+   ],
+   [
+    "Is rawrr active?",
+    "Yes, the code is active."
+   ]
+  ]
+ },
+ {
+  "slug": "zenith",
+  "name": "Zenith",
+  "code": "kiseryott",
+  "url": "https://t.me/zenith_lp_bot?start=kiseryott",
+  "kind": "bot",
+  "feeTaker": "1%",
+  "feeMaker": "—",
+  "disc": "10%",
+  "pairs": "Liquidity pools",
+  "bonus": "Fee discount via referral code",
+  "tagline": "Automated liquidity pool management and sniping",
+  "why": [
+   "Purpose-built for liquidity pool management",
+   "Automates adding and removing liquidity",
+   "Snipes new LP tokens",
+   "The only tool here focused on LP rather than plain trading"
+  ],
+  "watch": [
+   "Impermanent loss remains the primary LP risk",
+   "New LP tokens can rug pull at any time",
+   "Funds sit with the bot"
+  ],
+  "steps": [
+   "Open the Zenith referral link",
+   "Press Start in Telegram",
+   "Code kiseryott attaches automatically",
+   "Set up a wallet",
+   "Deposit",
+   "Choose a pool and start"
+  ],
+  "faq": [
+   [
+    "What is Zenith?",
+    "A Telegram bot for managing liquidity pool positions automatically, including adding and withdrawing liquidity."
+   ],
+   [
+    "What is the main risk of Zenith?",
+    "Impermanent loss. Providing liquidity means automatically selling the asset that rises and buying the one that falls."
+   ],
+   [
+    "Is Zenith suitable for beginners?",
+    "Not really. LP management requires understanding impermanent loss and new-token risk."
+   ],
+   [
+    "What are Zenith's fees?",
+    "Around 1% per transaction."
+   ]
+  ]
+ }
+]
