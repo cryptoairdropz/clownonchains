@@ -121,6 +121,14 @@ const BOT_REFS = [
 // ------------------------------------------------------------
 const NEWS = [
   {
+    slug:"ledger-probes-possible-supply-chain-breach-after-86m-in-crypto-reported",
+    src:"https://www.coindesk.com/business/2026/10/09/ledger-investigates-potential-wallet-tampering-after-reports-of-usd86-million-in-crypto-stolen",
+    t:"Ledger Probes Possible Supply-Chain Breach After $86M in Crypto Reportedly Drained",
+    s:"Market Intel",
+    d:"Just now",
+    body:"Hardware wallet manufacturer Ledger has launched an investigation into reports that roughly $86 million worth of cryptocurrency may have been siphoned from hundreds of user wallets connected to devices distributed by a Southeast Asian reseller. The alleged theft, which surfaced through social media posts this week, reportedly affected addresses on the Bitcoin, Ethereum, and Tron networks. The company identified CryptoBilis, a reseller operating in Southeast Asia, as the common link among the compromised devices. Ledger has requested that CryptoBilis immediately cease all sales and shipments while the probe is underway. In the meantime, the firm is urging customers who purchased devices from this channel not to initialize them at all. Those who have already set up their wallets are advised to move their holdings to a separate device protected by a freshly generated recovery phrase. One theory under consideration is a supply-chain attack, in which devices could have been tampered with before reaching end users. However, Ledger has not confirmed this or any other explanation. The total number of victims, the exact amount lost, and the precise method used to drain the funds all remain unverified. Independent security researchers have yet to validate the reported losses or their connection to the reseller. The incident highlights the risks associated with purchasing hardware wallets through third-party channels rather than directly from manufacturers. Supply-chain compromises are particularly dangerous because they can bypass the security features that make hardware wallets attractive in the first place. Users are generally advised to buy only from official sources and to verify device integrity upon receipt. Ledger has not provided a timeline for completing its investigation. The company said it will share updates as more information becomes available."
+  },
+  {
     slug:"thailand-opens-its-market-to-locally-listed-bitcoin-and-ether-etfs",
     t:"Thailand opens its market to locally listed Bitcoin and Ether ETFs",
     s:"Market Intel",

@@ -17,14 +17,6 @@
   },
   {
     "source": "CoinDesk",
-    "title": "Ledger investigates potential wallet tampering after reports of $86 million in crypto stolen",
-    "link": "https://www.coindesk.com/business/2026/10/09/ledger-investigates-potential-wallet-tampering-after-reports-of-usd86-million-in-crypto-stolen",
-    "guid": "a789ac80-84ae-4f33-a5ad-558a40deaad3",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.257835+00:00"
-  },
-  {
-    "source": "CoinDesk",
     "title": "DWF Labs subsidiaries sue BitGo for $141 million over alleged token lock-up breach",
     "link": "https://www.coindesk.com/policy/2026/10/09/dwf-labs-subsidiaries-sue-bitgo-for-usd141-million-over-alleged-token-lock-up-breach",
     "guid": "4644feb9-2d5d-44bc-b91d-04c94021a384",
@@ -310,5 +302,13 @@
     "guid": "https://bitcoinmagazine.com/?p=55723",
     "summary": "",
     "fetched_at": "2026-10-09T19:01:44.611269+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "Thailand opens door to locally listed bitcoin and ether ETFs",
+    "link": "https://www.coindesk.com/policy/2026/10/09/thailand-opens-door-to-locally-listed-bitcoin-and-ether-etfs",
+    "guid": "a47b365a-c336-4cc9-a4e4-d1c72b286db0",
+    "summary": "",
+    "fetched_at": "2026-10-09T19:02:37.142760+00:00"
   }
 ]
