@@ -17,14 +17,6 @@
   },
   {
     "source": "CoinDesk",
-    "title": "DWF Labs subsidiaries sue BitGo for $141 million over alleged token lock-up breach",
-    "link": "https://www.coindesk.com/policy/2026/10/09/dwf-labs-subsidiaries-sue-bitgo-for-usd141-million-over-alleged-token-lock-up-breach",
-    "guid": "4644feb9-2d5d-44bc-b91d-04c94021a384",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.257851+00:00"
-  },
-  {
-    "source": "CoinDesk",
     "title": "Trump's Iran pledge underpins crypto gains as bitcoin bears face liquidation pressure",
     "link": "https://www.coindesk.com/daybook-us/2026/10/09/trump-s-iran-pledge-underpins-crypto-gains-as-bitcoin-bears-face-liquidation-pressure",
     "guid": "2555b0d5-5f30-4722-8dca-4945684434a9",
@@ -342,5 +334,29 @@
     "guid": "https://bitcoinmagazine.com/?p=55756",
     "summary": "",
     "fetched_at": "2026-10-09T20:12:09.438362+00:00"
+  },
+  {
+    "source": "Cointelegraph",
+    "title": "US plans to seize $1B in crypto linked to Iran this week: Scott Bessent",
+    "link": "https://cointelegraph.com/news/scott-bessent-us-seize-crypto-iran-sanctions?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "guid": "https://cointelegraph.com/news/scott-bessent-us-seize-crypto-iran-sanctions",
+    "summary": "",
+    "fetched_at": "2026-10-09T20:52:00.303032+00:00"
+  },
+  {
+    "source": "Cointelegraph",
+    "title": "New York permanently bars Celsius founder Mashinsky in $35M fraud settlement",
+    "link": "https://cointelegraph.com/news/celsius-founder-alex-mashinsky-permanently-banned-from-crypto-industry-in-ny-settlement?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "guid": "https://cointelegraph.com/news/celsius-founder-alex-mashinsky-permanently-banned-from-crypto-industry-in-ny-settlement",
+    "summary": "",
+    "fetched_at": "2026-10-09T20:52:00.303060+00:00"
+  },
+  {
+    "source": "Bitcoin Magazine",
+    "title": "‘We Know Where It Is’: Treasury Secretary Threatens To Freeze $1B of Iran’s Crypto",
+    "link": "https://bitcoinmagazine.com/news/treasury-to-seize-one-billion-of-iran-crypto",
+    "guid": "https://bitcoinmagazine.com/?p=55760",
+    "summary": "",
+    "fetched_at": "2026-10-09T20:52:00.423114+00:00"
   }
 ]

@@ -27,7 +27,7 @@ const CSS_VER = (() => {
 /* ------------------------------------------------------------------ */
 function loadData() {
   const src = fs.readFileSync(path.join(ROOT, 'data.js'), 'utf8');
-  const fn = new Function(`${src}\nreturn { PRICES, EXCHANGE_REFS, BOT_REFS, AIRDROPS, NEWS, TUTORIALS, FAQ, GUIDE };`);
+  const fn = new Function(`${src}\nreturn { PRICES, EXCHANGE_REFS, BOT_REFS, AIRDROPS, NEWS, TUTORIALS, GLOSSARY, TRACKS, FAQ, GUIDE };`);
   return fn();
 }
 
@@ -121,6 +121,7 @@ const NAV = `  <nav class="nav">
       <a href="/web3-tools/">Web3 Tools</a>
       <a href="/news/">News</a>
       <a href="/academy/">Academy</a>
+      <a href="/glossary/">Glossary</a>
       <a href="/community/">Community</a>
     </div>
     <a class="btn" href="/community/">Community</a>
@@ -202,8 +203,15 @@ function buildHome(d) {
       href: '/academy/',
       icon: '📖',
       title: 'Academy',
-      desc: `${d.TUTORIALS.length} lessons — wallet safety, airdrop farming, DeFi mechanics.`,
+      desc: `${d.TUTORIALS.length} lessons across ${d.TRACKS.length} tracks — beginner to advanced.`,
       accent: 'var(--green)',
+    },
+    {
+      href: '/glossary/',
+      icon: '📚',
+      title: 'Glossary',
+      desc: `${d.GLOSSARY.length} crypto terms explained in plain English.`,
+      accent: 'var(--peach)',
     },
     {
       href: '/news/',
@@ -858,14 +866,69 @@ function buildAcademyIndex(d) {
     const items = d.TUTORIALS.filter((t) => t.level === lv);
     if (!items.length) return '';
     return `
-      <h2 class="section-title" style="font-size:19px;margin:34px 0 14px"><span class="ic lvl-${lv}">${lv}</span></h2>
-      <div class="grid cols-2">
-        ${items.map((t) => `<a class="card hover tut-card" href="/academy/${slug(t.title)}/">
-          <span class="tut-title">${esc(t.title)}</span>
-          <span class="tut-meta">🕐 ${t.min} min read <span style="margin-left:auto">→</span></span>
-        </a>`).join('')}
-      </div>`;
+      <section class="acad-group" aria-labelledby="h-lv-${lv}">
+        <div class="acad-group-head">
+          <h2 class="section-title" id="h-lv-${lv}" style="font-size:20px;margin:0">
+            <span class="ic lvl-${lv}" aria-hidden="true">●</span> ${lv}</h2>
+          <span class="acad-count">${items.length} lessons</span>
+        </div>
+        <div class="grid cols-2">
+          ${items.map((t) => `<a class="card hover tut-card" href="/academy/${slug(t.title)}/">
+            <span class="tut-title">${esc(t.title)}</span>
+            <span class="tut-meta">🕐 ${t.min} min read <span style="margin-left:auto">→</span></span>
+          </a>`).join('')}
+        </div>
+      </section>`;
   }).join('');
+
+  // ---- learning tracks ----
+  const trackByTitle = {};
+  for (const t of d.TUTORIALS) trackByTitle[t.title] = t;
+  const tracksHtml = d.TRACKS.map((tr) => {
+    const steps = tr.lessons
+      .map((title, i) => {
+        const t = trackByTitle[title];
+        if (!t) return '';
+        return `<a class="track-step" href="/academy/${slug(title)}/">
+            <span class="track-num">${i + 1}</span>
+            <span class="track-step-title">${esc(title)}</span>
+            <span class="track-step-min">${t.min} min</span>
+          </a>`;
+      }).join('');
+    const totalMin = tr.lessons.reduce((n, title) => n + (trackByTitle[title]?.min || 0), 0);
+    return `
+      <article class="card track-card">
+        <div class="track-head">
+          <span class="track-icon" aria-hidden="true">${tr.icon}</span>
+          <div>
+            <h3 class="track-name">${esc(tr.name)}</h3>
+            <div class="track-meta">${tr.lessons.length} lessons · ${totalMin} min total · ${esc(tr.level)}</div>
+          </div>
+        </div>
+        <p class="track-desc">${esc(tr.desc)}</p>
+        <div class="track-steps">${steps}
+        </div>
+      </article>`;
+  }).join('');
+
+  // ---- glossary preview (12 pertama) ----
+  const glossaryPreview = d.GLOSSARY.slice(0, 12).map((g) => `
+        <a class="gloss-chip" href="/glossary/${g.slug}/">
+          <span class="gloss-term">${esc(g.term)}</span>
+          <span class="gloss-short">${esc(g.short)}</span>
+        </a>`).join('');
+
+  const itemListLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Crypto Academy Lessons',
+    itemListElement: d.TUTORIALS.map((t, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: t.title,
+      url: `${SITE}/academy/${slug(t.title)}/`,
+    })),
+  };
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -877,27 +940,214 @@ function buildAcademyIndex(d) {
   };
 
   return `${head({
-    title: 'Crypto Academy — Airdrop, DeFi & Trading Guides | ClownOnChains',
-    desc: 'Free crypto guides: wallet security, airdrop farming, impermanent loss, Supertrend and indicator setups. Written in plain English, beginner to advanced.',
-    keywords: 'crypto academy, defi tutorial, airdrop farming guide, impermanent loss, supertrend',
+    title: 'Crypto Academy — Free Blockchain & Web3 Education | ClownOnChains',
+    desc: `Learn crypto and blockchain for free: ${d.TUTORIALS.length} lessons and ${d.GLOSSARY.length} glossary terms covering wallets, airdrops, DeFi, stablecoins and trading. Beginner to advanced tracks.`,
+    keywords: 'crypto academy, free crypto education, blockchain course, defi tutorial, airdrop farming guide, crypto glossary, learn crypto',
     canonical: `${SITE}/academy/`,
-    jsonld: breadcrumbLd,
+    jsonld: [breadcrumbLd, itemListLd],
+  })}
+<body>
+${NAV}
+  <main class="wrap" style="padding:0 18px 20px">
+    <header class="acad-hero">
+      <div class="acad-hero-glow" aria-hidden="true"></div>
+      <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:14px;position:relative">
+        <a href="/">Home</a> › <span>Academy</span>
+      </nav>
+      <p class="hero-eyebrow" style="position:relative">Blockchain &amp; Crypto Education</p>
+      <h1 class="acad-h1">Crypto Academy</h1>
+      <p class="acad-sub">Learn crypto and blockchain for free — ${d.TUTORIALS.length} lessons and
+        ${d.GLOSSARY.length} glossary terms. No hype, no signals. Just the mechanics, the costs, and
+        the mistakes that actually cost people money.</p>
+      <div class="acad-stats">
+        <div class="acad-stat"><span class="n">${d.TUTORIALS.length}</span><span class="l">Lessons</span></div>
+        <div class="acad-stat"><span class="n">${d.TRACKS.length}</span><span class="l">Learning tracks</span></div>
+        <div class="acad-stat"><span class="n">${d.GLOSSARY.length}</span><span class="l">Glossary terms</span></div>
+        <div class="acad-stat"><span class="n">Free</span><span class="l">No signup</span></div>
+      </div>
+    </header>
+
+    <section class="block" style="max-width:1120px;margin:0 auto" aria-labelledby="h-tracks">
+      <div class="section-head">
+        <h2 class="section-title" id="h-tracks" style="margin:0"><span class="ic" aria-hidden="true">🧭</span> Learning tracks</h2>
+        <p class="section-sub" style="margin:0">Follow a path in order, or jump to what you need.</p>
+      </div>
+      <div class="track-grid">${tracksHtml}
+      </div>
+    </section>
+
+    <section class="block" style="max-width:1120px;margin:0 auto" aria-labelledby="h-lessons">
+      <div class="section-head">
+        <h2 class="section-title" id="h-lessons" style="margin:0"><span class="ic" aria-hidden="true">📖</span> All lessons</h2>
+      </div>
+      <div class="acad-groups">${groups}
+      </div>
+    </section>
+
+    <section class="block" style="max-width:1120px;margin:0 auto" aria-labelledby="h-gloss">
+      <div class="section-head">
+        <h2 class="section-title" id="h-gloss" style="margin:0"><span class="ic" aria-hidden="true">📚</span> Crypto glossary</h2>
+        <a class="btn ghost" href="/glossary/">All ${d.GLOSSARY.length} terms →</a>
+      </div>
+      <p class="section-sub" style="margin:-8px 0 18px">Plain-English definitions for the words that get thrown around without explanation.</p>
+      <div class="gloss-grid">${glossaryPreview}
+      </div>
+    </section>
+  </main>
+${FOOTER}
+</body>
+</html>
+`;
+}
+
+/* ------------------------------------------------------------------ */
+/* 10b. Glossary index + halaman per istilah                            */
+/* ------------------------------------------------------------------ */
+function buildGlossaryIndex(d) {
+  const byLetter = {};
+  for (const g of d.GLOSSARY) {
+    const L = g.term[0].toUpperCase();
+    (byLetter[L] = byLetter[L] || []).push(g);
+  }
+  const letters = Object.keys(byLetter).sort();
+
+  const nav = letters
+    .map((L) => `<a class="gloss-letter" href="#L-${L}">${L}</a>`)
+    .join('');
+
+  const sections = letters.map((L) => `
+      <section class="gloss-section" aria-labelledby="L-${L}">
+        <h2 id="L-${L}" class="gloss-letter-head">${L}</h2>
+        <div class="gloss-list">
+          ${byLetter[L].map((g) => `
+            <a class="gloss-row" href="/glossary/${g.slug}/">
+              <span class="gloss-term">${esc(g.term)}</span>
+              <span class="gloss-short">${esc(g.short)}</span>
+              <span class="gloss-arrow" aria-hidden="true">→</span>
+            </a>`).join('')}
+        </div>
+      </section>`).join('');
+
+  const definedTermSetLd = {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTermSet',
+    name: 'ClownOnChains Crypto Glossary',
+    description: 'Plain-English definitions of crypto, Web3 and DeFi terms.',
+    url: `${SITE}/glossary/`,
+    hasDefinedTerm: d.GLOSSARY.map((g) => ({
+      '@type': 'DefinedTerm',
+      name: g.term,
+      description: g.short,
+      url: `${SITE}/glossary/${g.slug}/`,
+      inDefinedTermSet: `${SITE}/glossary/`,
+    })),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Academy', item: `${SITE}/academy/` },
+      { '@type': 'ListItem', position: 3, name: 'Glossary', item: `${SITE}/glossary/` },
+    ],
+  };
+
+  return `${head({
+    title: 'Crypto Glossary — Plain-English Web3 & DeFi Terms | ClownOnChains',
+    desc: `Crypto glossary: ${d.GLOSSARY.length} terms explained in plain English. Airdrop, AMM, impermanent loss, MEV, zk-rollup, stablecoin and more. No jargon.`,
+    keywords: 'crypto glossary, web3 terms, defi dictionary, what is an airdrop, what is impermanent loss, blockchain terminology',
+    canonical: `${SITE}/glossary/`,
+    jsonld: [breadcrumbLd, definedTermSetLd],
   })}
 <body>
 ${NAV}
   <main class="wrap" style="padding:44px 18px 20px">
-    <header style="max-width:760px;margin:0 auto 30px">
+    <header style="max-width:820px;margin:0 auto 26px">
       <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:14px">
-        <a href="/">Home</a> › <span>Academy</span>
+        <a href="/">Home</a> › <a href="/academy/">Academy</a> › <span>Glossary</span>
       </nav>
       <h1 style="font-family:ui-serif,Georgia,serif;font-size:clamp(30px,5vw,46px);letter-spacing:-.02em;margin:0 0 12px;color:#fbf3e6">
-        Crypto Academy</h1>
-      <p style="color:var(--text-dim);font-size:16.5px;margin:0">${d.TUTORIALS.length} practical lessons
-        on wallets, airdrops, DeFi mechanics and trading indicators. No hype, no signals — just the
-        mechanics and the costs.</p>
+        Crypto Glossary</h1>
+      <p style="color:var(--text-dim);font-size:16.5px;margin:0">${d.GLOSSARY.length} terms explained
+        without the jargon. If a word gets thrown around without explanation, it belongs here.</p>
+      <nav class="gloss-letters" aria-label="Jump to letter">${nav}
+      </nav>
     </header>
-    <div style="max-width:760px;margin:0 auto">${groups}
+    <div style="max-width:820px;margin:0 auto">${sections}
     </div>
+  </main>
+${FOOTER}
+</body>
+</html>
+`;
+}
+
+function buildGlossaryTerm(g, d) {
+  const url = `${SITE}/glossary/${g.slug}/`;
+  const related = d.GLOSSARY.filter((x) => x.slug !== g.slug).slice(0, 6);
+
+  const termLd = {
+    '@context': 'https://schema.org',
+    '@type': 'DefinedTerm',
+    name: g.term,
+    description: g.short,
+    url,
+    inDefinedTermSet: { '@type': 'DefinedTermSet', name: 'ClownOnChains Crypto Glossary', url: `${SITE}/glossary/` },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Academy', item: `${SITE}/academy/` },
+      { '@type': 'ListItem', position: 3, name: 'Glossary', item: `${SITE}/glossary/` },
+      { '@type': 'ListItem', position: 4, name: g.term, item: url },
+    ],
+  };
+
+  const relatedHtml = related.map((r) => `
+        <a class="gloss-chip" href="/glossary/${r.slug}/">
+          <span class="gloss-term">${esc(r.term)}</span>
+          <span class="gloss-short">${esc(r.short)}</span>
+        </a>`).join('');
+
+  return `${head({
+    title: `What Is ${g.term}? — Crypto Glossary | ClownOnChains`,
+    desc: `${g.term}: ${g.short}`,
+    keywords: `what is ${g.term.toLowerCase()}, ${g.term.toLowerCase()} meaning, ${g.term.toLowerCase()} explained, crypto glossary`,
+    canonical: url,
+    jsonld: [breadcrumbLd, termLd],
+  })}
+<body>
+${NAV}
+  <main class="wrap" style="padding:34px 18px 10px">
+    <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:18px">
+      <a href="/">Home</a> › <a href="/academy/">Academy</a> › <a href="/glossary/">Glossary</a> › <span>${esc(g.term)}</span>
+    </nav>
+
+    <article style="max-width:760px;margin:0 auto">
+      <header>
+        <p class="hero-eyebrow" style="margin-bottom:12px">Glossary</p>
+        <h1 style="font-family:ui-serif,Georgia,serif;font-size:clamp(30px,5vw,46px);letter-spacing:-.02em;margin:0 0 12px;color:#fbf3e6">
+          ${esc(g.term)}</h1>
+        <p class="gloss-lead">${esc(g.short)}</p>
+      </header>
+
+      <div class="reader-body">${mdToHtml(g.body)}</div>
+
+      <section class="block" aria-labelledby="h-rel" style="margin-top:34px">
+        <h2 id="h-rel" style="font-family:ui-serif,Georgia,serif;font-size:20px;margin:0 0 14px;color:#fbf3e6">
+          Related terms</h2>
+        <div class="gloss-grid">${relatedHtml}
+        </div>
+      </section>
+
+      <p style="margin:26px 0 0">
+        <a class="btn ghost" href="/glossary/">← All glossary terms</a>
+      </p>
+    </article>
   </main>
 ${FOOTER}
 </body>
@@ -1116,6 +1366,8 @@ function buildSitemap(d) {
     `<url><loc>${SITE}/web3-tools/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
     `<url><loc>${SITE}/news/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
     `<url><loc>${SITE}/academy/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
+    `<url><loc>${SITE}/glossary/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
+    ...d.GLOSSARY.map((g) => `<url><loc>${SITE}/glossary/${g.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`),
     `<url><loc>${SITE}/community/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
     ...d.AIRDROPS.map((a) => `<url><loc>${SITE}/airdrops/${a.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>`),
     ...d.NEWS.map((n) => `<url><loc>${SITE}/news/${n.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`),
@@ -1226,6 +1478,10 @@ function build() {
     built.push(write(`news/${n.slug}/index.html`, buildNewsArticle(n, d)));
   }
   built.push(write('academy/index.html', buildAcademyIndex(d)));
+  built.push(write('glossary/index.html', buildGlossaryIndex(d)));
+  for (const g of d.GLOSSARY) {
+    built.push(write(`glossary/${g.slug}/index.html`, buildGlossaryTerm(g, d)));
+  }
   built.push(write('community/index.html', buildCommunity(d)));
   for (const t of d.TUTORIALS) {
     built.push(write(`academy/${slug(t.title)}/index.html`, buildTutorial(t, d)));
