@@ -137,3 +137,90 @@ footer{background:var(--bg-deep);border-top:1px solid var(--border-soft);padding
 .grid.cols-2>.tut-card{height:100%}
 section.block.split.uneven{align-items:start}
 .hero .stats{padding:0}
+
+/* ===== v2: home dashboard + topic cards ===== */
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--amber);margin:0 0 14px;
+  padding:6px 14px;border-radius:999px;
+  background:rgba(240,179,94,.10);border:1px solid rgba(240,179,94,.28);
+}
+.hero-sub{max-width:640px;margin:0 auto 26px;color:var(--text-dim);font-size:16.5px}
+.topic-grid{
+  display:grid;gap:14px;
+  grid-template-columns:repeat(auto-fill,minmax(300px,1fr));
+  max-width:1120px;margin:0 auto;
+}
+.topic-card{
+  position:relative;display:flex;flex-direction:column;gap:6px;
+  background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  padding:22px;backdrop-filter:blur(6px);
+  transition:transform .15s,border-color .15s,box-shadow .15s;
+  overflow:hidden;
+}
+.topic-card::before{
+  content:"";position:absolute;inset:0 0 auto 0;height:2px;
+  background:linear-gradient(90deg,transparent,rgba(240,179,94,.5),transparent);
+  opacity:0;transition:opacity .2s;
+}
+.topic-card:hover{transform:translateY(-3px);border-color:rgba(240,179,94,.45);box-shadow:0 12px 34px rgba(0,0,0,.28)}
+.topic-card:hover::before{opacity:1}
+.topic-icon{font-size:22px;line-height:1}
+.topic-title{font-family:ui-serif,Georgia,serif;font-size:19px;font-weight:700;color:#fbf3e6}
+.topic-desc{font-size:13.5px;color:var(--text-dim);line-height:1.55}
+.topic-arrow{
+  position:absolute;top:20px;right:20px;color:var(--text-faint);
+  font-size:16px;transition:transform .15s,color .15s;
+}
+.topic-card:hover .topic-arrow{transform:translateX(4px);color:var(--amber)}
+
+/* ===== v3: referral codes, playbook, bot cards ===== */
+.grid.cols-3{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+.ref-code{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  background:rgba(16,11,6,.55);border:1px solid var(--border-soft);
+  border-radius:12px;padding:9px 12px;margin:10px 0;
+}
+.ref-label{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);font-weight:700}
+.ref-code code{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:13px;color:var(--amber);
+  background:rgba(240,179,94,.10);border:1px solid rgba(240,179,94,.25);
+  padding:3px 10px;border-radius:8px;letter-spacing:.02em;
+}
+.ref-card .ref-name{font-size:17px}
+.bot-ref-card{gap:8px}
+.bot-ref-name{font-size:16px;font-weight:800;color:#fbf3e6}
+.bot-ref-desc{font-size:13px;color:var(--text-dim);line-height:1.5;min-height:38px}
+
+/* playbook section in tutorials */
+.playbook{
+  margin:34px 0 0;padding:24px;
+  background:linear-gradient(160deg,rgba(240,179,94,.08),rgba(240,179,94,.03));
+  border:1px solid rgba(240,179,94,.28);border-radius:var(--radius);
+}
+.playbook-head{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.playbook-badge{
+  font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+  color:#241708;background:linear-gradient(140deg,#f6c68b,#e2a24d);
+  padding:4px 12px;border-radius:999px;
+}
+.playbook-grid{display:grid;gap:20px;grid-template-columns:1fr}
+@media(min-width:720px){.playbook-grid{grid-template-columns:1fr 1fr}}
+.playbook-row{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:9px 0;border-bottom:1px solid var(--border-soft);font-size:13px;
+}
+.playbook-row:last-child{border-bottom:0}
+.playbook-name{font-weight:600;color:var(--text)}
+.playbook-row code{
+  font-family:ui-monospace,"SF Mono",Menlo,monospace;font-size:12px;color:var(--amber);
+  background:rgba(240,179,94,.10);border:1px solid rgba(240,179,94,.22);
+  padding:2px 8px;border-radius:7px;flex:none;
+}
+.playbook-row a{
+  font-size:12px;font-weight:700;color:var(--amber);text-decoration:none;flex:none;
+  padding:4px 10px;border:1px solid rgba(240,179,94,.35);border-radius:999px;
+  transition:all .15s;
+}
+.playbook-row a:hover{background:rgba(240,179,94,.14);border-color:var(--amber)}

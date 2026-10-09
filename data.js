@@ -1,6 +1,5 @@
 // ============================================================
 //  DATA — edit here to refresh the page
-//  (all defaults below are placeholders; replace with real data)
 // ============================================================
 
 const PRICES = [
@@ -10,11 +9,27 @@ const PRICES = [
   { sym:"SOL", px:120.73,   chg:-0.69 },
 ];
 
-const REFERRALS = [
-  { name:"Binance", bonus:"Up to $100", desc:"Leading global crypto exchange.", url:"https://accounts.binance.info/register" },
-  { name:"Bybit", bonus:"Up to $30,000", desc:"Best for derivatives and leverage.", url:"https://www.bybit.com/invite" },
-  { name:"OKX", bonus:"Mystery Box", desc:"Web3-integrated exchange.", url:"https://www.okx.com/join" },
-  { name:"KuCoin", bonus:"Up to $500", desc:"Great for altcoin gems.", url:"https://www.kucoin.com/register" },
+// Exchange referral codes
+const EXCHANGE_REFS = [
+  { name:"Binance",  url:"https://www.binance.com/join?ref=RMCTNB5R",     code:"RMCTNB5R",   bonus:"Up to $100", desc:"Leading global crypto exchange." },
+  { name:"Bybit",    url:"https://partner.bybit.com/b/BYBIT313",         code:"BYBIT313",   bonus:"Up to $30,000", desc:"Best for derivatives and leverage." },
+  { name:"BingX",    url:"https://bingx.pro/invite/6XOZMMGL/",          code:"6XOZMMGL",    bonus:"Up to $1,000", desc:"Copy trading focused exchange." },
+  { name:"Bitget",   url:"https://partner.bitgetapp.com/bg/7jl483901696997809300", code:"7jl483901696997809300", bonus:"Up to $5,500", desc:"Copy trading + spot leader." },
+  { name:"Gate.io",  url:"https://www.gate.io/signup/MONADSSS",          code:"MONADSSS",    bonus:"Up to $100", desc:"Wide altcoin selection." },
+  { name:"OKX",      url:"https://www.okx.com/join/ENJOYDISCOUNT",        code:"ENJOYDISCOUNT", bonus:"Mystery Box", desc:"Web3-integrated exchange." },
+  { name:"MEXC",     url:"https://promote.mexc.com/r/pPBkDZ6m",          code:"pPBkDZ6m",    bonus:"Up to $1,000", desc:"Fast listing new tokens." },
+];
+
+// Bot trading — multichain (no bridge)
+const BOT_REFS = [
+  { name:"Dawn",     url:"https://t.me/DawnTradeBot?start=ref-kiseryott",     code:"ref-kiseryott", category:"Multichain (no bridge)", desc:"Telegram trading bot, multichain." },
+  { name:"Cove",     url:"https://t.me/cove_trading_bot?start=ref_kiseryott", code:"ref_kiseryott", category:"Multichain (no bridge)", desc:"Copy trading on Solana + EVM." },
+  { name:"CopyFomo", url:"https://t.me/copyfomo_bot?start=ref_kiseryott",    code:"ref_kiseryott", category:"Multichain (no bridge)", desc:"FOMO copy trading bot." },
+  { name:"Maestro",  url:"https://t.me/maestro?start=r-bay_mach",            code:"r-bay_mach",   category:"Multichain bridge", desc:"Bridge + sniper + copy trading." },
+  { name:"GMGN",     url:"https://gmgn.ai/r/degengem",                        code:"degengem",     category:"Multichain bridge", desc:"AI-powered trading terminal." },
+  { name:"OKX Web3", url:"https://web3.okx.com/join/CLOWNZ",                  code:"CLOWNZ",      category:"Multichain bridge", desc:"OKX Web3 wallet + bot." },
+  { name:"Axiom",    url:"https://axiom.trade/@rawrr",                       code:"rawrr",       category:"Multichain bridge", desc:"Solana-focused trading bot." },
+  { name:"Zenith",   url:"https://t.me/zenith_lp_bot?start=kiseryott",        code:"kiseryott",    category:"Liquidity pools", desc:"LP management + sniper bot." },
 ];
 
 const AIRDROPS = [
