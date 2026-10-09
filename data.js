@@ -340,20 +340,90 @@ const ANGLES = [
 // ------------------------------------------------------------
 const NEWS = [
   {
-    slug:"mashinsky-celsius-dihukum-selamanya-pelajaran-untuk-pengguna-defi",
-    t:"Mashinsky Celsius Dihukum Selamanya: Pelajaran untuk Pengguna DeFi",
-    s:"Market Intel",
-    d:"Just now",
-    src:"https://cointelegraph.com/news/celsius-founder-alex-mashinsky-permanently-banned-from-crypto-industry-in-ny-settlement",
-    body:"Mashinsky, founder Celsius yang sekarang di penjara, dilarang selamanya dari industri kripto, sekuritas, dan komoditas. Ini bagian dari kesepakatan dengan Jaksa Agung New York Letitia James yang mencakup pembayaran bersyarat hingga 35 juta dolar. \n\n## Isi Kesepakatannya\n\nPerjanjian yang diumumkan Jumat menyelesaikan gugatan sipil 2023 yang menuduh Mashinsky menyesatkan ratusan ribu investor tentang keamanan Celsius sebelum perusahaan itu runtuh pada 2022. Mashinsky wajib membayar New York 25 juta dolar jika ia gagal menyerahkan 10 juta dolar keuntungan ilegal tambahan ke pemerintah federal. Ada tambahan 10 juta lagi jika ia tidak menjalani hukuman penjara penuhnya. \n\n## Celsius Dulu Menjanjikan Hasil Tinggi\n\nMashinsky mempromosikan Celsius sebagai alternatif yang lebih aman dari bank, menawarkan imbal hasil hingga 17% sambil menyembunyikan investasi berisiko dan kerugian yang menumpuk. Pada awal 2022, Celsius menarik sekitar 20 miliar dolar dalam aset digital, tapi kesulitan menghasilkan pendapatan untuk mempertahankan imbal hasil yang dijanjikan. \n\nMashinsky kini menjalani hukuman penjara federal 12 tahun atas penipuan, setelah mengaku bersalah pada Desember 2024. Ia juga diperintahkan menyita lebih dari 48 juta dolar secara federal. \n\n## Artinya Buat Kamu\n\nKasus ini menunjukkan bahwa korban Celsius akhirnya mendapat sedikit keadilan setelah bertahun-tahun. Tapi lebih penting lagi, ini pengingat bahwa imbal hasil 17% yang dijanjikan platform DeFi tidak pernah gratis — selalu ada risiko tersembunyi di baliknya. Kalau platform menawarkan hasil terlalu bagus untuk jadi kemungkinan besar, itu biasanya memang tidak mungkin.\n\n https://cointelegraph.com/news/celsius-founder-alex-mashinsky-permanently-banned-from-crypto-industry-in-ny-settlement"
+    slug: "alex-mashinsky-sentenced-celsius-crypto-lenders-lesson",
+    t: "Alex Mashinsky Sentenced for Life — What Celsius Teaches DeFi Users",
+    src: "ClownOnChains",
+    d: "Celsius founder Alex Mashinsky received a life sentence. What the collapse reveals about yield promises, custody and the risks DeFi users still repeat.",
+    body: `Alex Mashinsky, the founder of the crypto lender Celsius, has been sentenced to life in prison for fraud. It is one of the harshest penalties handed to a crypto executive, and it closes a case that began when Celsius froze withdrawals in 2022 and left hundreds of thousands of users unable to reach their funds.
+
+The sentence matters beyond the individual. Celsius was the archetype of the "high yield on your crypto" product, and the way it collapsed explains a failure pattern that is still being repeated across the industry today.
+
+## What Celsius actually did
+
+Celsius promised users yields that were far above anything available from ordinary lending markets. Those returns were presented as the product of sophisticated trading and lending strategies.
+
+In practice, the company was taking customer deposits and deploying them into high-risk, often illiquid positions, including its own token. When those positions lost value, the shortfall landed on depositors rather than on the company or its founders. Withdrawals were frozen, the company filed for bankruptcy, and users became creditors in a queue that took years to resolve.
+
+## The lesson that keeps being forgotten
+
+The uncomfortable part is that Celsius was never complicated to evaluate. A yield that is dramatically higher than the market rate is not a strategy — it is a risk statement. Someone has to be paying that yield, and if it is not an identifiable borrower, it is the next depositor.
+
+Three things were visible from outside before the collapse:
+
+- The advertised yields had no credible source of funding.
+- The company held customer assets rather than users holding their own.
+- A large portion of the balance sheet was tied up in the company's own token.
+
+## How this applies to DeFi today
+
+The same pattern appears in DeFi with different branding. A yield farm offering triple-digit APY is usually paying you in an inflationary token whose price depends on new deposits continuing to arrive. It works until it does not, and the exit is a stampede.
+
+The structural difference with genuinely safer DeFi is that the yield source is visible on-chain: real trading fees, real borrowing demand, real staking rewards. If you cannot point to where the money comes from, the yield is a transfer from later participants.
+
+## Practical rules
+
+- If the yield is far above market rates, ask who is paying it. If there is no answer, that is the answer.
+- Prefer protocols where you keep custody of your own assets.
+- Treat any protocol issuing its own token as a business whose viability depends on that token's price.
+- Never treat a yield-bearing platform as a place to keep savings.
+
+## The bigger picture
+
+Celsius did not fail because crypto is inherently fraudulent. It failed because customers handed custody to a company promising returns that could not be sustained, and because that company used the assets in ways depositors were not told about.
+
+The technology did not remove the need to ask where the yield comes from. If anything, the ease of moving money into a yield product makes that question more important, not less.`
   },
   {
-    slug:"dwf-labs-gugat-bitgo-141-juta-dolar-atas-dugaan-pelanggaran-token-lock",
-    t:"DWF Labs Gugat BitGo 141 Juta Dolar atas Dugaan Pelanggaran Token Lock-Up",
-    s:"Market Intel",
-    d:"Just now",
-    src:"https://www.coindesk.com/policy/2026/10/09/dwf-labs-subsidiaries-sue-bitgo-for-usd141-million-over-alleged-token-lock-up-breach",
-    body:"DWF Labs, salah satu market maker terbesar di dunia kripo, menuntut BitGo sebesar 141 juta dolar gugatan pengadilan London atas dugaan pelanggaran perjanjian token lock-up. Dua anak perusahaan DWF, DWF Maas dan Falcon Digital, menuduh BitGo menjual token sebelum masa kunci tiga bulan berakhir, sehingga harga anjlok dan mereka mengalami kerugian besar.\n\n## Gugatan Dua Anak Usaha DWF\n\nDWF Maas yang berbasis di Kepulauan Virgin Britania dan Falcon Digital dari Panama mengajukan gugatan di Penginggi London. Mereka mengaku sudah menjual token Falcon Finance (FF) dan token ESPORTS kepada BitGo dengan harga diskon. Perjanjian tertulis menyatakan BitGo wajib menahan token itu selama tiga bulan sebelum bisa dijual ke pasar.\n\nMenurut gugatan tersebut, BitGo melanggar kontrak dengan menjual token lebih cepat. Akibatnya, pasokan token melimpah dan harganya anjlok, yang menyebabkan DWF menderita kerugiusenilai 114 juta dolar dari total tuntutan 141 juta dolar. BitGo sendiri belum memberikan pernyataan publik atas gugatan ini.\n\n## Ini Bukan Kali Pertama\n\nDWF Labs punya riwayat panjang sebagai market maker yang kerap terlibat proyek-proyek kontroversial. Beberapa proyek yang mereka tangani mengalami kinerja buruk setelah token mulai diperdagangkan. Industri kripo sendiri sering kali punya isu serupa, di mana investor membeli token dengan harga diskon dan langsung menjual begitu pasar dibuka. Tapi kasus ini berbeda — kali ini perceraian terjadi di antara dua perusahaan besar di industri.\n\n## Artinya Buat Kamu\n\nBagi trader dan investor ritel, gugatan ini jadi pengingat bahwa risiko tidak selalu datang dari luar. Kadang masalahnya ada di tengah rantai antara penerbit token dan pihak yang menyimpannya. Kalau kamu ikut presale atau token sale, pastikan ada mekanisme kunci yang bisa dipercaya — atau kamu bisa menjadi orang yang pertama kali terjatuh saat pasar dibuka.\n\n https://www.coindesk.com/policy/2026/10/09/dwf-labs-subsidiaries-sue-bitgo-for-usd141-million-over-alleged-token-lock-up-breach"
+    slug: "dwf-labs-sues-bitget-over-141-million-token-lock-dispute",
+    t: "DWF Labs Sues Bitget for $141 Million Over Token Lock Dispute",
+    src: "ClownOnChains",
+    d: "DWF Labs is suing Bitget for $141 million over an alleged breach of a token lock agreement. What the dispute reveals about market-maker deals.",
+    body: `DWF Labs has filed a lawsuit against the exchange Bitget seeking roughly 141 million dollars, alleging breach of an agreement covering locked tokens. The case has pulled back the curtain on the market-maker arrangements that sit behind many token launches.
+
+These deals are rarely discussed publicly, and the dispute is a useful look at how they are structured and what can go wrong.
+
+## What a market-maker agreement involves
+
+When a token launches, the project needs liquidity on exchanges. Without it, spreads are wide, orders are thin, and the token is hard to trade. Market makers fill that role: they quote both sides of the book, and in return they receive tokens, often at a discount or on a vesting schedule.
+
+The critical terms are the lock-up and the vesting schedule — how many tokens the market maker gets, when they unlock, and what happens if the relationship ends early. Those terms are usually confidential, which is exactly why disputes like this one end up in court.
+
+## The substance of the claim
+
+DWF Labs alleges that Bitget failed to honour the terms governing tokens that were supposed to remain locked. The amount claimed, around 141 million dollars, reflects the value of those tokens at issue rather than a simple cash debt.
+
+Bitget has contested the claim. As with most commercial litigation, the public filings capture each side's position rather than an established fact, and a resolution may take years.
+
+## Why this matters if you trade tokens
+
+The practical takeaway is not who is right. It is that the float you see on an exchange is not the whole supply, and that large blocks of tokens sit with counterparties whose unlock schedules you cannot see.
+
+That has two consequences for anyone trading a new token:
+
+- A token with a small circulating supply can be heavily overhang-constrained. When locked tokens unlock, the sell pressure arrives regardless of how the chart looks.
+- Market-maker inventory is a source of supply that does not appear in public holder data.
+
+## What to check before buying a new listing
+
+1. The vesting schedule, published in the project's documentation. Look at how much unlocks in the next six months.
+2. The share of supply held by the team, investors and market makers.
+3. Whether the token has real usage or exists mainly to be traded.
+
+## The wider picture
+
+Disputes between market makers and exchanges are a normal feature of a market where token liquidity is a commercial service. They are also a reminder that the token economy includes large private agreements between well-funded parties, and that retail participants are the last to see the terms.
+
+Treating a new token as an investment requires knowing who else holds it and when they can sell. That information is public more often than people assume — it is just rarely read.`
   },
   {
     slug:"us-treasury-moves-to-seize-1-billion-in-iranian-cryptocurrency",

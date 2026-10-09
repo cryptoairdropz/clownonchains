@@ -203,65 +203,45 @@ function buildHome(d) {
     `<span class="chg ${p.chg >= 0 ? 'up' : 'down'}">${p.chg >= 0 ? '+' : ''}${p.chg.toFixed(1)}%</span>`
   ).join('') + '<span class="ago">snapshot</span>';
 
-  const topicCards = [
+  const topicGroups = [
     {
-      href: '/airdrops/',
-      icon: '⏰',
-      title: 'Airdrops',
-      desc: `${d.AIRDROPS.length} live drops — status, allocation, and step-by-step tasks.`,
-      accent: 'var(--amber)',
+      label: 'Start Here',
+      items: [
+        { href: '/airdrops/', icon: '⏰', title: 'Airdrops', desc: 'Live tracker — active, upcoming, and ended airdrops with task checklists.', accent: 'var(--amber)' },
+        { href: '/academy/', icon: '📖', title: 'Academy', desc: `${d.TUTORIALS.length} lessons across ${d.TRACKS.length} tracks — beginner to advanced.`, accent: 'var(--green)' },
+        { href: '/glossary/', icon: '📚', title: 'Glossary', desc: `${d.GLOSSARY.length} crypto terms explained in plain English.`, accent: 'var(--peach)' },
+      ],
     },
     {
-      href: '/academy/',
-      icon: '📖',
-      title: 'Academy',
-      desc: `${d.TUTORIALS.length} lessons across ${d.TRACKS.length} tracks — beginner to advanced.`,
-      accent: 'var(--green)',
+      label: 'Trade & Earn',
+      items: [
+        { href: '/affiliate/', icon: '🎁', title: 'Referral Codes', desc: `${d.AFFILIATE.length} verified codes — fee discounts and signup bonuses.`, accent: 'var(--amber)' },
+        { href: '/exchanges/', icon: '🏦', title: 'Exchanges', desc: 'Compare fees, features, and availability across major platforms.', accent: 'var(--peach)' },
+        { href: '/web3-tools/', icon: '⌨️', title: 'Web3 Tools', desc: 'Trading bots, copy trading, and liquidity tools with codes.', accent: 'var(--green)' },
+      ],
     },
     {
-      href: '/glossary/',
-      icon: '📚',
-      title: 'Glossary',
-      desc: `${d.GLOSSARY.length} crypto terms explained in plain English.`,
-      accent: 'var(--peach)',
-    },
-    {
-      href: '/news/',
-      icon: '📡',
-      title: 'News',
-      desc: `${d.NEWS.length} latest stories — market intel and safety tips.`,
-      accent: 'var(--red)',
-    },
-    {
-      href: '/web3-tools/',
-      icon: '⌨️',
-      title: 'Web3 Tools',
-      desc: `${d.BOT_REFS.length} tools — multichain, bridge and liquidity pool bots.`,
-      accent: 'var(--peach)',
-    },
-    {
-      href: '/exchanges/',
-      icon: '🎁',
-      title: 'Exchanges',
-      desc: 'Referral codes for major exchanges — claim signup bonuses.',
-      accent: 'var(--amber)',
-    },
-    {
-      href: '/community/',
-      icon: '💬',
-      title: 'Community',
-      desc: 'Email updates and Twitter — follow the airdrop alpha.',
-      accent: 'var(--peach)',
+      label: 'Stay Updated',
+      items: [
+        { href: '/news/', icon: '📡', title: 'News', desc: 'Paraphrased crypto news — full articles on-site, no redirects.', accent: 'var(--amber)' },
+        { href: '/blog/', icon: '📝', title: 'Guides', desc: 'In-depth exchange guides and referral tips.', accent: 'var(--peach)' },
+        { href: '/community/', icon: '💬', title: 'Community', desc: 'Email updates and Twitter — follow the airdrop alpha.', accent: 'var(--green)' },
+      ],
     },
   ];
 
-  const navHtml = topicCards.map((c) => `
-      <a class="topic-card" href="${c.href}">
-        <span class="topic-icon" style="color:${c.accent}" aria-hidden="true">${c.icon}</span>
-        <span class="topic-title">${c.title}</span>
-        <span class="topic-desc">${c.desc}</span>
-        <span class="topic-arrow" aria-hidden="true">→</span>
-      </a>`).join('');
+  const navHtml = topicGroups.map((g) => `
+      <div class="topic-group">
+        <h3 class="topic-group-label">${esc(g.label)}</h3>
+        <div class="topic-group-grid">${g.items.map((c) => `
+          <a class="topic-card" href="${c.href}">
+            <span class="topic-icon" style="color:${c.accent}" aria-hidden="true">${c.icon}</span>
+            <span class="topic-title">${c.title}</span>
+            <span class="topic-desc">${c.desc}</span>
+            <span class="topic-arrow" aria-hidden="true">→</span>
+          </a>`).join('')}
+        </div>
+      </div>`).join('');
 
   const websiteLd = {
     '@context': 'https://schema.org',
@@ -285,11 +265,12 @@ function buildHome(d) {
     logo: `${SITE}/assets/favicon.svg`,
   };
 
+  const allTopics = topicGroups.flatMap((g) => g.items);
   const itemListLd = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Topic Pages',
-    itemListElement: topicCards.map((c, i) => ({
+    itemListElement: allTopics.map((c, i) => ({
       '@type': 'ListItem',
       position: i + 1,
       name: c.title,
@@ -857,6 +838,8 @@ ${NAV}
 
       <div class="reader-body">${mdToHtml(n.body)}</div>
 
+      ${refBlock(d, ['binance','bybit'])}
+
       <nav class="pager" aria-label="Article navigation">
         ${prev ? `<a class="card hover" href="/news/${prev.slug}/"><span class="tut-meta" style="margin:0">← Previous</span><span class="tut-title">${esc(prev.t)}</span></a>` : '<span></span>'}
         ${next ? `<a class="card hover" href="/news/${next.slug}/" style="text-align:right"><span class="tut-meta" style="margin:0">Next →</span><span class="tut-title">${esc(next.t)}</span></a>` : '<span></span>'}
@@ -1149,6 +1132,8 @@ ${NAV}
 
       <div class="reader-body">${mdToHtml(g.body)}</div>
 
+      ${refBlock(d, [])}
+
       <section class="block" aria-labelledby="h-rel" style="margin-top:34px">
         <h2 id="h-rel" style="font-family:ui-serif,Georgia,serif;font-size:20px;margin:0 0 14px;color:#fbf3e6">
           Related terms</h2>
@@ -1165,6 +1150,52 @@ ${FOOTER}
 </body>
 </html>
 `;
+}
+
+/* ------------------------------------------------------------------ */
+/* Referral block — dipakai di setiap artikel (news, tutorial, glossary, blog) */
+/* ------------------------------------------------------------------ */
+function refBlock(d, pick) {
+  const pool = d.AFFILIATE.filter((a) => a.kind === 'exchange');
+  const bots = d.AFFILIATE.filter((a) => a.kind === 'bot');
+  const chosen = (pick || []).map((s) => d.AFFILIATE.find((a) => a.slug === s)).filter(Boolean);
+  const extras = pool.filter((a) => !chosen.includes(a)).slice(0, 3 - chosen.length);
+  const list = [...chosen, ...extras];
+
+  const rows = list.map((a) => `
+          <a class="ref-row" href="${esc(a.url)}" target="_blank" rel="noopener nofollow sponsored">
+            <span class="aff-logo ref-logo" aria-hidden="true">${esc(a.name.slice(0, 1))}</span>
+            <span class="ref-row-main">
+              <span class="ref-row-name">${esc(a.name)}</span>
+              <span class="ref-row-sub">${esc(a.disc)} fee discount · ${esc(a.feeTaker)} taker</span>
+            </span>
+            <code class="ref-row-code">${esc(a.code)}</code>
+            <span class="ref-here">HERE →</span>
+          </a>`).join('');
+
+  const botRow = bots.slice(0, 2).map((a) => `
+          <a class="ref-row" href="${esc(a.url)}" target="_blank" rel="noopener nofollow sponsored">
+            <span class="aff-logo ref-logo" aria-hidden="true">${esc(a.name.slice(0, 1))}</span>
+            <span class="ref-row-main">
+              <span class="ref-row-name">${esc(a.name)}</span>
+              <span class="ref-row-sub">Web3 tool · multichain</span>
+            </span>
+            <code class="ref-row-code">${esc(a.code)}</code>
+            <span class="ref-here">HERE →</span>
+          </a>`).join('');
+
+  return `
+      <aside class="ref-block" aria-labelledby="h-ref">
+        <div class="ref-block-head">
+          <h2 id="h-ref" class="ref-block-title">Start here — referral codes</h2>
+          <p class="ref-block-sub">Registering through these links applies the fee discount. No extra cost to you.</p>
+        </div>
+        <div class="ref-rows">${rows}${botRow}
+        </div>
+        <p class="ref-block-foot">
+          Full guides: <a href="/affiliate/">all referral codes</a> · <a href="/blog/">exchange guides</a>
+        </p>
+      </aside>`;
 }
 
 /* ------------------------------------------------------------------ */
@@ -1323,6 +1354,8 @@ ${NAV}
       ${codeBox}
 
       <div class="reader-body">${mdToHtml(p.body)}</div>
+
+      ${refBlock(d, aff ? [aff.slug] : [])}
 
       <aside class="card" style="margin:30px 0;background:rgba(240,179,94,.06);border-color:rgba(240,179,94,.28)">
         <strong style="color:#fff7ea">Referral disclosure.</strong>
@@ -1487,6 +1520,8 @@ ${NAV}
       </header>
 
       <div class="reader-body">${mdToHtml(t.body)}</div>
+
+      ${refBlock(d, [])}
 
       <aside class="card" style="margin:30px 0;background:rgba(240,179,94,.07);border-color:rgba(240,179,94,.3)">
         <strong style="color:#fff7ea">Safety first.</strong>

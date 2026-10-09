@@ -617,3 +617,15 @@ a.air-card:hover .air-view{color:var(--peach)}
   background:rgba(240,179,94,.1);border:1px solid rgba(240,179,94,.24);
   padding:2px 8px;border-radius:6px;
 }
+
+/* ===== v13: Topic groups (3 kolom rapi) ===== */
+.topic-group{margin-bottom:26px}
+.topic-group-label{
+  font-family:ui-serif,Georgia,serif;font-size:13px;font-weight:700;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--text-faint);
+  margin:0 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border-soft);
+}
+.topic-group-grid{
+  display:grid;gap:12px;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+}
