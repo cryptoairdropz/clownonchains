@@ -27,7 +27,7 @@ const CSS_VER = (() => {
 /* ------------------------------------------------------------------ */
 function loadData() {
   const src = fs.readFileSync(path.join(ROOT, 'data.js'), 'utf8');
-  const fn = new Function(`${src}\nreturn { PRICES, EXCHANGE_REFS, BOT_REFS, AIRDROPS, NEWS, TUTORIALS };`);
+  const fn = new Function(`${src}\nreturn { PRICES, EXCHANGE_REFS, BOT_REFS, AIRDROPS, NEWS, TUTORIALS, FAQ, GUIDE };`);
   return fn();
 }
 
@@ -157,21 +157,14 @@ function buildHome(d) {
       href: '/airdrops/',
       icon: '⏰',
       title: 'Airdrops',
-      desc: `${d.AIRDROPS.length} tracked — status, deadlines, and farming guides.`,
+      desc: `${d.AIRDROPS.length} live drops — status, allocation, and step-by-step tasks.`,
       accent: 'var(--amber)',
     },
     {
-      href: '/exchanges/',
-      icon: '🎁',
-      title: 'Exchanges',
-      desc: `${d.EXCHANGE_REFS.length} referral partners — compare bonuses and claim.`,
-      accent: 'var(--peach)',
-    },
-    {
-      href: '/web3-tools/',
-      icon: '⌨️',
-      title: 'Web3 Tools',
-      desc: `${d.BOT_REFS.length} bots — multichain, bridge and liquidity pool tools.`,
+      href: '/academy/',
+      icon: '📖',
+      title: 'Academy',
+      desc: `${d.TUTORIALS.length} lessons — wallet safety, airdrop farming, DeFi mechanics.`,
       accent: 'var(--green)',
     },
     {
@@ -182,17 +175,24 @@ function buildHome(d) {
       accent: 'var(--red)',
     },
     {
-      href: '/academy/',
-      icon: '📖',
-      title: 'Academy',
-      desc: `${d.TUTORIALS.length} lessons — wallet safety to DeFi mechanics.`,
+      href: '/web3-tools/',
+      icon: '⌨️',
+      title: 'Web3 Tools',
+      desc: `${d.BOT_REFS.length} tools — multichain, bridge and liquidity pool bots.`,
+      accent: 'var(--peach)',
+    },
+    {
+      href: '/exchanges/',
+      icon: '🎁',
+      title: 'Exchanges',
+      desc: 'Referral codes for major exchanges — claim signup bonuses.',
       accent: 'var(--amber)',
     },
     {
       href: '/community/',
       icon: '💬',
       title: 'Community',
-      desc: 'Join the discussion — email updates and Twitter.',
+      desc: 'Email updates and Twitter — follow the airdrop alpha.',
       accent: 'var(--peach)',
     },
   ];
@@ -239,12 +239,34 @@ function buildHome(d) {
     })),
   };
 
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.FAQ.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
+  const faqHtml = d.FAQ.map((f) => `
+        <details class="faq-item">
+          <summary class="faq-q">${esc(f.q)}</summary>
+          <p class="faq-a">${esc(f.a)}</p>
+        </details>`).join('');
+
+  const guideHtml = d.GUIDE.sections.map((s) => `
+        <section class="guide-section">
+          <h3>${esc(s.h)}</h3>
+          <p>${esc(s.p)}</p>
+        </section>`).join('');
+
   return `${head({
-    title: 'ClownOnChains — Airdrop Tracker, Crypto Academy & Web3 Trading Guides',
-    desc: 'Track crypto and Web3 airdrops with status and deadlines, compare exchange referrals, learn airdrop farming, impermanent loss, Supertrend and DeFi basics. Practical crypto guides, not hype.',
-    keywords: 'crypto airdrop tracker, airdrop farming, web3 academy, defi tutorial, crypto exchange referral, trading bot',
+    title: 'Crypto Airdrops 2026 — Free Airdrop Tracker | ClownOnChains',
+    desc: 'Track the best free crypto airdrops of 2026 — status, allocation and step-by-step tasks. Plus a free crypto academy on wallet safety, airdrop farming and DeFi mechanics.',
+    keywords: 'crypto airdrops 2026, free airdrop tracker, airdrop farming, grass airdrop, layerzero airdrop, zksync airdrop, scroll airdrop',
     canonical: `${SITE}/`,
-    jsonld: [websiteLd, orgLd, itemListLd],
+    jsonld: [websiteLd, orgLd, itemListLd, faqLd],
   })}
 <body>
 ${TICKER.replace('${null}', tickerHtml)}
@@ -253,11 +275,11 @@ ${NAV}
   <header class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
     <div class="wrap" style="position:relative">
-      <p class="hero-eyebrow">Web3 Portal</p>
-      <h1>Master the <span class="grad">On-Chain</span> Chaos</h1>
-      <p class="hero-sub">Airdrop radar, exchange referrals, web3 tools, and a crypto
-        academy that actually teaches — wallet safety, airdrop farming, DeFi mechanics and
-        indicator setups in plain English.</p>
+      <p class="hero-eyebrow">Crypto Airdrops 2026</p>
+      <h1>The best free <span class="grad">airdrops</span>, tracked daily</h1>
+      <p class="hero-sub">Find credible projects and track what matters — status, allocation
+        and step-by-step tasks. Plus a free academy on wallet safety, airdrop farming and
+        DeFi mechanics.</p>
       <div class="hero-actions">
         <a class="btn primary" href="/airdrops/">Browse Airdrops</a>
         <a class="btn ghost" href="/academy/">Start Learning</a>
@@ -265,20 +287,34 @@ ${NAV}
     </div>
     <div class="wrap stats" aria-label="Portal statistics">
       <div class="stat-tile"><div class="n">${d.AIRDROPS.length}</div><div class="l">Airdrops tracked</div></div>
-      <div class="stat-tile"><div class="n">${d.EXCHANGE_REFS.length}</div><div class="l">Referral partners</div></div>
       <div class="stat-tile"><div class="n">${d.TUTORIALS.length}</div><div class="l">Academy lessons</div></div>
       <div class="stat-tile"><div class="n">${d.NEWS.length}</div><div class="l">Latest stories</div></div>
+      <div class="stat-tile"><div class="n">100%</div><div class="l">Free, no signup</div></div>
     </div>
   </header>
 
   <main class="wrap" style="padding-bottom:40px">
     <section class="block" aria-labelledby="h-topics">
       <div class="section-head">
-        <h2 class="section-title" id="h-topics" style="margin:0">Explore the portal</h2>
+        <h2 class="section-title" id="h-topics" style="margin:0">More than a list</h2>
         <p class="section-sub" style="margin:0">Every section has its own page — pick where to start.</p>
       </div>
       <div class="topic-grid">${navHtml}
       </div>
+    </section>
+
+    <section class="block" aria-labelledby="h-faq">
+      <div class="section-head">
+        <h2 class="section-title" id="h-faq" style="margin:0"><span class="ic" aria-hidden="true">❓</span> Common questions</h2>
+      </div>
+      <div class="faq-list">${faqHtml}
+      </div>
+    </section>
+
+    <section class="block guide" aria-labelledby="h-guide">
+      <h2 class="section-title" id="h-guide" style="margin:0 0 8px"><span class="ic" aria-hidden="true">📘</span> ${esc(d.GUIDE.title)}</h2>
+      <p class="guide-intro">${esc(d.GUIDE.intro)}</p>
+      ${guideHtml}
     </section>
   </main>
 ${FOOTER}
@@ -292,21 +328,8 @@ ${FOOTER}
 /* 5. Topic: Airdrops                                                  */
 /* ------------------------------------------------------------------ */
 function buildAirdrops(d) {
-  const airStatus = (s) =>
-    /farm/i.test(s) ? 'Farming' : /claim/i.test(s) ? 'Claiming' : /snapshot/i.test(s) ? 'Snapshot' : 'Other';
-
-  const airdropsHtml = d.AIRDROPS.map((a) => {
-    const live = /farm/i.test(a.status);
-    const soon = /claim/i.test(a.status);
-    const stepsHtml = a.steps ? `
-      <div class="air-steps">
-        <h4 style="font-size:12px;text-transform:uppercase;letter-spacing:.08em;color:var(--amber);margin:0 0 10px">How to join</h4>
-        <ol style="margin:0;padding-left:20px;color:var(--text-dim);font-size:13.5px;line-height:1.7">
-          ${a.steps.map((s) => `<li>${esc(s)}</li>`).join('')}
-        </ol>
-      </div>` : '';
-    return `
-        <article class="card hover air-card" data-status="${airStatus(a.status)}">
+  const airdropsHtml = d.AIRDROPS.map((a) => `
+        <a class="card hover air-card" href="/airdrops/${a.slug}/" data-status="${esc(a.tag)}">
           <div class="air-top">
             <div style="display:flex;align-items:center;gap:11px">
               <div class="air-logo" aria-hidden="true">${esc(a.name.slice(0, 1))}</div>
@@ -317,13 +340,24 @@ function buildAirdrops(d) {
             </div>
             <span class="air-tag">${esc(a.tag)}</span>
           </div>
+          <p class="air-summary">${esc(a.summary)}</p>
           <div class="air-foot">
-            <span class="air-time ${live ? 'badge-live' : soon ? 'badge-soon' : ''}">${esc(a.tf)}</span>
-            ${a.url ? `<a class="tut-meta" style="margin:0" href="${esc(a.url)}" target="_blank" rel="noopener nofollow">Open →</a>` : ''}
+            <span class="air-time badge-live">${esc(a.allocation)}</span>
+            <span class="air-view">View tasks →</span>
           </div>
-          ${stepsHtml}
-        </article>`;
-  }).join('');
+        </a>`).join('');
+
+  const itemListLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Crypto Airdrops 2026',
+    itemListElement: d.AIRDROPS.map((a, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: `${a.name} airdrop`,
+      url: `${SITE}/airdrops/${a.slug}/`,
+    })),
+  };
 
   const breadcrumbLd = {
     '@context': 'https://schema.org',
@@ -335,11 +369,11 @@ function buildAirdrops(d) {
   };
 
   return `${head({
-    title: 'Crypto Airdrops 2026 — Tracker & Farming Guide | ClownOnChains',
-    desc: 'Track the latest crypto airdrops with status and deadlines. LayerZero, zkSync, Scroll, Grass and more. Learn how to farm airdrops safely and avoid scams.',
-    keywords: 'crypto airdrops 2026, airdrop tracker, airdrop farming, layerzero airdrop, zksync airdrop, scroll airdrop, grass airdrop',
+    title: 'Crypto Airdrops 2026 — Free Airdrop Tracker | ClownOnChains',
+    desc: 'Track the best free crypto airdrops of 2026: Grass, LayerZero, zkSync Era, Scroll. Status, allocation and step-by-step tasks for each project, updated daily.',
+    keywords: 'crypto airdrops 2026, free airdrop tracker, grass airdrop, layerzero airdrop, zksync airdrop, scroll airdrop',
     canonical: `${SITE}/airdrops/`,
-    jsonld: breadcrumbLd,
+    jsonld: [breadcrumbLd, itemListLd],
   })}
 <body>
 ${NAV}
@@ -349,24 +383,181 @@ ${NAV}
         <a href="/">Home</a> › <span>Airdrops</span>
       </nav>
       <h1 style="font-family:ui-serif,Georgia,serif;font-size:clamp(30px,5vw,46px);letter-spacing:-.02em;margin:0 0 10px;color:#fbf3e6">
-        Airdrop Radar</h1>
+        Crypto Airdrops 2026</h1>
       <p style="color:var(--text-dim);font-size:16.5px;margin:0;max-width:640px">
-        ${d.AIRDROPS.length} airdrops tracked with status and deadlines. Always confirm on the
-        project's official site — no legitimate airdrop ever asks for your seed phrase.
+        The best free airdrops of 2026, tracked, checked and updated. Click any project for the
+        full task list. Always confirm on the official site — no legitimate airdrop ever asks
+        for your seed phrase.
       </p>
     </header>
 
-    <div class="section-head" style="max-width:1120px;margin:0 auto 16px">
-      <div class="chips" id="air-chips" role="tablist" aria-label="Filter airdrops by status">
-        <button class="chip on" data-f="All" type="button">All</button>
-        <button class="chip" data-f="Farming" type="button">Farming</button>
-        <button class="chip" data-f="Claiming" type="button">Claiming</button>
-        <button class="chip" data-f="Snapshot" type="button">Snapshot</button>
-      </div>
+    <div class="air-grid" style="max-width:1120px;margin:0 auto">${airdropsHtml}
     </div>
+  </main>
+${FOOTER}
+  <script src="/app.js?v=${CSS_VER}" defer></script>
+</body>
+</html>
+`;
+}
 
-    <div class="air-grid" id="air-grid" style="max-width:1120px;margin:0 auto">${airdropsHtml}
-    </div>
+/* ------------------------------------------------------------------ */
+/* 5b. Halaman detail per-airdrop (tugas lengkap + FAQ)                 */
+/* ------------------------------------------------------------------ */
+function buildAirdropPage(a, d) {
+  const url = `${SITE}/airdrops/${a.slug}/`;
+  const others = d.AIRDROPS.filter((x) => x.slug !== a.slug);
+
+  const tasksHtml = a.tasks.map((t, i) => `
+          <li class="task-item">
+            <span class="task-num" aria-hidden="true">${i + 1}</span>
+            <span>${esc(t)}</span>
+          </li>`).join('');
+
+  const registerHtml = a.url ? `
+        <a class="btn primary" href="${esc(a.url)}" target="_blank" rel="noopener nofollow sponsored">
+          Register on ${esc(a.name)} →
+        </a>` : '';
+
+  const codeHtml = a.code ? `
+        <div class="air-code-box">
+          <span class="ref-label">Referral code</span>
+          <code>${esc(a.code)}</code>
+        </div>` : '';
+
+  const faq = [
+    {
+      q: `Is the ${a.name} airdrop still active?`,
+      a: `${a.name} is currently at "${a.status}" with an allocation of ${a.allocation}. Deadlines and snapshots change quickly, so always check the project's official channels before spending gas.`,
+    },
+    {
+      q: `How do I qualify for the ${a.name} airdrop?`,
+      a: `Complete the tasks listed above using a single wallet, and keep activity consistent over time. ${a.name} runs on ${a.chain}. Projects weight genuine, sustained usage far above one-off transactions.`,
+    },
+    {
+      q: `Does the ${a.name} airdrop cost anything?`,
+      a: `The tokens are free, but on-chain tasks cost gas. Budget a monthly cap, prefer cheap periods, and remember that most farms pay nothing — treat each interaction as a small bet, not an investment.`,
+    },
+  ];
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faq.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
+  const howToLd = {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: `How to farm the ${a.name} airdrop`,
+    description: a.summary,
+    totalTime: 'PT30M',
+    step: a.tasks.map((t, i) => ({
+      '@type': 'HowToStep',
+      position: i + 1,
+      name: `Step ${i + 1}`,
+      text: t,
+    })),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Airdrops', item: `${SITE}/airdrops/` },
+      { '@type': 'ListItem', position: 3, name: a.name, item: url },
+    ],
+  };
+
+  const faqHtml = faq.map((f) => `
+          <details class="faq-item">
+            <summary class="faq-q">${esc(f.q)}</summary>
+            <p class="faq-a">${esc(f.a)}</p>
+          </details>`).join('');
+
+  const othersHtml = others.map((o) => `
+          <a class="card hover air-card" href="/airdrops/${o.slug}/">
+            <div class="air-top">
+              <div style="display:flex;align-items:center;gap:11px">
+                <div class="air-logo" aria-hidden="true">${esc(o.name.slice(0, 1))}</div>
+                <div>
+                  <div class="air-name">${esc(o.name)}</div>
+                  <div class="air-status">${esc(o.status)}</div>
+                </div>
+              </div>
+              <span class="air-tag">${esc(o.tag)}</span>
+            </div>
+            <div class="air-foot"><span class="air-time">${esc(o.allocation)}</span><span class="air-view">View tasks →</span></div>
+          </a>`).join('');
+
+  return `${head({
+    title: `${a.name} Airdrop 2026 — Tasks, Status & Guide | ClownOnChains`,
+    desc: `${a.name} airdrop: ${a.status}, ${a.allocation}. ${a.summary.slice(0, 110)}… Full step-by-step task list and safety notes.`,
+    keywords: `${a.name.toLowerCase()} airdrop, ${a.name.toLowerCase()} airdrop 2026, how to farm ${a.name.toLowerCase()}, ${a.tag.toLowerCase()} airdrop`,
+    canonical: url,
+    jsonld: [breadcrumbLd, howToLd, faqLd],
+  })}
+<body>
+${NAV}
+  <main class="wrap" style="padding:34px 18px 10px">
+    <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:18px">
+      <a href="/">Home</a> › <a href="/airdrops/">Airdrops</a> › <span>${esc(a.name)}</span>
+    </nav>
+
+    <article style="max-width:760px;margin:0 auto">
+      <header class="air-hero">
+        <div class="air-logo air-logo-lg" aria-hidden="true">${esc(a.name.slice(0, 1))}</div>
+        <div>
+          <div class="air-tag" style="margin-bottom:6px">${esc(a.tag)}</div>
+          <h1 style="font-family:ui-serif,Georgia,serif;font-size:clamp(28px,4.4vw,42px);letter-spacing:-.02em;margin:0 0 6px;color:#fbf3e6">
+            ${esc(a.name)}</h1>
+          <div class="air-hero-meta">
+            <span class="air-status">${esc(a.status)}</span>
+            <span class="air-time badge-live">${esc(a.allocation)}</span>
+            <span class="air-time">${esc(a.chain)}</span>
+          </div>
+        </div>
+      </header>
+
+      <p class="reader-body" style="font-size:16px">${esc(a.summary)}</p>
+
+      ${codeHtml}
+      ${registerHtml}
+
+      <section class="block" aria-labelledby="h-tasks" style="padding-top:26px">
+        <h2 id="h-tasks" style="font-family:ui-serif,Georgia,serif;font-size:21px;margin:0 0 14px;color:#fbf3e6">
+          Tasks to qualify</h2>
+        <ol class="task-list">${tasksHtml}
+        </ol>
+      </section>
+
+      <aside class="card" style="margin:26px 0;background:rgba(240,179,94,.07);border-color:rgba(240,179,94,.3)">
+        <strong style="color:#fff7ea">Safety first.</strong>
+        <p style="margin:6px 0 0;color:var(--text-dim);font-size:14px">Never share your seed phrase, never
+          sign a transaction you cannot explain, and verify the project's official domain before
+          connecting your wallet. Eligibility checks are read-only.</p>
+      </aside>
+
+      <section class="block" aria-labelledby="h-faq" style="padding-top:8px">
+        <h2 id="h-faq" style="font-family:ui-serif,Georgia,serif;font-size:21px;margin:0 0 12px;color:#fbf3e6">
+          Common questions</h2>
+        <div class="faq-list">${faqHtml}
+        </div>
+      </section>
+    </article>
+
+    <section class="block" style="max-width:760px;margin:0 auto" aria-labelledby="h-others">
+      <div class="section-head">
+        <h2 class="section-title" id="h-others" style="margin:0;font-size:19px"><span class="ic" aria-hidden="true">⏰</span> Other airdrops</h2>
+      </div>
+      <div class="air-grid">${othersHtml}
+      </div>
+    </section>
   </main>
 ${FOOTER}
   <script src="/app.js?v=${CSS_VER}" defer></script>
@@ -384,7 +575,6 @@ function buildExchanges(d) {
           <div class="ref-name">${esc(r.name)}</div>
           <p class="ref-desc">${esc(r.desc)}</p>
           <div class="ref-meta">
-            <div class="ref-bonus">${esc(r.bonus)}</div>
             <a class="ref-link" href="${esc(r.url)}" target="_blank" rel="noopener nofollow sponsored">
               Sign up <span class="ref-here">HERE</span> <span class="ref-code-inline">(${esc(r.code)})</span>
             </a>
@@ -891,6 +1081,7 @@ function buildSitemap(d) {
     `<url><loc>${SITE}/news/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
     `<url><loc>${SITE}/academy/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
     `<url><loc>${SITE}/community/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>`,
+    ...d.AIRDROPS.map((a) => `<url><loc>${SITE}/airdrops/${a.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.85</priority></url>`),
     ...d.NEWS.map((n) => `<url><loc>${SITE}/news/${n.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`),
     ...d.TUTORIALS.map((t) =>
       `<url><loc>${SITE}/academy/${slug(t.title)}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>`),
@@ -989,6 +1180,9 @@ function build() {
 
   built.push(write('index.html', buildHome(d)));
   built.push(write('airdrops/index.html', buildAirdrops(d)));
+  for (const a of d.AIRDROPS) {
+    built.push(write(`airdrops/${a.slug}/index.html`, buildAirdropPage(a, d)));
+  }
   built.push(write('exchanges/index.html', buildExchanges(d)));
   built.push(write('web3-tools/index.html', buildWeb3Tools(d)));
   built.push(write('news/index.html', buildNews(d)));
