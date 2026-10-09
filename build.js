@@ -27,8 +27,16 @@ const CSS_VER = (() => {
 /* ------------------------------------------------------------------ */
 function loadData() {
   const src = fs.readFileSync(path.join(ROOT, 'data.js'), 'utf8');
-  const fn = new Function(`${src}\nreturn { PRICES, EXCHANGE_REFS, BOT_REFS, AIRDROPS, NEWS, TUTORIALS, GLOSSARY, TRACKS, FAQ, GUIDE };`);
-  return fn();
+  const fn = new Function(`${src}\nreturn { PRICES, EXCHANGE_REFS, BOT_REFS, AFFILIATE, ANGLES, AIRDROPS, NEWS, TUTORIALS, GLOSSARY, TRACKS, FAQ, GUIDE };`);
+  const d = fn();
+  // blog posts ditulis oleh add_affiliate.py, bukan oleh data.js
+  const blogPath = path.join(ROOT, 'queue', 'blog-posts.json');
+  try {
+    d.BLOG = JSON.parse(fs.readFileSync(blogPath, 'utf8'));
+  } catch (e) {
+    d.BLOG = [];
+  }
+  return d;
 }
 
 /* ------------------------------------------------------------------ */
@@ -104,6 +112,8 @@ function mdToHtml(text) {
 
 const todayISO = new Date().toISOString().slice(0, 10);
 
+const { buildAffiliatePage, buildAffiliateHub, buildAffiliatePartner } = require('./affiliate.js');
+
 /* ------------------------------------------------------------------ */
 /* 3. Partial templates                                                 */
 /* ------------------------------------------------------------------ */
@@ -119,6 +129,8 @@ const NAV = `  <nav class="nav">
       <a href="/airdrops/">Airdrops</a>
       <a href="/exchanges/">Exchanges</a>
       <a href="/web3-tools/">Web3 Tools</a>
+      <a href="/affiliate/">Referral Codes</a>
+      <a href="/blog/">Guides</a>
       <a href="/news/">News</a>
       <a href="/academy/">Academy</a>
       <a href="/glossary/">Glossary</a>
@@ -1156,6 +1168,184 @@ ${FOOTER}
 }
 
 /* ------------------------------------------------------------------ */
+/* 11b. Blog — daftar + halaman artikel (dari queue/blog-posts.json)     */
+/* ------------------------------------------------------------------ */
+function buildBlogIndex(d) {
+  const posts = d.BLOG || [];
+  const affBySlug = {};
+  for (const a of d.AFFILIATE) affBySlug[a.slug] = a;
+
+  const cards = posts.map((p) => {
+    const aff = affBySlug[p.affiliate];
+    return `
+        <a class="card hover blog-card" href="/blog/${p.slug}/">
+          <div class="blog-card-top">
+            ${aff ? `<span class="aff-logo blog-logo" aria-hidden="true">${esc(aff.name.slice(0, 1))}</span>` : ''}
+            <div>
+              <span class="aff-kind">${aff ? esc(aff.name) : 'Guide'}</span>
+              <h3 class="blog-card-title">${esc(p.title)}</h3>
+            </div>
+          </div>
+          <p class="blog-card-desc">${esc(p.desc)}</p>
+          <div class="blog-card-foot">
+            <span class="tut-meta" style="margin:0">🕐 ${Math.max(1, Math.round((p.words || 600) / 200))} min read</span>
+            ${aff ? `<code class="blog-card-code">${esc(aff.code)}</code>` : ''}
+          </div>
+        </a>`;
+  }).join('');
+
+  const itemListLd = {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Crypto Referral and Exchange Guides',
+    itemListElement: posts.map((p, i) => ({
+      '@type': 'ListItem',
+      position: i + 1,
+      name: p.title,
+      url: `${SITE}/blog/${p.slug}/`,
+    })),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE}/blog/` },
+    ],
+  };
+
+  return `${head({
+    title: 'Crypto Exchange Guides & Referral Tips | ClownOnChains',
+    desc: `${posts.length} in-depth guides on crypto exchanges, fees, referral codes and trading tools — written for people who want the details, not the hype.`,
+    keywords: 'crypto exchange guide, referral code guide, exchange fees, crypto tutorial, trading bot guide',
+    canonical: `${SITE}/blog/`,
+    jsonld: [breadcrumbLd, itemListLd],
+  })}
+<body>
+${NAV}
+  <main class="wrap" style="padding:44px 18px 20px">
+    <header style="max-width:820px;margin:0 auto 30px">
+      <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:14px">
+        <a href="/">Home</a> › <span>Blog</span>
+      </nav>
+      <h1 class="aff-hub-h1">Guides</h1>
+      <p class="aff-lead">${posts.length} in-depth articles on exchanges, fees, referral codes and
+        trading tools. Each one answers a specific question — no recycled filler.</p>
+    </header>
+    <div class="blog-grid">${cards}
+    </div>
+  </main>
+${FOOTER}
+</body>
+</html>
+`;
+}
+
+function buildBlogPost(p, d) {
+  const url = `${SITE}/blog/${p.slug}/`;
+  const aff = d.AFFILIATE.find((a) => a.slug === p.affiliate);
+  const idx = d.BLOG.indexOf(p);
+  const prev = d.BLOG[idx + 1];
+  const next = d.BLOG[idx - 1];
+
+  const articleLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: p.title,
+    description: p.desc,
+    inLanguage: 'en',
+    datePublished: (p.published_at || todayISO).slice(0, 10),
+    dateModified: (p.published_at || todayISO).slice(0, 10),
+    articleSection: 'Crypto Guides',
+    author: { '@type': 'Organization', name: 'ClownOnChains', url: `${SITE}/` },
+    publisher: {
+      '@type': 'Organization',
+      name: 'ClownOnChains',
+      logo: { '@type': 'ImageObject', url: `${SITE}/assets/favicon.svg` },
+    },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': url },
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'Blog', item: `${SITE}/blog/` },
+      { '@type': 'ListItem', position: 3, name: p.title, item: url },
+    ],
+  };
+
+  const codeBox = aff ? `
+      <aside class="aff-code-box" aria-label="Referral code">
+        <div>
+          <span class="aff-code-label">${esc(aff.name)} referral code</span>
+          <code class="aff-code-value">${esc(aff.code)}</code>
+        </div>
+        <a class="btn primary" href="${esc(aff.url)}" target="_blank" rel="noopener nofollow sponsored">
+          Open ${esc(aff.name)} →
+        </a>
+      </aside>` : '';
+
+  const relatedLinks = aff ? `
+      <aside class="aff-cross-box" aria-labelledby="h-rel">
+        <h2 id="h-rel" class="aff-cross-head">More on ${esc(aff.name)}</h2>
+        <div class="aff-cross-grid">
+          ${d.ANGLES.map((g) => `<a class="aff-cross" href="/affiliate/${aff.slug}/${g.slug}/">
+            <span class="aff-cross-label">${esc(g.label)}</span>
+            <span class="aff-cross-arrow" aria-hidden="true">→</span>
+          </a>`).join('')}
+        </div>
+      </aside>` : '';
+
+  return `${head({
+    title: `${p.title} | ClownOnChains`,
+    desc: p.desc,
+    keywords: `${p.keyword}, crypto exchange guide, referral code`,
+    canonical: url,
+    ogType: 'article',
+    jsonld: [articleLd, breadcrumbLd],
+  })}
+<body>
+${NAV}
+  <main class="wrap" style="padding:34px 18px 10px">
+    <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:18px">
+      <a href="/">Home</a> › <a href="/blog/">Blog</a> › <span>${esc(p.title)}</span>
+    </nav>
+
+    <article style="max-width:760px;margin:0 auto">
+      <header>
+        <h1 class="aff-h1" style="font-size:clamp(27px,4.4vw,40px)">${esc(p.title)}</h1>
+        <div class="tut-meta">🕐 ${Math.max(1, Math.round((p.words || 600) / 200))} min read · Updated ${(p.published_at || todayISO).slice(0, 10)} · Not financial advice</div>
+      </header>
+
+      ${codeBox}
+
+      <div class="reader-body">${mdToHtml(p.body)}</div>
+
+      <aside class="card" style="margin:30px 0;background:rgba(240,179,94,.06);border-color:rgba(240,179,94,.28)">
+        <strong style="color:#fff7ea">Referral disclosure.</strong>
+        <p style="margin:6px 0 0;color:var(--text-dim);font-size:14px">Links on this page are referral
+          links. Registering through them may earn this site a commission at no extra cost to you.
+          It does not change what the article says.</p>
+      </aside>
+
+      ${relatedLinks}
+
+      <nav class="pager" aria-label="Article navigation" style="margin-top:26px">
+        ${prev ? `<a class="card hover" href="/blog/${prev.slug}/"><span class="tut-meta" style="margin:0">← Older</span><span class="tut-title">${esc(prev.title)}</span></a>` : '<span></span>'}
+        ${next ? `<a class="card hover" href="/blog/${next.slug}/" style="text-align:right"><span class="tut-meta" style="margin:0">Newer →</span><span class="tut-title">${esc(next.title)}</span></a>` : '<span></span>'}
+      </nav>
+    </article>
+  </main>
+${FOOTER}
+</body>
+</html>
+`;
+}
+
+/* ------------------------------------------------------------------ */
 /* 11. Topic: Community (email + Twitter)                               */
 /* ------------------------------------------------------------------ */
 function buildCommunity(d) {
@@ -1364,7 +1554,12 @@ function buildSitemap(d) {
     `<url><loc>${SITE}/airdrops/</loc><lastmod>${todayISO}</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>`,
     `<url><loc>${SITE}/exchanges/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
     `<url><loc>${SITE}/web3-tools/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
+    `<url><loc>${SITE}/affiliate/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.95</priority></url>`,
+    ...d.AFFILIATE.map((a) => `<url><loc>${SITE}/affiliate/${a.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`),
+    ...d.AFFILIATE.flatMap((a) => d.ANGLES.map((g) => `<url><loc>${SITE}/affiliate/${a.slug}/${g.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>`)),
     `<url><loc>${SITE}/news/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
+    `<url><loc>${SITE}/blog/</loc><lastmod>${todayISO}</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>`,
+    ...(d.BLOG || []).map((p) => `<url><loc>${SITE}/blog/${p.slug}/</loc><lastmod>${(p.published_at||todayISO).slice(0,10)}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>`),
     `<url><loc>${SITE}/academy/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
     `<url><loc>${SITE}/glossary/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
     ...d.GLOSSARY.map((g) => `<url><loc>${SITE}/glossary/${g.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>`),
@@ -1473,7 +1668,21 @@ function build() {
   }
   built.push(write('exchanges/index.html', buildExchanges(d)));
   built.push(write('web3-tools/index.html', buildWeb3Tools(d)));
+
+  /* ---- affiliate: hub + per-partner + 15 x 8 halaman sudut ---- */
+  const AH = { head, NAV, FOOTER, todayISO };
+  built.push(write('affiliate/index.html', buildAffiliateHub(d, AH)));
+  for (const a of d.AFFILIATE) {
+    built.push(write(`affiliate/${a.slug}/index.html`, buildAffiliatePartner(a, d, AH)));
+    for (const angle of d.ANGLES) {
+      built.push(write(`affiliate/${a.slug}/${angle.slug}/index.html`, buildAffiliatePage(a, angle, d, AH)));
+    }
+  }
   built.push(write('news/index.html', buildNews(d)));
+  built.push(write('blog/index.html', buildBlogIndex(d)));
+  for (const p of (d.BLOG || [])) {
+    built.push(write(`blog/${p.slug}/index.html`, buildBlogPost(p, d)));
+  }
   for (const n of d.NEWS) {
     built.push(write(`news/${n.slug}/index.html`, buildNewsArticle(n, d)));
   }
