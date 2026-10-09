@@ -2,27 +2,28 @@ Bybit perpetual funding rates are one of the most misunderstood costs in crypto 
 
 ## What funding rates are
 
-Perpetual futures contracts have no expiry date, which means they need a mechanism to keep their price anchored to the underlying spot price. That mechanism is the funding rate. It is a periodic payment exchanged between long and short traders. When the perpetual price trades above the spot price, longs pay shorts. When it trades below, shorts pay longs. Funding rates are not fees charged by the exchange. They flow directly between traders. Bybit facilitates the payments but does not take a cut. The rate itself is determined by the market — it reflects the premium or discount of the perpetual contract relative to the spot price.
+Perpetual futures contracts have no expiry date, which means they need a mechanism to keep their price anchored to the underlying spot price. That mechanism is the funding rate. It is a periodic payment exchanged between long and short traders. When the perpetual price trades above the spot price, longs pay shorts. When it trades below, shorts pay longs. This system incentivises traders to take the less crowded side of the market, which helps keep the perpetual price close to the spot price. Funding rates are not fees charged by the exchange. They flow directly between traders. Bybit facilitates the payments but does not take a cut. The rate itself is determined by the market — it reflects the premium or discount of the perpetual contract relative to the spot price. In a strong bull market, funding rates tend to be positive because more traders are willing to pay to stay long. In a bear market, they tend to flip negative.
 
 ## How funding works on Bybit
 
-On Bybit, funding payments occur at fixed intervals. The exact schedule is listed on each perpetual contract's page. At each funding timestamp, positions are settled and the payment is applied to your account balance. If you hold a position through a funding interval, you either pay or receive the funding amount. The funding rate itself is calculated based on the difference between the perpetual mark price and the index spot price, plus a damping factor. In periods of extreme sentiment, the rate can spike significantly. In calm markets, it hovers close to zero.
+On Bybit, funding payments occur at fixed intervals. The exact schedule is listed on each perpetual contract's page. At each funding timestamp, positions are settled and the payment is applied to your account balance. If you hold a position through a funding interval, you either pay or receive the funding amount. The payment is calculated based on your position size and the current funding rate. The funding rate itself is calculated based on the difference between the perpetual mark price and the index spot price, plus a damping factor. In periods of extreme sentiment, the rate can spike significantly. In calm markets, it hovers close to zero. Bybit displays the current funding rate and the estimated next funding rate on each perpetual contract's trading page so you can monitor the cost of holding a position.
 
 ## What funding costs you over time
 
-If you hold a perpetual position for weeks or months, funding payments accumulate. A position that looks profitable on price alone can become unprofitable once funding costs are factored in. This is especially true for leveraged positions where the funding amount is larger.
+If you hold a perpetual position for weeks or months, funding payments accumulate. A position that looks profitable on price alone can become unprofitable once funding costs are factored in. This is especially true for leveraged positions where the funding amount is larger. A trader who is right about direction but wrong about timing can still lose money to funding.
 
 - Funding is charged at regular intervals, typically every eight hours
 - The rate can flip sign depending on market sentiment
 - High leverage amplifies the impact of funding on your account
 - Funding costs are separate from trading fees
 - Holding through multiple funding intervals compounds the cost
+- A profitable trade can become unprofitable after accounting for funding
 
-Bybit's maker fee is 0.02% and the taker fee is 0.055%. These are separate from funding. You pay both trading fees on each order and funding on each interval if you hold a position. The referral code BYBIT313 gives you a 20% discount on trading fees, but it does not reduce funding payments.
+Bybit's maker fee is 0.02% and the taker fee is 0.055%. These are separate from funding. You pay both trading fees on each order and funding on each interval if you hold a position. The referral code BYBIT313 gives you a 20% discount on trading fees, but it does not reduce funding payments. Funding is a market-driven cost that no referral code can reduce.
 
 ## Risks and what goes wrong
 
-Traders often ignore funding until it bites them. A position held through a period of extreme funding can lose more to funding than it gains from price movement. This is particularly painful for leveraged longs during bullish euphoria, when funding rates spike because everyone is already long. Bybit's watch list explicitly warns users to understand funding rates before opening a perpetual position. The platform provides real-time funding data, but it is up to you to monitor it and factor it into your trading decisions.
+Traders often ignore funding until it bites them. A position held through a period of extreme funding can lose more to funding than it gains from price movement. This is particularly painful for leveraged longs during bullish euphoria, when funding rates spike because everyone is already long. The cost of holding a position can exceed the expected profit from the trade. Bybit's watch list explicitly warns users to understand funding rates before opening a perpetual position. The platform provides real-time funding data, but it is up to you to monitor it and factor it into your trading decisions. Smart traders check the funding rate before entering a position and avoid holding through funding intervals when the rate is unfavourable.
 
 ## Frequently asked questions
 

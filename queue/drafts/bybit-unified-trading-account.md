@@ -6,22 +6,33 @@ The Bybit unified trading account is a margin system that pools your entire bala
 
 ## How cross margin actually works
 
-In cross margin mode, your entire account balance serves as margin for your positions. If one position starts losing money, the system can use funds from your overall balance to keep it open. This can prevent liquidation in the short term, but it also means that a losing position can drain your entire account if the market continues to move against you.
+In cross margin mode, your entire account balance serves as margin for your positions. If one position starts losing money, the system can use funds from your overall balance to keep it open. This can prevent liquidation in the short term, but it also means that a losing position can drain your entire account if the market continues to move against you. The system automatically allocates margin from your balance to positions that need it.
 
 - Your full balance acts as collateral for every position
 - Losses in one position reduce your available margin for all positions
 - The system may auto-top-up margin from your balance to prevent liquidation
 - If your total equity falls below the maintenance margin requirement, positions can be liquidated
+- You can manually add or remove margin from individual positions
+- The unified account supports both spot and futures trading
 
-Bybit's maker fee is 0.02% and the taker fee is 0.055%. These fees apply regardless of which margin mode you use. The referral code BYBIT313 gives you a 20% discount on these fees, which can help offset the costs of maintaining multiple positions.
+Bybit's maker fee is 0.02% and the taker fee is 0.055%. These fees apply regardless of which margin mode you use. The referral code BYBIT313 gives you a 20% discount on these fees, which can help offset the costs of maintaining multiple positions. However, the fee discount does not change the risk profile of the unified account.
 
 ## Risks and what goes wrong
 
-The unified account's main risk is that it can create a false sense of security. Because your entire balance backs each position, you may feel like you have more room to absorb losses than you actually do. In reality, a large enough adverse move can wipe out your entire account, not just a single position. Bybit's watch list warns that high leverage can liquidate an account in minutes. The unified account amplifies this risk because your entire balance is at stake. You should carefully calculate your total exposure before opening multiple positions.
+The unified account's main risk is that it can create a false sense of security. Because your entire balance backs each position, you may feel like you have more room to absorb losses than you actually do. In reality, a large enough adverse move can wipe out your entire account, not just a single position. The unified account requires more active risk management than isolated margin.
+
+- Over-leveraging across multiple positions can liquidate your entire account
+- Auto-top-up can drain your balance faster than you expect
+- Correlated positions can all lose simultaneously, overwhelming your margin
+- Funding payments on perpetual positions further erode your available margin
+- The unified account requires constant monitoring of your total exposure
+- A single large loss can wipe out gains from multiple winning positions
+
+Bybit's watch list warns that high leverage can liquidate an account in minutes. The unified account amplifies this risk because your entire balance is at stake. You should carefully calculate your total exposure before opening multiple positions.
 
 ## When to use unified vs isolated margin
 
-Use isolated margin when you want to limit risk to a specific position. This is useful for testing new strategies or trading highly volatile assets. Use unified margin when you want maximum capital efficiency and are confident in your risk management. The referral code BYBIT313 reduces your trading fees by 20%, which makes maintaining multiple positions slightly cheaper. But the choice between unified and isolated margin should be based on your risk tolerance, not fee savings.
+Use isolated margin when you want to limit risk to a specific position. This is useful for testing new strategies or trading highly volatile assets. Use unified margin when you want maximum capital efficiency and are confident in your risk management. Many experienced traders use a combination of both modes — isolated for experimental positions and unified for their core strategy. The referral code BYBIT313 reduces your trading fees by 20%, which makes maintaining multiple positions slightly cheaper. But the choice between unified and isolated margin should be based on your risk tolerance, not fee savings.
 
 ## Frequently asked questions
 
@@ -33,6 +44,6 @@ Yes, you can switch between margin modes on Bybit. However, you must close all o
 
 Yes, in most cases. The unified account exposes your entire balance to losses from any position. Isolated margin limits your risk to the allocated amount for each specific position. The unified account offers more flexibility but requires more sophisticated risk management.
 
-### Does the BYBIT313 code affect margin requirements?
+### Does the referral code affect margin requirements?
 
-No. The referral code BYBIT313 provides a 20% trading fee discount only. It does not change margin requirements, leverage limits, or liquidation mechanics. Margin requirements are determined by the asset, leverage level, and market conditions, not by your fee tier.
+No. The referral code provides a 20% trading fee discount only. It does not change margin requirements, leverage limits, or liquidation mechanics. Margin requirements are determined by the asset, leverage level, and market conditions, not by your fee tier.

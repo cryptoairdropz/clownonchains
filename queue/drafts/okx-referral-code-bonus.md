@@ -1,62 +1,46 @@
-The OKX referral code ENJOYDISCOUNT attaches two separate benefits to a new account, and they behave nothing alike. One is a permanent reduction in what you pay. The other is a conditional reward that most users only partly collect.
+The OKX referral code ENJOYDISCOUNT gives new users a 20% fee discount and access to a Mystery Box reward. Most guides mention the code in passing without explaining how the bonus actually works, what you receive, and where the fine print hides. This article covers the full picture so you know exactly what to expect before you sign up.
 
-Treating them as the same thing is why people end up disappointed. Here is what each one is.
+## What the referral code actually does
 
-## The part that behaves like money
+ENJOYDISCOUNT attaches a 20% fee discount to your account when you register through the referral link. The discount applies to trading fees from your first trade and stacks with whatever volume tier you qualify for. If you are at the base tier, the discount reduces the taker rate of 0.10% and the maker rate of 0.08% by a fifth.
 
-The fee discount is the durable half of the referral. It reduces the rate you pay on trades for as long as the account is active, with no action required after registration and no expiry.
+The code fills in automatically during signup — you do not need to enter it manually or activate it later. The registration process is straightforward: open the referral link, sign up with email or phone, confirm the code is present, complete KYC, and enable 2FA. The discount is active from the moment your account is verified. OKX also offers a Mystery Box alongside the fee discount, giving new users an additional reward on top of the ongoing savings.
 
-It stacks with OKX's volume tiers rather than replacing them, so a high-volume trader keeps both the tier reduction and the referral discount. Over a year of regular trading, that is the component worth real money.
+- Referral code: ENJOYDISCOUNT
+- Fee discount: 20%
+- Trading pairs: 400+
+- Bonus: Mystery Box
 
-## The part that does not
+## How the Mystery Box works
 
-The bonus component on OKX arrives in the form of rewards rather than a cash balance. Rewards are credit instruments with conditions: they typically apply against specific products, carry an expiry, and may require a minimum position size before they can be used.
+The Mystery Box is a reward for new users who register through a referral link. It contains vouchers, tokens, or bonuses, but the contents are not guaranteed to be the same for every user. Some users receive fee vouchers, others receive small token amounts, and the value varies.
 
-That is normal across the industry, but it changes how you should think about the headline number. A reward you cannot withdraw is not the same as money in your account.
+You open the Mystery Box from the rewards menu after completing KYC. The box is available once per account, and the contents are revealed when you open it. There is no way to preview what you will receive, and the value can range from negligible to meaningful depending on what drops. Treat it as a bonus, not a guaranteed payout.
 
-- Rewards are not withdrawable balances.
-- Conditions and expiry dates vary by promotion.
-- The fee discount is the part that behaves like cash.
+## The fee discount in practice
 
-## Applying the code correctly
+The 20% discount applies to both maker and taker fees. At the base tier, this means your effective taker rate drops below 0.10% and your effective maker rate drops below 0.08%. The exact figures depend on the current fee schedule, but the discount percentage remains consistent.
 
-The single most common failure is registering first and looking for a code field afterwards. OKX does not attach a referrer to an existing account.
+For a trader placing ten taker orders per month, the discount saves the equivalent of two full trade fees. For a high-volume trader at a higher tier, the savings scale with the already-lower band rate. The discount does not apply to withdrawal fees or funding payments on perpetual positions — it covers trading fees only.
 
-- Open the referral link so the code ENJOYDISCOUNT is pre-filled.
-- Confirm the field reads correctly before submitting the form.
-- Complete verification, since rewards typically require it.
-- Check the rewards section after registering to confirm the link took effect.
+## Risks and things that go wrong
 
-## What to check before depositing
+The referral code cannot be added after registration. If you sign up without the link, you cannot attach ENJOYDISCOUNT later. Some users create accounts first and then look for the code, only to discover the discount is permanently unavailable. Always use the referral link from the start.
 
-The referral is not a reason to choose OKX. Decide whether the platform suits what you want to trade — its pair selection, its liquidity, and its product range — and treat the referral as a discount on a decision you were already making.
+The Mystery Box contents are not guaranteed. Some users open the box and find rewards worth very little. The fee discount is the reliable part of the referral program — the Mystery Box is a lottery. Do not choose a referral code based on promised bonus amounts, because the actual contents vary by user and over time.
 
-Once you have decided, apply the code at signup rather than afterwards, because that is the only moment it can be applied.
-
-## Where the risks are
-
-A referral discount reduces your fees; it does not reduce the risk of the position you open. Leverage, illiquid pairs and new listings all carry the same downside with or without a discount.
-
-Two specific things to verify: that you are on the official OKX domain rather than a clone, and that the reward terms you are relying on are current. Promotions change, and the terms published at the time of your registration are the ones that apply.
-
-## What to do if you already registered without it
-
-If the account exists and the code was never applied, there is no route to attach it. OKX does not expose a setting for it and support cannot add a referrer manually.
-
-The options are limited. If the account is new and holds nothing of value, registering again through the referral link costs a few minutes and a second email address. If it holds funds and a trading history, most people accept the standard rate rather than move.
-
-The same rule applies on every exchange, which is why the minute spent checking the code field at signup is worth more than any amount of research afterwards.
+Another common mistake is assuming the referral discount applies to every fee on the platform. It covers trading fees only. Withdrawal fees, funding payments on perpetual positions, and fiat deposit charges are not reduced by the referral code. If you move large sums frequently, those non-discounted fees can outweigh the savings from the referral program.
 
 ## Frequently asked questions
 
-### Does the discount expire?
+### Is the ENJOYDISCOUNT code still active?
 
-No. The fee discount attached through ENJOYDISCOUNT does not expire while the account remains active.
+Yes, ENJOYDISCOUNT is active and applies a 20% fee discount to new accounts that register through the referral link. The code fills in automatically during signup.
 
-### Are the rewards paid as cash?
+### What is inside the OKX Mystery Box?
 
-No. They arrive as credit instruments with conditions attached, which typically include expiry dates and minimum position requirements.
+The Mystery Box contains vouchers, tokens, or bonuses for new users. The contents vary by user and are revealed when you open the box from the rewards menu after completing KYC.
 
-### Can I apply the code to an account I already have?
+### Can I use the referral code on an existing account?
 
-No. Referral attribution happens at account creation, and OKX does not add a referrer to an existing account.
+No. The referral code must be present in the signup form when you create your account. OKX does not attach a referrer to an account that already exists, so the discount cannot be added retroactively.

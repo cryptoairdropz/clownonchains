@@ -1733,6 +1733,8 @@ function build() {
   built.push(write('sitemap.xml', buildSitemap(d)));
   built.push(write('feed.xml', buildFeed(d)));
   built.push(write('robots.txt', ROBOTS));
+  // IndexNow key file — must stay reachable so search engines can verify submissions
+  built.push(write('a7f3c9e21b8d4f6a5c0e9b3d7f1a2c48.txt', 'a7f3c9e21b8d4f6a5c0e9b3d7f1a2c48'));
   built.push(write('_headers', HEADERS));
   built.push(write('.nojekyll', ''));
   built.push(write('404.html', NOT_FOUND));

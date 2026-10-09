@@ -2,29 +2,30 @@ A Bybit demo account lets you practice trading with virtual funds before risking
 
 ## What the Bybit demo account is
 
-The Bybit demo account is a simulated trading environment where you trade with virtual USDT. The interface, order types, and market data are identical to the live platform. The only difference is that the funds are not real. You can open and close positions, test strategies, and learn the platform without any financial risk. The demo account is available to all registered users. You do not need to deposit real funds to access it. Once you have completed KYC level 1 and enabled 2FA, you can switch between the demo and live trading environments from the same interface.
+The Bybit demo account is a simulated trading environment where you trade with virtual USDT. The interface, order types, and market data are identical to the live platform. The only difference is that the funds are not real. You can open and close positions, test strategies, and learn the platform without any financial risk. The demo account is pre-funded with virtual USDT by the platform, so you can start trading immediately. The demo account is available to all registered users. You do not need to deposit real funds to access it. Once you have completed KYC level 1 and enabled 2FA, you can switch between the demo and live trading environments from the same interface.
 
 ## How to access the demo account
 
-To access the demo account, log in to your Bybit account and navigate to the trading interface. There is a toggle or menu option that switches between live and demo trading. The demo environment has its own separate balance, which is funded with virtual USDT by the platform. If you register with the referral code BYBIT313, you get a 20% fee discount on live trading. The demo account does not charge fees since it uses virtual funds, but practicing on demo first means you make fewer costly mistakes when you switch to live trading.
+To access the demo account, log in to your Bybit account and navigate to the trading interface. There is a toggle or menu option that switches between live and demo trading. The demo environment has its own separate balance, which is funded with virtual USDT by the platform. You can reset your demo balance if you run out of virtual funds, which allows you to keep practicing without any limitations. If you register with the referral code BYBIT313, you get a 20% fee discount on live trading. The demo account does not charge fees since it uses virtual funds, but practicing on demo first means you make fewer costly mistakes when you switch to live trading. The transition from demo to live is seamless — you simply toggle the switch and start trading with real funds.
 
 ## What you can practice
 
-The demo account supports the full range of Bybit trading features. You can practice spot trading, futures trading, and copy trading. All order types are available, including market, limit, and conditional orders. You can test different leverage levels and see how they affect your positions without any real risk.
+The demo account supports the full range of Bybit trading features. You can practice spot trading, futures trading, and copy trading. All order types are available, including market, limit, and conditional orders. You can test different leverage levels and see how they affect your positions without any real risk. The demo environment is identical to the live platform in every way except for the funds.
 
 - Spot trading with virtual USDT
 - Perpetual futures with adjustable leverage
 - Copy trading with simulated allocations
 - Stop-loss and take-profit orders
 - Cross margin and isolated margin modes
+- Conditional orders and trailing stops
 
 ## Risks and limitations
 
-The demo account has one significant limitation: it does not replicate the emotional pressure of real trading. When real money is at stake, decision-making changes. Traders who perform well on demo often struggle when they switch to live trading because the psychological element is absent. Bybit's watch list warns that high leverage can liquidate an account in minutes. The demo account is the perfect place to understand this risk without actually losing money.
+The demo account has one significant limitation: it does not replicate the emotional pressure of real trading. When real money is at stake, decision-making changes. Traders who perform well on demo often struggle when they switch to live trading because the psychological element is absent. Fear and greed are powerful forces that cannot be simulated with virtual funds. Bybit's watch list warns that high leverage can liquidate an account in minutes. The demo account is the perfect place to understand this risk without actually losing money. Test different leverage levels and see how quickly positions can be liquidated. The demo account is an essential tool for any trader who wants to avoid costly learning experiences with real money.
 
 ## Making the most of your demo time
 
-Treat the demo account as seriously as you would a live account. Set a virtual balance that matches what you plan to deposit in real money. Practice the strategies you intend to use live. Track your results and analyse your mistakes. The referral code BYBIT313 makes the transition to live trading cheaper by reducing your fees by 20%. But the real value of the demo account is the experience you gain before you start trading with real funds.
+Treat the demo account as seriously as you would a live account. Set a virtual balance that matches what you plan to deposit in real money. Practice the strategies you intend to use live. Track your results and analyse your mistakes. Keep a trading journal and review it regularly to identify patterns in your decision-making. The referral code BYBIT313 makes the transition to live trading cheaper by reducing your fees by 20%. But the real value of the demo account is the experience you gain before you start trading with real funds. Many experienced traders recommend spending at least a few weeks on demo before going live, and even experienced traders use demo accounts to test new strategies.
 
 ## Frequently asked questions
 

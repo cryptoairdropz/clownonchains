@@ -2,11 +2,11 @@ Every crypto withdrawal from Binance charges a network fee, and the amount varie
 
 ## Why withdrawal fees differ by network
 
-When you withdraw crypto from Binance, you choose a destination network. Bitcoin can be sent on the Bitcoin mainnet, the Lightning Network, or the BNB Smart Chain as a wrapped token. Each network has different congestion levels and fee structures. Binance passes the actual network cost to the user, plus a small exchange fee. The Bitcoin mainnet typically charges the highest withdrawal fees because block space is limited and demand is high. During periods of congestion, a single Bitcoin withdrawal can cost several dollars. By contrast, sending the same value as a BEP-20 token on BNB Smart Chain costs a fraction of a cent.
+When you withdraw crypto from Binance, you choose a destination network. Bitcoin can be sent on the Bitcoin mainnet, the Lightning Network, or the BNB Smart Chain as a wrapped token. Each network has different congestion levels and fee structures. Binance passes the actual network cost to the user, plus a small exchange fee. The Bitcoin mainnet typically charges the highest withdrawal fees because block space is limited and demand is high. During periods of congestion, a single Bitcoin withdrawal can cost several dollars. By contrast, sending the same value as a BEP-20 token on BNB Smart Chain costs a fraction of a cent. Ethereum mainnet fees fluctuate with gas prices, which can spike during periods of high DeFi activity.
 
 ## How to check withdrawal fees before confirming
 
-Binance displays the exact withdrawal fee on the confirmation screen before you finalise the transaction. The fee is shown in the coin being withdrawn, not in a stablecoin. To compare networks, go to the withdrawal page for the coin you want to send, select the network dropdown to see available options, note the fee listed next to each network, and compare the fee to the amount you are withdrawing. If you are withdrawing $50 worth of Bitcoin and the mainnet fee is $2, that is 4% of your withdrawal. Switching to a lower-fee network, if the receiving wallet supports it, reduces that cost to under $1.
+Binance displays the exact withdrawal fee on the confirmation screen before you finalise the transaction. The fee is shown in the coin being withdrawn, not in a stablecoin. To compare networks, go to the withdrawal page for the coin you want to send, select the network dropdown to see available options, note the fee listed next to each network, and compare the fee to the amount you are withdrawing. If you are withdrawing $50 worth of Bitcoin and the mainnet fee is $2, that is 4% of your withdrawal. Switching to a lower-fee network, if the receiving wallet supports it, reduces that cost to under $1. Always check the fee before confirming, as it can change between the time you initiate the withdrawal and the time you confirm it.
 
 ## The trade-off: speed, compatibility, and risk
 
@@ -20,7 +20,7 @@ Choosing a cheaper network is not always straightforward. The receiving wallet o
 - Consider Binance Convert: swapping to a low-fee coin before withdrawing can reduce costs
 - Check for zero-fee promotions: Binance occasionally waives withdrawal fees for specific coins
 
-The referral code RMCTNB5R gives a 20% lifetime discount on spot trading fees, but it does not apply to network withdrawal fees. Those are set by the blockchain, not by Binance's trading engine. However, the referral code still matters for your overall cost of using the platform, as the savings on trading fees can offset a higher withdrawal fee.
+The referral code RMCTNB5R gives a 20% lifetime discount on spot trading fees, but it does not apply to network withdrawal fees. The code RMCTNB5R also unlocks bonus vouchers of up to $100, which can absorb several withdrawal fees. Those are set by the blockchain, not by Binance's trading engine. However, the referral code still matters for your overall cost of using the platform, as the savings on trading fees can offset a higher withdrawal fee. For frequent withdrawers, choosing the right network is one of the easiest ways to reduce costs without changing trading behaviour.
 
 ## Frequently asked questions
 
