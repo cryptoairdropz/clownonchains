@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+  <title>ClownOnChains Academy</title>
+  <link>https://cryptoairdropz.com/academy/</link>
+  <description>Practical crypto and DeFi guides.</description>
+    <item>
+      <title>Setting Up a Web3 Wallet Safely</title>
+      <link>https://cryptoairdropz.com/academy/setting-up-a-web3-wallet-safely/</link>
+      <guid isPermaLink="true">https://cryptoairdropz.com/academy/setting-up-a-web3-wallet-safely/</guid>
+      <category>Beginner</category>
+      <pubDate>Fri, 09 Oct 2026 18:57:51 GMT</pubDate>
+      <description>A Web3 wallet is your key to everything on this site, so set it up right.
+
+1. Pick a wallet. MetaMask (browser + mobile) or Phantom (Solana) are the standard starting points. Download only from the of…</description>
+    </item>
+    <item>
+      <title>What Is an Airdrop (and How Farming Works)</title>
+      <link>https://cryptoairdropz.com/academy/what-is-an-airdrop-and-how-farming-works/</link>
+      <guid isPermaLink="true">https://cryptoairdropz.com/academy/what-is-an-airdrop-and-how-farming-works/</guid>
+      <category>Beginner</category>
+      <pubDate>Fri, 09 Oct 2026 18:57:51 GMT</pubDate>
+      <description>An airdrop is a token giveaway to early users of a protocol. Projects do it to reward real activity and decentralize the token. Early Arbitrum and Jupiter users got four-figure payouts for work they w…</description>
+    </item>
+    <item>
+      <title>Farming L2 Airdrops Without Wasting Gas</title>
+      <link>https://cryptoairdropz.com/academy/farming-l2-airdrops-without-wasting-gas/</link>
+      <guid isPermaLink="true">https://cryptoairdropz.com/academy/farming-l2-airdrops-without-wasting-gas/</guid>
+      <category>Intermediate</category>
+      <pubDate>Fri, 09 Oct 2026 18:57:51 GMT</pubDate>
+      <description>Layer-2 airdrops (Arbitrum-style) reward wallets that used the chain before the snapshot. Here&#39;s a practical framework.
+
+**What actually counts:**
+- Bridging funds to the L2 yourself (not via an excha…</description>
+    </item>
+    <item>
+      <title>Understanding Supertrend (95, 5) and Multi-Indicator Setups</title>
+      <link>https://cryptoairdropz.com/academy/understanding-supertrend-95-5-and-multi-indicator-setups/</link>
+      <guid isPermaLink="true">https://cryptoairdropz.com/academy/understanding-supertrend-95-5-and-multi-indicator-setups/</guid>
+      <category>Advanced</category>
+      <pubDate>Fri, 09 Oct 2026 18:57:51 GMT</pubDate>
+      <description>The Supertrend indicator flips below price in an uptrend and above it in a downtrend, using ATR (volatility) to set the band distance.
+
+**The (95, 5) style setup** used on HYPE-USD here: a long lookba…</description>
+    </item>
+    <item>
+      <title>Introduction to Impermanent Loss</title>
+      <link>https://cryptoairdropz.com/academy/introduction-to-impermanent-loss/</link>
+      <guid isPermaLink="true">https://cryptoairdropz.com/academy/introduction-to-impermanent-loss/</guid>
+      <category>Beginner</category>
+      <pubDate>Fri, 09 Oct 2026 18:57:51 GMT</pubDate>
+      <description>If you provide liquidity to an AMM pool (e.g. ETH/USDC on Uniswap), impermanent loss (IL) is the gap between what your deposit is worth in the pool versus just holding the two tokens.
+
+**The mechanic:…</description>
+    </item>
+    <item>
+      <title>Crypto Basics: Blocks, Fees, and Why Prices Move</title>
+      <link>https://cryptoairdropz.com/academy/crypto-basics-blocks-fees-and-why-prices-move/</link>
+      <guid isPermaLink="true">https://cryptoairdropz.com/academy/crypto-basics-blocks-fees-and-why-prices-move/</guid>
+      <category>Beginner</category>
+      <pubDate>Fri, 09 Oct 2026 18:57:51 GMT</pubDate>
+      <description>Three ideas that explain 80% of crypto behavior:
+
+**1. Blockchains are slow on purpose.** Every node replays every transaction; that&#39;s the security model. Throughput is scarce, so fees are the auction…</description>
+    </item>
+</channel>
+</rss>
