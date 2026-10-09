@@ -1,14 +1,6 @@
 [
   {
     "source": "CoinDesk",
-    "title": "Robinhood Chain considers technology that gives paying traders priority",
-    "link": "https://www.coindesk.com/business/2026/10/09/robinhood-chain-considers-technology-that-gives-paying-traders-priority",
-    "guid": "b239c4b1-3977-410f-8a9a-c590bfdb446f",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.257768+00:00"
-  },
-  {
-    "source": "CoinDesk",
     "title": "New York AG secures up to $35 million and lifetime crypto ban from Celsius’ Alex Mashinsky",
     "link": "https://www.coindesk.com/policy/2026/10/09/new-york-ag-secures-up-to-usd35-million-and-lifetime-crypto-ban-from-celsius-alex-mashinsky",
     "guid": "bfb82842-fb65-4bbb-972a-6bffb9aa1d9a",
@@ -118,14 +110,6 @@
     "guid": "https://decrypt.co/?p=380599",
     "summary": "",
     "fetched_at": "2026-10-09T19:01:44.304231+00:00"
-  },
-  {
-    "source": "Decrypt",
-    "title": "Ethereum L2 Starknet Jumps 20% After Saying It Wants to Become an L1",
-    "link": "https://decrypt.co/380585/ethereum-l2-starknet-jumps-20-after-saying-it-wants-to-become-an-l1",
-    "guid": "https://decrypt.co/?p=380585",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.304245+00:00"
   },
   {
     "source": "Decrypt",
@@ -374,5 +358,13 @@
     "guid": "4644feb9-2d5d-44bc-b91d-04c94021a384",
     "summary": "",
     "fetched_at": "2026-10-09T21:27:55.823552+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "Robinhood Chain considers technology that gives paying traders priority",
+    "link": "https://www.coindesk.com/business/2026/10/09/robinhood-chain-considers-technology-that-gives-paying-traders-priority",
+    "guid": "b239c4b1-3977-410f-8a9a-c590bfdb446f",
+    "summary": "",
+    "fetched_at": "2026-10-09T23:14:59.965319+00:00"
   }
 ]
