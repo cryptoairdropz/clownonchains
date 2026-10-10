@@ -354,7 +354,67 @@ const AFFILIATE = [
     why:["Purpose-built for liquidity pool management", "Automates adding and removing liquidity", "Snipes new LP tokens", "The only tool here focused on LP rather than plain trading"],
     watch:["Impermanent loss remains the primary LP risk", "New LP tokens can rug pull at any time", "Funds sit with the bot"],
     steps:["Open the Zenith referral link", "Press Start in Telegram", "Code kiseryott attaches automatically", "Set up a wallet", "Deposit", "Choose a pool and start"],
-    faq:[["What is Zenith?", "A Telegram bot for managing liquidity pool positions automatically, including adding and withdrawing liquidity."], ["What is the main risk of Zenith?", "Impermanent loss. Providing liquidity means automatically selling the asset that rises and buying the one that falls."], ["Is Zenith suitable for beginners?", "Not really. LP management requires understanding impermanent loss and new-token risk."], ["What are Zenith's fees?", "Around 1% per transaction."]] }
+    faq:[["What is Zenith?", "A Telegram bot for managing liquidity pool positions automatically, including adding and withdrawing liquidity."], ["What is the main risk of Zenith?", "Impermanent loss. Providing liquidity means automatically selling the asset that rises and buying the one that falls."], ["Is Zenith suitable for beginners?", "Not really. LP management requires understanding impermanent loss and new-token risk."], ["What are Zenith's fees?", "Around 1% per transaction."]] },
+  {
+    slug:"bitunix", name:"Bitunix", code:"kQUuIv",
+    url:"https://www.bitunix.com/u-link/referral/invitee?inviteCode=kQUuIv&t_act=-1",
+    kind:"exchange",
+    tagline:"Derivatives-first exchange with spot trading and copy trading",
+    bonus:"Fee discount + signup bonus",
+    feeTaker:"0.10%", feeMaker:"0.10%", disc:"20%", pairs:"100+",
+    why:[
+      "Derivatives focus — strong futures offering alongside spot",
+      "Copy trading built in, so you can follow experienced traders",
+      "Competitive fee structure for both spot and derivatives",
+    ],
+    watch:[
+      "Verify fee tiers directly — promotional rates may differ from standard",
+      "Check derivatives funding rates before opening leveraged positions",
+      "Confirm your region is supported before depositing",
+    ],
+    steps:[
+      "Open the Bitunix referral link",
+      "Register and complete verification",
+      "Apply the referral code at signup — it cannot be added later",
+      "Start with spot trading, then explore derivatives if you want leverage",
+    ],
+    "faq":[
+   ["Is the Bitunix referral code still active?","Yes. kQUuIv is active and gives new accounts a fee discount plus a signup bonus."],
+   ["Can I change the referral code after registering?","No. Referral attribution is written to the account at creation and cannot be attached later."],
+   ["What does the Bitunix fee discount cover?","It reduces trading fees on spot. Derivatives fees follow the standard tier schedule."],
+   ["Do I need KYC to trade on Bitunix?","Yes for trading and withdrawals. Enable 2FA immediately after registering."]
+  ]
+},
+  {
+    slug:"blofin", name:"Blofin", code:"RdMJCe",
+    url:"https://blofin.com/register?referral_code=RdMJCe",
+    kind:"exchange",
+    tagline:"Futures-focused exchange with spot, copy trading and an earn suite",
+    bonus:"Fee discount on spot and futures",
+    feeTaker:"0.05%", feeMaker:"0.02%", disc:"10%", pairs:"200+",
+    why:[
+      "Futures-first design with competitive maker fees",
+      "Copy trading across spot and futures in one interface",
+      "Earn products for idle balances alongside active trading",
+    ],
+    watch:[
+      "Standard fee tiers differ from promotional — check the fee schedule",
+      "Derivatives liquidation rules differ by contract, read before opening",
+      "Verify supported pairs for your region before depositing",
+    ],
+    steps:[
+      "Open the Blofin referral link",
+      "Register and complete verification",
+      "Apply the referral code at signup — it cannot be added later",
+      "Start with spot, then move to futures if you understand the risks",
+    ],
+    "faq":[
+   ["Is the Blofin referral code still active?","Yes. RdMJCe is active and gives new accounts a discount on spot and futures fees."],
+   ["What maker fee does Blofin charge?","Standard maker fee is 0.02%, lower than the 0.05% taker rate — limit orders are cheaper."],
+   ["Can I trade futures and spot in the same account?","Yes. Blofin supports both in one interface, and copy trading is available for both."],
+   ["Do I need KYC to use a referral code?","Yes for trading and withdrawals. Complete verification before depositing."]
+  ]
+},
 ];
 
 const ANGLES = [
@@ -412,6 +472,14 @@ const ANGLES = [
 //  NEWS — artikel parafrase, di-host sendiri (tanpa redirect)
 // ------------------------------------------------------------
 const NEWS = [
+  {
+    slug:"dana-etf-bitcoin-as-tersedot-729-juta-dolar-dua-hari",
+    t:"Dana ETF Bitcoin AS Tersedot 729 Juta Dolar Dua Hari",
+    s:"Market Intel",
+    d:"Just now",
+    src:"https://bitcoinmagazine.com/markets/bitcoin-etfs-shed-729-million-in-two-days",
+    body:"Dana ETF bitcoin AS kehilangan 729 juta dolar dalam dua hari. Angka itu bukan kecil — dan semua pemain besar ikut menarik uang.\n\n## Arus Keluar Dua Hari\n\nInvestor AS menarik 729 juta dolar dari ETF spot bitcoin pada Rabu dan Kamis, berdasarkan data Farside Investors. Dana yang dikelola BlackRock, Fidelity, Morgan Stanley, dan ARK 21-Shares semuanya mengalami outflow signifikan. Padahal di awal minggu mereka sempat menjual sekitar 90 juta dolar, lalu Selasa justru belanja hampir 119 juta dolar. Berbalik arah dalam hitungan hari — dan volume paniknya jauh lebih besar. Perubahan cepat seperti ini jarang terjadi, dan ketika terjadi biasanya mencerminkan pergeseran mendadak dalam sentimen institusional.\n\n## Harga Ikut Tekan\n\nBitcoin sekarang di sekitar 82.688 dolar, turun lebih dari 3% dalam sepekan. Sempat rebound hampir 2% dalam 24 jam terakhir, tapi belum cukup buat nutrusin kerugian. Pekan lalu koin ini hampir menyentuh 90.000 dolar. Sekarang sudah menjauh 34% dari level tertinggi 126.080 dolar yang tercatat bulan Oktober. Bulan ini dinamai Uptober — sebutan untuk Oktober yang historisnya menguntungkan pemegang bitcoin. Tapi tahun ini polanya belum jelas.\n\n## Konteks Lebih Luas\n\nTahun 2026 sebagian besar jalan di bear market, meski analis mulai tunjukin bukti bull market setelah rally Agustus-September. Ada juga kontras menarik: bulan lalu Fed naikkin suku bunga 0,25%, tapi harga bitcoin justru naik setelahnya. Artinya aliran ETF ini tidak bisa dibaca sendiri — harus lihat kondisi makro juga. Faktor eksternal bisa menetekan atau mempertekanan dampak outflow.\n\n## Kenapa Ini Buat Kamu\n\nAliran ETF adalah cermin sentimen institusional. Dana semacam BlackRock tidak akan semput-samput keluar kalau mereka yakin harga bakal naik lagi. Data ini jadi sinyal peringatan: uang besar masih ragu. Buat kamu yang pegang posisi, pergerakan ETF layak jadi acuan — bukan buat panik, tapi buat ngatur risk management. kalau outflow berlanjut, bisa jadi ada tekanan lebih lanjut ke harga. Sebaliknya, kalau aliran balik positif, itu konfirmasi bahwa institusi mulai lagi akumulasi."
+  },
   {
     slug:"blockchaincom-ajuin-dua-lisensi-cftc-buat-prediction-markets-dan-deriv",
     t:"Blockchain.com Ajuin Dua Lisensi CFTC Buat Prediction Markets dan Derivatif Crypto di AS",

@@ -169,14 +169,6 @@
   },
   {
     "source": "Bitcoin Magazine",
-    "title": "Bitcoin ETFs Shed $729M in Two Days as Investors Reverse Course",
-    "link": "https://bitcoinmagazine.com/markets/bitcoin-etfs-shed-729-million-in-two-days",
-    "guid": "https://bitcoinmagazine.com/?p=55752",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.611137+00:00"
-  },
-  {
-    "source": "Bitcoin Magazine",
     "title": "Ledger Warns Buyers Not to Set Up Wallets From Reseller After Users Report Losses",
     "link": "https://bitcoinmagazine.com/news/ledger-warns-users-after-losses-reported",
     "guid": "https://bitcoinmagazine.com/?p=55748",
@@ -406,5 +398,13 @@
     "guid": "https://decrypt.co/?p=380582",
     "summary": "",
     "fetched_at": "2026-10-10T10:39:58.752737+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "Bitcoin's $19 billion wake-up call: One-year later, has crypto learned anything?",
+    "link": "https://www.coindesk.com/markets/2026/10/10/bitcoin-s-usd19-billion-wake-up-call-one-year-later-has-crypto-learned-anything",
+    "guid": "90ad3e9d-93c6-4145-b07f-1426ceb5973f",
+    "summary": "",
+    "fetched_at": "2026-10-10T11:14:58.209227+00:00"
   }
 ]
