@@ -413,6 +413,14 @@ const ANGLES = [
 // ------------------------------------------------------------
 const NEWS = [
   {
+    slug:"blockchaincom-ajuin-dua-lisensi-cftc-buat-prediction-markets-dan-deriv",
+    t:"Blockchain.com Ajuin Dua Lisensi CFTC Buat Prediction Markets dan Derivatif Crypto di AS",
+    s:"Market Intel",
+    d:"Just now",
+    src:"https://cointelegraph.com/news/blockchain-cftc-approval-derivatives-prediction-markets?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    body:"Blockchain.com lagi serius masuk pasar regulasi Amerika Serikat. Perusahaan exchange crypto ini dikabarin lagi ngajuin dua lisensi ke CFTC — Commodity Futures Trading Commission — buat bisa tawarkan prediction markets dan derivatif crypto secara legal.\n\n## Dua Lisensi yang Diminta\n\nLisensi pertama adalah **designated contract market (DCM)**. Ini ngasih Blockchain.com izin buat jadi futures exchange buat event contracts. Lisensi kedua adalah **futures commission merchant (FCM)**. Ini ngasih mereka izin buat jadi broker derivatif. Kalau dua-duanya disetujui, Blockchain.com bisa operasikan semuanya sendiri tanpa harus routed lewat pihak ketiga kayak Polymarket atau Hyperliquid.\n\nCEO Peter Smith bilang visinya adalah satu tempat buat semua: kelola aset digital, trading derivatives, dan bet on real-world events — semuanya dalam satu platform. Ini strategi jelas buat ngambil pasar yang lagi booming.\n\n## Rush Federal\n\nBlockchain.com nggak ng sendirian. Setidaknya ada 11 perusahaan lain yang juga ngajuin DCM license tahun ini, dan CFTC sudah menyetujui 6 di antaranya di 2026. Ini jadi persaingan ketat buat dapetin validitas federal.\n\nKenapa berebut? Karena lisensi CFTC ngasih perlindungan dari state regulator yang terus menyerang prediction markets. New Jersey contohnya masih berjuang di Supreme Court melawan Kalshi.\n\n## CFTC vs State Regulators\n\nCFTC Chair Michael Selig bilang agency-nya punya **eksklusif jurisdiction** soal prediction markets. Dia atur rulemaking buat crypto spot markets dan ngutip FTX collapse sebagai alasan. Tapi state regulators nggak terima — mereka terus berjuang di court soal siapa yang berwenang ngatur pasar kayak gini.\n\n## Kenapa Ini Buat Kamu\n\nKalau Blockchain.com dapet lisensi ini, kamu nggak perlu lagi pake platform yang regulasinya abu-abu. Ada opsi legal yang besar untuk trading event contracts dan derivatif crypto yang federal regulated. Ini juga sinyal bahwa pasar prediction market lagi matang — dan makin mainstream."
+  },
+  {
     slug:"ledger-investigasi-pencurian-jutaan-dolar-dari-reseller-pengguna-diimb",
     t:"Ledger Investigasi Pencurian Jutaan Dolar dari Reseller, Pengguna Diimbau Jangan Setup Perangkat",
     s:"Market Intel",

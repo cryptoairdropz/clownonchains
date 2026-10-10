@@ -178,9 +178,14 @@ function head(o) {
   // run past the limit.
   const truncateDesc = (s) => {
     if (!s || s.length <= 158) return s;
-    const cut = s.slice(0, 158);
+    let cut = s.slice(0, 158);
     const lastSpace = cut.lastIndexOf(' ');
-    return cut.slice(0, lastSpace) + '…';
+    if (lastSpace > 0) cut = cut.slice(0, lastSpace);
+    // Never end inside an HTML entity: "&quot;" cut in half leaves a
+    // dangling "&quo…" in the meta tag. Back off to before the "&".
+    const amp = cut.lastIndexOf('&');
+    if (amp !== -1 && cut.indexOf(';', amp) === -1) cut = cut.slice(0, amp);
+    return cut.replace(/[\s;,&]+$/, '') + '…';
   };
   const blocks = (() => {
     if (!o.jsonld) return '';
