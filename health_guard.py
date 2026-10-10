@@ -337,7 +337,7 @@ def check_css_parse():
     if not m:
         return False, ".nav-links a rule missing"
     body = m.group(1)
-    if "white-space:nowrap" not in re.sub(r"/\*.*?\*/", "", body, re.S).replace(" ", ""):
+    if "white-space:nowrap" not in re.sub(r"/\*.*?\*/", "", body, flags=re.S).replace(" ", ""):
         return False, "nav link rule is missing a live white-space:nowrap declaration"
     return True, "all CSS blocks parse; nav nowrap is live"
 
