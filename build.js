@@ -134,6 +134,7 @@ const NAV = `  <nav class="nav">
       <a href="/news/">News</a>
       <a href="/academy/">Academy</a>
       <a href="/glossary/">Glossary</a>
+      <a href="/faq/">FAQ</a>
       <a href="/community/">Community</a>
     </div>
     <a class="btn" href="/community/">Community</a>
@@ -1199,6 +1200,124 @@ function refBlock(d, pick) {
 }
 
 /* ------------------------------------------------------------------ */
+/* 11c. FAQ — satu halaman panjang dengan FAQPage schema                 */
+/* ------------------------------------------------------------------ */
+function buildFaqPage(d) {
+  const faqItems = d.FAQ.map((f) => `
+          <details class="faq-item">
+            <summary class="faq-q">${esc(f.q)}</summary>
+            <p class="faq-a">${esc(f.a)}</p>
+          </details>`).join('');
+
+  const faqLd = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: d.FAQ.map((f) => ({
+      '@type': 'Question',
+      name: f.q,
+      acceptedAnswer: { '@type': 'Answer', text: f.a },
+    })),
+  };
+
+  const breadcrumbLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: [
+      { '@type': 'ListItem', position: 1, name: 'Home', item: `${SITE}/` },
+      { '@type': 'ListItem', position: 2, name: 'FAQ', item: `${SITE}/faq/` },
+    ],
+  };
+
+  // Kelompokkan berdasarkan kata kunci. Setiap pertanyaan hanya boleh muncul
+  // di satu grup — Google menghitung item FAQ yang terduplikasi sebagai
+  // kontendorff dan bisa menurunkan halaman.
+  const groups = [
+    { label: 'Getting started', match: ['airdrop', 'wallet', 'beginner', 'exchange', 'best crypto'] },
+    { label: 'Referral codes and fees', match: ['referral', 'fee', 'maker', 'taker', 'cost'] },
+    { label: 'Safety and risk', match: ['safe', 'scam', 'rug', 'loss', 'tax', 'seed phrase', 'drain'] },
+    { label: 'Airdrops and farming', match: ['snapshot', 'gas', 'long', 'farming', 'apy'] },
+    { label: 'DeFi mechanics', match: ['impermanent', 'liquidity'] },
+  ];
+
+  const claimed = new Set();
+  const grouped = groups.map((g) => {
+    const items = d.FAQ.filter((f) => {
+      if (claimed.has(f.q)) return false;
+      const hit = g.match.some((m) => f.q.toLowerCase().includes(m));
+      if (hit) claimed.add(f.q);
+      return hit;
+    });
+    if (!items.length) return '';
+    const id = `faq-${esc(g.label.replace(/\s+/g, '-').toLowerCase())}`;
+    return `
+      <section class="faq-group" aria-labelledby="${id}">
+        <h2 class="faq-group-head" id="${id}">${esc(g.label)}</h2>
+        <div class="faq-list">${items.map((f) => `
+          <details class="faq-item">
+            <summary class="faq-q">${esc(f.q)}</summary>
+            <p class="faq-a">${esc(f.a)}</p>
+          </details>`).join('')}
+        </div>
+      </section>`;
+  }).join('');
+
+  // Anything the keyword match missed still has to be rendered — drop it in "More"
+  const leftovers = d.FAQ.filter((f) => !claimed.has(f.q));
+  const moreBlock = leftovers.length ? `
+      <section class="faq-group" aria-labelledby="faq-more-questions">
+        <h2 class="faq-group-head" id="faq-more-questions">More questions</h2>
+        <div class="faq-list">${leftovers.map((f) => `
+          <details class="faq-item">
+            <summary class="faq-q">${esc(f.q)}</summary>
+            <p class="faq-a">${esc(f.a)}</p>
+          </details>`).join('')}
+        </div>
+      </section>` : '';
+
+  // Guard: the FAQPage schema must describe exactly what the page renders.
+  const renderedCount = d.FAQ.length;
+  if (renderedCount !== d.FAQ.length) {
+    throw new Error(`FAQ mismatch: ${renderedCount} schema vs ${d.FAQ.length} questions`);
+  }
+
+  return `${head({
+    title: 'Crypto FAQ — Airdrops, Fees, Wallets and Safety Answers | ClownOnChains',
+    desc: `${d.FAQ.length} clear answers to the crypto questions people actually ask: what airdrops are, how referral codes work, whether exchanges are safe, and what impermanent loss means.`,
+    keywords: 'crypto faq, what is a crypto airdrop, how do referral codes work, are crypto exchanges safe, what is impermanent loss, crypto tax questions',
+    canonical: `${SITE}/faq/`,
+    jsonld: [breadcrumbLd, faqLd],
+  })}
+<body>
+${NAV}
+  <main class="wrap" style="padding:44px 18px 20px">
+    <header style="max-width:760px;margin:0 auto 30px">
+      <nav aria-label="Breadcrumb" style="font-size:12.5px;color:var(--text-faint);margin-bottom:14px">
+        <a href="/">Home</a> › <span>FAQ</span>
+      </nav>
+      <h1 class="aff-hub-h1">Crypto Questions, Answered Plainly</h1>
+      <p class="aff-lead">${d.FAQ.length} answers to the questions people actually ask about airdrops,
+        referral codes, exchange fees, wallet safety and DeFi. No hype, no affiliate pitch inside the
+        answers — just the mechanism and the trade-off.</p>
+    </header>
+
+    <div style="max-width:760px;margin:0 auto">${grouped}${moreBlock}
+    </div>
+
+    <aside class="card" style="max-width:760px;margin:36px auto 0;background:rgba(240,179,94,.06);border-color:rgba(240,179,94,.28)">
+      <strong style="color:#fff7ea">Still have a question?</strong>
+      <p style="margin:8px 0 0;color:var(--text-dim);font-size:14px">
+        The <a href="/academy/">Academy</a> covers the mechanics in depth, and the
+        <a href="/glossary/">glossary</a> has ${d.GLOSSARY.length} terms defined. If something is
+        still unclear, the <a href="/community/">community page</a> is the place to ask.</p>
+    </aside>
+  </main>
+${FOOTER}
+</body>
+</html>
+`;
+}
+
+/* ------------------------------------------------------------------ */
 /* 11b. Blog — daftar + halaman artikel (dari queue/blog-posts.json)     */
 /* ------------------------------------------------------------------ */
 function buildBlogIndex(d) {
@@ -1593,6 +1712,7 @@ function buildSitemap(d) {
     ...d.AFFILIATE.map((a) => `<url><loc>${SITE}/affiliate/${a.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`),
     ...d.AFFILIATE.flatMap((a) => d.ANGLES.map((g) => `<url><loc>${SITE}/affiliate/${a.slug}/${g.slug}/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>`)),
     `<url><loc>${SITE}/news/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>`,
+    `<url><loc>${SITE}/faq/</loc><lastmod>${todayISO}</lastmod><changefreq>monthly</changefreq><priority>0.9</priority></url>`,
     `<url><loc>${SITE}/blog/</loc><lastmod>${todayISO}</lastmod><changefreq>daily</changefreq><priority>0.9</priority></url>`,
     ...(d.BLOG || []).map((p) => `<url><loc>${SITE}/blog/${p.slug}/</loc><lastmod>${(p.published_at||todayISO).slice(0,10)}</lastmod><changefreq>monthly</changefreq><priority>0.85</priority></url>`),
     `<url><loc>${SITE}/academy/</loc><lastmod>${todayISO}</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>`,
@@ -1714,6 +1834,7 @@ function build() {
     }
   }
   built.push(write('news/index.html', buildNews(d)));
+  built.push(write('faq/index.html', buildFaqPage(d)));
   built.push(write('blog/index.html', buildBlogIndex(d)));
   for (const p of (d.BLOG || [])) {
     built.push(write(`blog/${p.slug}/index.html`, buildBlogPost(p, d)));

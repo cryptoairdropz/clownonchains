@@ -629,3 +629,12 @@ a.air-card:hover .air-view{color:var(--peach)}
   display:grid;gap:12px;
   grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
 }
+
+/* ===== v14: FAQ page ===== */
+.faq-group{margin-bottom:34px}
+.faq-group-head{
+  font-family:ui-serif,Georgia,serif;font-size:19px;margin:0 0 14px;color:#fbf3e6;
+  padding-bottom:9px;border-bottom:1px solid var(--border-soft);
+}
+.faq-item summary{list-style:none}
+.faq-item summary::-webkit-details-marker{display:none}

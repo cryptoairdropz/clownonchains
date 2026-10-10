@@ -87,6 +87,79 @@ const AIRDROPS = [
       "Sustain activity over time — one-off transactions rarely qualify",
     ],
   },
+  {
+    slug:"zama",
+    name:"Zama",
+    tag:"Confirmed",
+    status:"live",
+    chain:"Ethereum",
+    tf:"FHE",
+    allocation:"Points program, token confirmed",
+    url:"https://www.zama.ai/",
+    code:"",
+    summary:"Fully Homomorphic Encryption network. Early testnet participation with points accrual for meaningful FHE computation rather than bridge-and-swap volume farming.",
+    tasks:[
+      { h:"Understand what FHE is", p:"Fully Homomorphic Encryption lets computation run on encrypted data without decrypting it. That is a genuinely different primitive from the transparency most chains are built on, so it changes what the network is actually for." },
+      { h:"Run the developer testnet", p:"FHE networks reward running computations, not trading. Completing the official testnet tasks accrues points tied to meaningful work, which is a materially better signal than repeated dust transactions." },
+      { h:"Avoid volume-farming patterns", p:"Networks that ship a real technical primitive attract sybil defence aimed at obvious farming. Repeated identical interactions across many wallets is exactly the pattern that gets filtered." },
+      { h:"Watch for the mainnet conditions", p:"Check what the points programme actually promises before committing meaningful time or capital. Points with no stated conversion are a points programme, not an allocation." }
+    ]
+  },
+  {
+    slug:"monad",
+    name:"Monad",
+    tag:"Confirmed",
+    status:"live",
+    chain:"Monad",
+    tf:"L1 EVM",
+    allocation:"Points programme running",
+    url:"https://www.monad.xyz/",
+    code:"",
+    summary:"High-throughput EVM Layer 1 with parallel execution. Early ecosystem incentives where on-chain activity during the testnet period determines early allocation weight.",
+    tasks:[
+      { h:"Set up the wallet and fund it", p:"The chain is EVM-compatible, so a standard wallet works. Fund it from mainnet and bridge or mint on the testnet using the official route only." },
+      { h:"Interact with early dApps", p:"Points weight depends on using the applications the ecosystem wants to bootstrap, not on making trades. Focus on DeFi primitives that were live early rather than on volume." },
+      { h:"Be consistent on one wallet", p:"The strongest signal is varied, sustained activity from a single address. Spreading thin interactions across many wallets reads as farming and is weighted accordingly." },
+      { h:"Verify the token exists before pricing anything in", p:"Confirm the allocation structure from official documentation. Early points programmes change terms more often than users expect." }
+    ]
+  },
+  {
+    slug:"berachain",
+    name:"Berachain",
+    tag:"Confirmed",
+    status:"live",
+    chain:"Berachain",
+    tf:"L1 EVM",
+    allocation:"Genesis allocation with criteria",
+    url:"https://www.berachain.com/",
+    code:"",
+    summary:"Liquid staking and EVM Layer 1. Early network participation and ecosystem usage formed part of the genesis allocation criteria announced ahead of the token distribution.",
+    tasks:[
+      { h:"Understand the liquidity model", p:"The chain is built around proof-of-liquidity, which changes who gets incentives relative to a proof-of-stake chain. Read how it works before deciding how to participate." },
+      { h:"Bridge and interact early", p:"Genesis allocations typically weight early usage of core infrastructure. Bridging in and using the main protocols during the early period mattered more than volume." },
+      { h:"Check the criteria list", p:"Allocation criteria are published and specific. Match your activity to the listed criteria rather than assuming general usage counts equally." },
+      { h:"Avoid leverage", p:"Early ecosystem incentives plus thin liquidity is a combination that liquidates quickly. Size positions for the liquidity that exists, not the liquidity you expect." }
+    ]
+  },
+  {
+    slug:"sei-network",
+    name:"Sei",
+    tag:"Confirmed",
+    status:"live",
+    chain:"Sei",
+    tf:"L1 EVM",
+    allocation:"Seasons-based allocation",
+    url:"https://www.sei.io/",
+    code:"",
+    summary:"Trading-optimised Layer 1 with frequent ecosystem seasons. Participation in trading infrastructure, DeFi and app usage determines season-based allocation weight.",
+    tasks:[
+      { h:"Read the current season rules", p:"Seasons reset and the criteria change. Reading the rules for the current season before acting is the difference between counted activity and wasted activity." },
+      { h:"Focus on trading infrastructure", p:"The chain is built around orderbook performance, so using its trading and DeFi primitives is weighted differently from generic transfers." },
+      { h:"Track across seasons", p:"Because seasons reset, the pattern that worked in one season may not carry over. Long-term participants adapt faster than people who optimise for a single window." },
+      { h:"Treat utility as separate from allocation", p:"Points determine potential allocation; they do not determine whether the chain is useful. Check whether the applications you would actually use exist." }
+    ]
+  },
+
 ];
 
 // ------------------------------------------------------------
@@ -754,6 +827,55 @@ const FAQ = [
     q: "How do I avoid airdrop scams?",
     a: "Never share your seed phrase, never sign a transaction you cannot explain, and remember that real airdrops appear in your wallet — never in a direct message. Eligibility checks are read-only; any site asking you to connect and sign to 'claim' is a red flag."
   },
+  {
+    q: "What is the best crypto exchange for beginners?",
+    a: "There is no single best exchange, but the right choice for a beginner is the one with deep liquidity on the pairs you want, a straightforward interface, and a fee you can afford at low volume. Binance and Bybit cover most needs because of their liquidity; MEXC and Gate.io offer far more pairs but carry delisting risk and thinner books on small caps. The referral code applies at registration and cannot be added later, so it is worth applying whichever you pick."
+  },
+  {
+    q: "How do crypto referral codes work?",
+    a: "A referral code links your new account to a referrer, and the exchange records that permanently at the moment the account is created. The usual benefit is a discount on trading fees, with some platforms also offering a staged signup bonus. The critical detail is timing: the code must be present in the signup form before you submit it, because no exchange can attach a referrer to an account that already exists."
+  },
+  {
+    q: "Are crypto exchanges safe?",
+    a: "Major exchanges have not suffered a catastrophic loss of user funds of the kind that destroyed Mt. Gox or FTX, which is a meaningful baseline but not a guarantee. Most losses attributed to exchanges are actually phishing, malware, or a user approving a malicious contract rather than a breach. Two-factor authentication stops the first category; keeping only working capital on the platform and withdrawing the rest to a wallet you control removes most of the exposure."
+  },
+  {
+    q: "What is impermanent loss?",
+    a: "Impermanent loss is the difference between holding a token and providing liquidity for it in an automated market maker pool. When the price of one side of the pair rises relative to the other, the pool rebalances by selling the winner and buying the loser, and you end up with less of the token that performed. It is called impermanent because it reverses if prices return, but it becomes permanent the moment you withdraw after a large divergence."
+  },
+  {
+    q: "How long does an airdrop take to arrive?",
+    a: "After a project takes a snapshot, the distribution typically takes weeks to a few months. The gap is announcement, then an eligibility check, then claim. Projects that run multiple seasons may release across rounds, so a single airdrop can arrive in instalments. Projects that never announce their token mean the tokens may never arrive, so treat a speculative programme as worth nothing until the token is distributed."
+  },
+  {
+    q: "What is a crypto wallet seed phrase?",
+    a: "The seed phrase is the master key that generates every address and private key in a wallet. Whoever has it controls the funds, which is why it should never be typed into a website, sent in a message, or stored in cloud notes. Back it up on paper or steel, keep two copies in separate physical locations, and verify a restore from the backup before depositing anything meaningful."
+  },
+  {
+    q: "Is crypto taxed?",
+    a: "In most countries yes, and the rules vary substantially by jurisdiction. Generally, disposing of crypto is a taxable event, disposals can offset gains against losses within the allowed period, and airdrops are usually treated as income at receipt with a cost basis equal to the value received. Rates and thresholds differ by country and change, so treat this as a general framework rather than advice, and check the specific rules where you are tax resident."
+  },
+  {
+    q: "What is a rug pull?",
+    a: "A rug pull is when a token team removes the liquidity backing the pair or drains the contract, leaving holders unable to sell. The signals are usually visible beforehand: a small number of wallets holding most of the supply, shallow liquidity relative to the headline valuation, an unlock schedule dumping supply soon, or a contract that gained transfer-restriction functions. Checking holder concentration and book depth rules out most of the worst cases in under a minute."
+  },
+  {
+    q: "Why does a referral code need to be applied before I register?",
+    a: "Referral attribution is written to the account at creation. Once the account exists, there is no setting and no support process that will attach a referrer afterwards. This is why creating the account first and hunting for a code field afterwards permanently loses the discount, and why applying a code costs nothing at registration while missing it costs money for the life of the account."
+  },
+  {
+    q: "What is the difference between maker and taker fees?",
+    a: "A maker order adds liquidity to the order book by resting as a limit order, and a taker order removes liquidity by filling immediately. Exchanges charge less for makers because they improve the book for everyone. The gap between the two rates is usually the largest fee saving available to a retail trader, so defaulting to limit orders where your strategy tolerates unfilled orders is often worth more than any referral discount."
+  },
+  {
+    q: "How much gas does an airdrop farm cost?",
+    a: "It depends entirely on the network and the timing. On a Layer 2, an interaction can cost cents; on mainnet Ethereum at a busy period it can cost several dollars. Set a monthly gas budget and route interactions through cheap periods. The relevant number is not the cost per interaction but the total cost across every interaction before the snapshot, which is what determines whether farming was worth doing."
+  },
+  {
+    q: "Is a high APY always a bad sign?",
+    a: "Not always, but it should make you ask where the yield comes from. A yield farm paying triple-digit APY is usually paying in an inflationary token whose price depends on new deposits continuing to arrive, which means later participants fund earlier ones. Where the source is visible on-chain as real trading fees, real borrowing demand or real staking rewards, a high rate can be legitimate. If you cannot point to the source, that is the answer."
+  },
+
 ];
 
 // ------------------------------------------------------------
