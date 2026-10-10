@@ -122,24 +122,38 @@ const BRAND = `<a class="brand" href="/">
   <span>Clown<span class="accent">OnChains</span></span>
 </a>`;
 
-const NAV = `  <nav class="nav">
+/* Item menu. Dipakai ulang oleh panel mobile (satu daftar, satu id) supaya
+   tidak ada duplikasi link — crawler tetap melihat 10 link di HTML. */
+const NAV_ITEMS = [
+  { href: '/airdrops/', label: 'Airdrops' },
+  { href: '/exchanges/', label: 'Exchanges' },
+  { href: '/web3-tools/', label: 'Web3 Tools' },
+  { href: '/affiliate/', label: 'Referral Codes', accent: true },
+  { href: '/blog/', label: 'Guides' },
+  { href: '/news/', label: 'News' },
+  { href: '/academy/', label: 'Academy' },
+  { href: '/glossary/', label: 'Glossary' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/community/', label: 'Community' },
+];
+
+const NAV = `  <nav class="nav" id="top" aria-label="Main">
   <div class="nav-inner">
     ${BRAND}
-    <div class="nav-links">
-      <a href="/airdrops/">Airdrops</a>
-      <a href="/exchanges/">Exchanges</a>
-      <a href="/web3-tools/">Web3 Tools</a>
-      <a href="/affiliate/">Referral Codes</a>
-      <a href="/blog/">Guides</a>
-      <a href="/news/">News</a>
-      <a href="/academy/">Academy</a>
-      <a href="/glossary/">Glossary</a>
-      <a href="/faq/">FAQ</a>
-      <a href="/community/">Community</a>
+    <button class="nav-toggle" type="button" aria-label="Open menu"
+      aria-expanded="false" aria-controls="nav-links">
+      <span class="nav-toggle-box" aria-hidden="true"><i></i><i></i><i></i></span>
+    </button>
+    <div class="nav-links" id="nav-links">
+      ${NAV_ITEMS.map((i) => `<a href="${i.href}"${i.accent ? ' class="nav-link-accent"' : ''}>${i.label}</a>`).join('\n      ')}
     </div>
-    <a class="btn" href="/community/">Community</a>
+    <a class="btn nav-cta" href="/community/">Community</a>
   </div>
 </nav>`;
+
+/* Dipakai di akhir artikel panjang — tautan biasa, tetap jalan tanpa JS. */
+const BACK_TOP = `
+      <a class="back-top" href="#top">↑ Back to top</a>`;
 
 const FOOTER = `  <footer>
   <div class="wrap foot-inner">
@@ -192,6 +206,7 @@ function head(o) {
   <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
   <link rel="alternate" type="application/rss+xml" title="ClownOnChains Academy" href="/feed.xml" />${blocks}
   <link rel="stylesheet" href="/style.css?v=${CSS_VER}" />
+  <script src="/app.js?v=${CSS_VER}" defer></script>
 </head>`;
 }
 
@@ -358,7 +373,6 @@ ${NAV}
     </section>
   </main>
 ${FOOTER}
-  <script src="/app.js?v=${CSS_VER}" defer></script>
 </body>
 </html>
 `;
@@ -435,7 +449,6 @@ ${NAV}
     </div>
   </main>
 ${FOOTER}
-  <script src="/app.js?v=${CSS_VER}" defer></script>
 </body>
 </html>
 `;
@@ -600,7 +613,6 @@ ${NAV}
     </section>
   </main>
 ${FOOTER}
-  <script src="/app.js?v=${CSS_VER}" defer></script>
 </body>
 </html>
 `;
@@ -846,6 +858,7 @@ ${NAV}
         ${next ? `<a class="card hover" href="/news/${next.slug}/" style="text-align:right"><span class="tut-meta" style="margin:0">Next →</span><span class="tut-title">${esc(next.t)}</span></a>` : '<span></span>'}
       </nav>
     </article>
+${BACK_TOP}
   </main>
 ${FOOTER}
 </body>
@@ -1490,6 +1503,7 @@ ${NAV}
         ${next ? `<a class="card hover" href="/blog/${next.slug}/" style="text-align:right"><span class="tut-meta" style="margin:0">Newer →</span><span class="tut-title">${esc(next.title)}</span></a>` : '<span></span>'}
       </nav>
     </article>
+${BACK_TOP}
   </main>
 ${FOOTER}
 </body>
@@ -1562,7 +1576,6 @@ ${NAV}
     </div>
   </main>
 ${FOOTER}
-  <script src="/app.js?v=${CSS_VER}" defer></script>
 </body>
 </html>
 `;
@@ -1684,6 +1697,7 @@ ${NAV}
         </div>
       </aside>
     </article>
+${BACK_TOP}
 
     <section class="block" style="max-width:760px;margin:0 auto" aria-labelledby="h-more">
       <div class="section-head">
@@ -1775,31 +1789,93 @@ const HEADERS = `/*
   Cache-Control: public, max-age=0, must-revalidate
 `;
 
-const NOT_FOUND = `${head({
-  title: 'Page not found | ClownOnChains',
-  desc: 'That page does not exist. Browse airdrops or the crypto academy instead.',
-  canonical: `${SITE}/404.html`,
-  jsonld: {
-    '@context': 'https://schema.org',
-    '@type': 'WebPage',
-    name: 'Page not found',
-    isPartOf: { '@type': 'WebSite', name: 'ClownOnChains', url: `${SITE}/` },
-  },
-})}
+/* 404 yang berguna: bukan sekadar "not found", tapi SEARCH yang memfilter
+   daftar section secara lokal + pintuan ke semua bagian situs. Tanpa JS
+   form tetap jatuh ke beranda, jadi tidak pernah buntu. */
+function buildNotFound(d) {
+  // Kata kunci yang paling sering diketik orang → arahkan ke kandidat terbaik.
+  const HINTS = [
+    [/airdrop|farm/, '/airdrops/', 'Airdrop tracker', 'Live list of active and upcoming airdrops with task checklists.'],
+    [/academy|tutorial|learn|belajar/, '/academy/', 'Academy', 'Step-by-step lessons from first wallet to DeFi.'],
+    [/glossary|glosarium|arti|meaning/, '/glossary/', 'Glossary', `${d.GLOSSARY.length} crypto terms explained in plain English.`],
+    [/affiliate|referral|kode|code|bonus|voucher/, '/affiliate/', 'Referral Codes', `${d.AFFILIATE.length} verified codes — fee discounts and signup bonuses.`],
+    [/exchange|burst|broker/, '/exchanges/', 'Exchanges', 'Fees, features and availability across major platforms.'],
+    [/bot|tool|tools|trading/, '/web3-tools/', 'Web3 Tools', 'Trading bots, copy trading and liquidity tools with codes.'],
+    [/faq|tanya|question/, '/faq/', 'FAQ', 'Answers to the questions people ask most.'],
+    [/news|berita/, '/news/', 'News', 'Paraphrased crypto news, written out in full on-site.'],
+    [/blog|guide|panduan/, '/blog/', 'Guides', 'In-depth exchange guides and referral tips.'],
+  ];
+
+  // Build ini statis, jadi `?q=` tidak pernah sampai ke sini: halaman 404 yang
+  // sama dikirim untuk semua URL. Form tetap berguna sebagai filter daftar
+  // section oleh app.js, dan tanpa JS form ini jatuh ke beranda — bukan buntu.
+  const suggestions = HINTS.slice(0, 3).map(([, href, title, desc]) => `
+        <a class="nf-sug" href="${href}">
+          <span class="nf-sug-title">${esc(title)}</span>
+          <span class="nf-sug-desc">${esc(desc)}</span>
+        </a>`).join('');
+
+  const sections = [
+    { href: '/airdrops/', icon: '⏰', title: 'Airdrops', desc: `${d.AIRDROPS.length} projects tracked` },
+    { href: '/affiliate/', icon: '🎁', title: 'Referral Codes', desc: `${d.AFFILIATE.length} verified codes` },
+    { href: '/academy/', icon: '📖', title: 'Academy', desc: `${d.TUTORIALS.length} lessons` },
+    { href: '/glossary/', icon: '📚', title: 'Glossary', desc: `${d.GLOSSARY.length} terms` },
+    { href: '/exchanges/', icon: '🏦', title: 'Exchanges', desc: 'Fees compared' },
+    { href: '/faq/', icon: '❓', title: 'FAQ', desc: 'Common questions' },
+  ].map((s) => `
+        <a class="nf-link" href="${s.href}">
+          <span class="nf-link-icon" aria-hidden="true">${s.icon}</span>
+          <span>
+            <span class="nf-link-title">${esc(s.title)}</span>
+            <span class="nf-link-desc">${esc(s.desc)}</span>
+          </span>
+        </a>`).join('');
+
+  return `${head({
+    title: 'Page not found | ClownOnChains',
+    desc: 'That page does not exist. Browse airdrops, referral codes or the crypto academy instead.',
+    canonical: `${SITE}/404.html`,
+    jsonld: {
+      '@context': 'https://schema.org',
+      '@type': 'WebPage',
+      name: 'Page not found',
+      isPartOf: { '@type': 'WebSite', name: 'ClownOnChains', url: `${SITE}/` },
+    },
+  })}
 <body>
 ${NAV}
-  <main class="wrap state-box" style="padding:90px 18px">
-    <div class="big">404 — page not found</div>
-    <p style="margin:0 0 18px">That link does not go anywhere useful.</p>
-    <div class="hero-actions">
+  <main class="wrap nf" style="padding:76px 18px 40px">
+    <p class="nf-code">404</p>
+    <h1 class="nf-h1">This page doesn't exist</h1>
+    <p class="nf-lead">
+      The link may be outdated or mistyped. Everything on the site is one click away below.
+    </p>
+
+    <form class="nf-search" action="/" method="get" role="search">
+      <label class="sr-only" for="nf-q">Search ClownOnChains</label>
+      <input class="field" id="nf-q" type="search" name="q" placeholder="What were you looking for?"
+        autocomplete="off" />
+      <button class="btn primary" type="submit">Search</button>
+    </form>
+    <p class="nf-hint">Or jump straight to one of these:</p>
+
+    <div class="nf-sugs">${suggestions}
+    </div>
+
+    <h2 class="nf-sub">Every section</h2>
+    <div class="nf-links">${sections}
+    </div>
+
+    <div class="hero-actions nf-actions">
       <a class="btn primary" href="/">Back to home</a>
-      <a class="btn ghost" href="/academy/">Open the academy</a>
+      <a class="btn ghost" href="/sitemap.xml">Open the sitemap</a>
     </div>
   </main>
 ${FOOTER}
 </body>
 </html>
 `;
+}
 
 /* ------------------------------------------------------------------ */
 /* 14. Tulis ke disk                                                    */
@@ -1860,7 +1936,7 @@ function build() {
   built.push(write('BingSiteAuth.xml', '<?xml version="1.0"?>\n<users>\n\t<user>D5D58346FA12F8F698EC67016C58E852</user>\n</users>\n'));
   built.push(write('_headers', HEADERS));
   built.push(write('.nojekyll', ''));
-  built.push(write('404.html', NOT_FOUND));
+  built.push(write('404.html', buildNotFound(d)));
 
   // static assets
   for (const f of ['style.css', 'app.interaction.js']) {
