@@ -84,21 +84,45 @@ def http_code(url, timeout=20):
 # checks
 # --------------------------------------------------------------------------
 
+# Files that actually feed the build. build.js reads data.js and
+# queue/blog-posts.json, copies style.css / app.interaction.js verbatim, and
+# require()s affiliate.js + build.config.js. Nothing else under queue/ reaches
+# dist/. Verified by grepping every readFileSync/require in build.js.
+BUILD_INPUTS = (
+    "data.js",
+    "build.js",
+    "affiliate.js",
+    "build.config.js",
+    "style.css",
+    "app.interaction.js",
+    "queue/blog-posts.json",
+)
+
+
 def check_drift():
-    """Source files newer than the built output = changes never deployed."""
+    """Source files newer than the built output = changes never deployed.
+
+    Only real build inputs count. queue/news-raw.json and queue/published.json
+    are bookkeeping: add_news.py rewrites them AFTER data.js is updated and the
+    site is deployed, so their mtime moves while dist/ legitimately does not
+    change. Counting them as drift rebuilt and redeployed the whole site on
+    every publish (~30 min), which made this check fire on a healthy site.
+    A publish that changes content still trips this check via data.js.
+    """
     idx = os.path.join(DIST, "index.html")
     if not os.path.exists(idx):
         return False, "dist/index.html missing"
     built = os.path.getmtime(idx)
     newest, newest_f = 0, None
-    for f in ("data.js", "build.js", "affiliate.js", "style.css", "app.interaction.js"):
-        p = os.path.join(ROOT, f)
+    for rel in BUILD_INPUTS:
+        p = os.path.join(ROOT, rel)
         if os.path.exists(p) and os.path.getmtime(p) > newest:
-            newest, newest_f = os.path.getmtime(p), f
-    # queue/ additions also change the output
-    for p in glob.glob(os.path.join(ROOT, "queue", "*.json")):
-        if os.path.getmtime(p) > newest:
-            newest, newest_f = os.path.getmtime(p), os.path.basename(p)
+            newest, newest_f = os.path.getmtime(p), rel
+    assets = os.path.join(ROOT, "assets")
+    if os.path.isdir(assets):
+        for p in glob.glob(os.path.join(assets, "*")):
+            if os.path.isfile(p) and os.path.getmtime(p) > newest:
+                newest, newest_f = os.path.getmtime(p), "assets/" + os.path.basename(p)
     if newest > built + 2:  # 2s tolerance for mtime granularity
         age_min = int((newest - built) / 60)
         return False, f"{newest_f} is {age_min} min newer than dist/ — unbuilt changes"

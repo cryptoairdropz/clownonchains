@@ -1,14 +1,6 @@
 [
   {
     "source": "CoinDesk",
-    "title": "New York AG secures up to $35 million and lifetime crypto ban from Celsius’ Alex Mashinsky",
-    "link": "https://www.coindesk.com/policy/2026/10/09/new-york-ag-secures-up-to-usd35-million-and-lifetime-crypto-ban-from-celsius-alex-mashinsky",
-    "guid": "bfb82842-fb65-4bbb-972a-6bffb9aa1d9a",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.257813+00:00"
-  },
-  {
-    "source": "CoinDesk",
     "title": "Trump's Iran pledge underpins crypto gains as bitcoin bears face liquidation pressure",
     "link": "https://www.coindesk.com/daybook-us/2026/10/09/trump-s-iran-pledge-underpins-crypto-gains-as-bitcoin-bears-face-liquidation-pressure",
     "guid": "2555b0d5-5f30-4722-8dca-4945684434a9",
@@ -89,14 +81,6 @@
   },
   {
     "source": "Decrypt",
-    "title": "Senate Democrat Presses Cantor Fitzgerald on Tether Ties and Lutnick Family Profits",
-    "link": "https://decrypt.co/380619/senate-democrat-cantor-fitzgerald-tether-lutnick",
-    "guid": "https://decrypt.co/?p=380619",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.304178+00:00"
-  },
-  {
-    "source": "Decrypt",
     "title": "Blockchain.com Seeks Approval for US Prediction Markets and Crypto Derivatives",
     "link": "https://decrypt.co/380612/blockchain-cftc-prediction-markets-crypto-derivatives",
     "guid": "https://decrypt.co/?p=380612",
@@ -126,14 +110,6 @@
     "guid": "https://decrypt.co/?p=380592",
     "summary": "",
     "fetched_at": "2026-10-09T19:01:44.304273+00:00"
-  },
-  {
-    "source": "Decrypt",
-    "title": "Ledger Probes Potential Theft of $87M in User Funds Tied to Crypto Wallet Reseller",
-    "link": "https://decrypt.co/380582/ledger-probes-87m-theft-crypto-wallet-reseller",
-    "guid": "https://decrypt.co/?p=380582",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.304286+00:00"
   },
   {
     "source": "Decrypt",
@@ -182,14 +158,6 @@
     "guid": "d641cf20-95ab-520f-8d89-7abe62cf3954",
     "summary": "",
     "fetched_at": "2026-10-09T19:01:44.335039+00:00"
-  },
-  {
-    "source": "The Block",
-    "title": "Base creator Jesse Pollak says equities and non-dollar stablecoins will lead upcoming ‘tokenization supercycle’",
-    "link": "https://www.theblock.co/news/defi/2026-10-09-tokenization-supercycle-base-jesse-pollak-418144",
-    "guid": "4e3b5e8e-e8ef-5580-b1f7-21d4724ea287",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.335055+00:00"
   },
   {
     "source": "The Block",
@@ -254,22 +222,6 @@
     "guid": "https://bitcoinmagazine.com/?p=55732",
     "summary": "",
     "fetched_at": "2026-10-09T19:01:44.611244+00:00"
-  },
-  {
-    "source": "Bitcoin Magazine",
-    "title": "AI Coding Agents Drive Surge in Bitcoin Integration Requests: Breez",
-    "link": "https://bitcoinmagazine.com/news/ai-coding-agents-drive-bitcoin-integration",
-    "guid": "https://bitcoinmagazine.com/?p=55727",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.611257+00:00"
-  },
-  {
-    "source": "Bitcoin Magazine",
-    "title": "WhiteBIT Integrates Lightning Network for Fast and Cheap Bitcoin Transactions",
-    "link": "https://bitcoinmagazine.com/news/whitebit-integrates-lightning-network",
-    "guid": "https://bitcoinmagazine.com/?p=55723",
-    "summary": "",
-    "fetched_at": "2026-10-09T19:01:44.611269+00:00"
   },
   {
     "source": "CoinDesk",
@@ -345,14 +297,6 @@
   },
   {
     "source": "CoinDesk",
-    "title": "U.S. CFTC moves to fold event contracts into swaps regulations as legal fight rages",
-    "link": "https://www.coindesk.com/policy/2026/10/09/u-s-cftc-moves-to-fold-event-contracts-into-swaps-regulations-as-legal-fight-rages",
-    "guid": "2ae93f2b-3de3-4b2f-842a-a5f511189661",
-    "summary": "",
-    "fetched_at": "2026-10-09T21:27:55.823452+00:00"
-  },
-  {
-    "source": "CoinDesk",
     "title": "DWF Labs subsidiaries sue BitGo for $141 million over alleged token lock-up breach",
     "link": "https://www.coindesk.com/policy/2026/10/09/dwf-labs-subsidiaries-sue-bitgo-for-usd141-million-over-alleged-token-lock-up-breach",
     "guid": "4644feb9-2d5d-44bc-b91d-04c94021a384",
@@ -374,5 +318,93 @@
     "guid": "https://decrypt.co/?p=380585",
     "summary": "",
     "fetched_at": "2026-10-09T23:53:56.636574+00:00"
+  },
+  {
+    "source": "Bitcoin Magazine",
+    "title": "Bitcoin Life Insurer Meanwhile Raises $37.5M as Wealthy Families Look to Pass On Their BTC",
+    "link": "https://bitcoinmagazine.com/news/meanwhile-bitcoin-raises-37-million",
+    "guid": "https://bitcoinmagazine.com/?p=55767",
+    "summary": "",
+    "fetched_at": "2026-10-10T01:01:54.297533+00:00"
+  },
+  {
+    "source": "Decrypt",
+    "title": "Senate Democrat Presses Cantor Fitzgerald on Tether Ties and Lutnick Family Profits",
+    "link": "https://decrypt.co/380619/senate-democrat-cantor-fitzgerald-tether-lutnick",
+    "guid": "https://decrypt.co/?p=380619",
+    "summary": "",
+    "fetched_at": "2026-10-10T02:50:01.208383+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "Visa survey says nearly half of APAC consumers open to using stablecoins by 2031",
+    "link": "https://www.coindesk.com/business/2026/10/05/1-2-billion-apac-consumers-could-adopt-stablecoins-by-2031-according-to-visa",
+    "guid": "3ad98db0-4f90-46a3-ad33-d7d38f95f379",
+    "summary": "",
+    "fetched_at": "2026-10-10T03:59:01.631180+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "New York AG secures up to $35 million and lifetime crypto ban from Celsius’ Alex Mashinsky",
+    "link": "https://www.coindesk.com/policy/2026/10/09/new-york-ag-secures-up-to-usd35-million-and-lifetime-crypto-ban-from-celsius-alex-mashinsky",
+    "guid": "bfb82842-fb65-4bbb-972a-6bffb9aa1d9a",
+    "summary": "",
+    "fetched_at": "2026-10-10T04:36:28.104056+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "XRP Ledger patched decade-old bug that could create billions of dollars in XRP from nothing",
+    "link": "https://www.coindesk.com/tech/2026/10/10/xrp-ledger-patched-decade-old-bug-that-could-create-billions-of-dollars-in-xrp-from-nothing",
+    "guid": "5b66c6bb-e6a9-4b0f-b645-4d6e5b3171ee",
+    "summary": "",
+    "fetched_at": "2026-10-10T05:10:01.688157+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "Bitcoin's volatility has plunged, but extreme price swings are more frequent than in 2018",
+    "link": "https://www.coindesk.com/markets/2026/10/09/bitcoin-s-volatility-has-plunged-but-extreme-price-swings-are-more-frequent-than-in-2018",
+    "guid": "eb73c451-b452-42ab-af11-68d1678322f7",
+    "summary": "",
+    "fetched_at": "2026-10-10T05:54:00.799320+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "Robinhood Chain slowdown spreads from fees to trading as transactions fall more than 40%",
+    "link": "https://www.coindesk.com/markets/2026/10/10/robinhood-chain-slowdown-spreads-from-fees-to-trading-as-transactions-fall-more-than-40",
+    "guid": "d490ec0d-e8cb-4e21-9872-10e7615bfb3b",
+    "summary": "",
+    "fetched_at": "2026-10-10T05:54:00.799360+00:00"
+  },
+  {
+    "source": "CoinDesk",
+    "title": "U.S. CFTC moves to fold event contracts into swaps regulations as legal fight rages",
+    "link": "https://www.coindesk.com/policy/2026/10/09/u-s-cftc-moves-to-fold-event-contracts-into-swaps-regulations-as-legal-fight-rages",
+    "guid": "2ae93f2b-3de3-4b2f-842a-a5f511189661",
+    "summary": "",
+    "fetched_at": "2026-10-10T06:29:57.710106+00:00"
+  },
+  {
+    "source": "Cointelegraph",
+    "title": "Sam Altman-backed Bitcoin life insurer, Meanwhile, raises more funds",
+    "link": "https://cointelegraph.com/news/sam-altman-backed-bitcoin-life-insurer-meanwhile-raises-more-funds?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "guid": "https://cointelegraph.com/news/sam-altman-backed-bitcoin-life-insurer-meanwhile-raises-more-funds",
+    "summary": "",
+    "fetched_at": "2026-10-10T07:43:59.369848+00:00"
+  },
+  {
+    "source": "The Block",
+    "title": "Base creator Jesse Pollak says equities and non-dollar stablecoins will lead upcoming ‘tokenization supercycle’",
+    "link": "https://www.theblock.co/news/defi/2026-10-09-tokenization-supercycle-base-jesse-pollak-418144",
+    "guid": "4e3b5e8e-e8ef-5580-b1f7-21d4724ea287",
+    "summary": "",
+    "fetched_at": "2026-10-10T07:43:59.422030+00:00"
+  },
+  {
+    "source": "Cointelegraph",
+    "title": "Tech chief says EU can fend off rogue AI risk: Report",
+    "link": "https://cointelegraph.com/news/tech-chief-says-eu-can-fend-off-rogue-ai-risk-report?utm_source=rss_feed&utm_medium=rss&utm_campaign=rss_partner_inbound",
+    "guid": "https://cointelegraph.com/news/tech-chief-says-eu-can-fend-off-rogue-ai-risk-report",
+    "summary": "",
+    "fetched_at": "2026-10-10T08:56:58.442775+00:00"
   }
 ]

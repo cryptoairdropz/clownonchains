@@ -1,5 +1,117 @@
 [
   {
+    "slug": "ledger-investigasi-pencurian-jutaan-dolar-dari-reseller-pengguna-diimb",
+    "title": "Ledger Investigasi Pencurian Jutaan Dolar dari Reseller, Pengguna Diimbau Jangan Setup Perangkat",
+    "source": "Market Intel",
+    "source_url": "https://decrypt.co/380582/ledger-probes-87m-theft-crypto-wallet-reseller",
+    "words": 255,
+    "published_at": "2026-10-10T09:33:02.794971+00:00"
+  },
+  {
+    "slug": "uni-eropa-klaim-aturan-ai-nya-udah-cukup-lawan-risiko-ai-tak-terkendal",
+    "title": "Uni Eropa Klaim Aturan AI-nya Udah Cukup Lawan Risiko AI Tak Terkendali",
+    "source": "Market Intel",
+    "source_url": "https://cointelegraph.com/news/tech-chief-says-eu-can-fend-off-rogue-ai-risk-report",
+    "words": 297,
+    "published_at": "2026-10-10T08:59:10.460550+00:00"
+  },
+  {
+    "slug": "whitebit-pasang-lightning-network-btc-jadi-lebih-gampang-digunakan-seh",
+    "title": "WhiteBIT Pasang Lightning Network, BTC Jadi Lebih Gampang Digunakan Sehari-hari",
+    "source": "Market Intel",
+    "source_url": "https://bitcoinmagazine.com/news/whitebit-integrates-lightning-network",
+    "words": 294,
+    "published_at": "2026-10-10T08:25:59.499266+00:00"
+  },
+  {
+    "slug": "asuransi-jiwa-bitcoin-meanwhile-raup-375-juta-total-tembus-180-juta",
+    "title": "Asuransi Jiwa Bitcoin 'Meanwhile' Raup $37.5 Juta, Total Tembus $180 Juta",
+    "source": "Market Intel",
+    "source_url": "https://cointelegraph.com/news/sam-altman-backed-bitcoin-life-insurer-meanwhile-raises-more-funds",
+    "words": 250,
+    "published_at": "2026-10-10T07:46:03.360005+00:00"
+  },
+  {
+    "slug": "base-creator-prediksi-tokenized-equities-dan-stablecoin-non-dolar-baka",
+    "title": "Base Creator Prediksi Tokenized Equities dan Stablecoin Non-Dolar Bakal Memimpin 'Tokenization Supercycle'",
+    "source": "Market Intel",
+    "source_url": "https://www.theblock.co/news/defi/2026-10-09-tokenization-supercycle-base-jesse-pollak-418144",
+    "words": 319,
+    "published_at": "2026-10-10T07:11:10.882868+00:00"
+  },
+  {
+    "slug": "ai-agents-mulai-geser-ke-bitcoin-breez-banjir-permintaan-integrasi",
+    "title": "AI Agents Mulai Geser ke Bitcoin, Breez Banjir Permintaan Integrasi",
+    "source": "Market Intel",
+    "source_url": "https://bitcoinmagazine.com/news/ai-coding-agents-drive-bitcoin-integration",
+    "words": 289,
+    "published_at": "2026-10-10T06:33:41.090680+00:00"
+  },
+  {
+    "slug": "cftc-perluas-regulasi-event-contracts-sebagai-swaps",
+    "title": "CFTC Perluas Regulasi Event Contracts Sebagai Swaps",
+    "source": "Market Intel",
+    "source_url": "https://www.coindesk.com/policy/2026/10/09/u-s-cftc-moves-to-fold-event-contracts-into-swaps-regulations-as-legal-fight-rages",
+    "words": 319,
+    "published_at": "2026-10-10T05:57:33.189562+00:00"
+  },
+  {
+    "slug": "robinhood-chain-kehilangan-momentum-transaksi-harian-anjlok-42",
+    "title": "Robinhood Chain Kehilangan Momentum, Transaksi Harian Anjlok 42%",
+    "source": "Market Intel",
+    "source_url": "https://www.coindesk.com/markets/2026/10/10/robinhood-chain-slowdown-spreads-from-fees-to-trading-as-transactions-fall-more-than-40",
+    "words": 255,
+    "published_at": "2026-10-10T05:22:37.926953+00:00"
+  },
+  {
+    "slug": "xrp-ledger-punya-bug-berusia-11-tahun-yang-bisa-bikin-xrp-dari-udara",
+    "title": "XRP Ledger Punya Bug Berusia 11 Tahun yang Bisa Bikin XRP dari Udara",
+    "source": "Market Intel",
+    "source_url": "https://www.coindesk.com/tech/2026/10/10/xrp-ledger-patched-decade-old-bug-that-could-create-billions-of-dollars-in-xrp-from-nothing",
+    "words": 338,
+    "published_at": "2026-10-10T04:38:11.184689+00:00"
+  },
+  {
+    "slug": "pendiri-celsius-alex-mashinsky-dihukum-bayar-35-juta-dan-dilarang-perm",
+    "title": "Pendiri Celsius Alex Mashinsky Dihukum Bayar $35 Juta dan Dilarang Permanen dari Industri Kripto",
+    "source": "Market Intel",
+    "source_url": "https://www.coindesk.com/policy/2026/10/09/new-york-ag-secures-up-to-usd35-million-and-lifetime-crypto-ban-from-celsius-alex-mashinsky",
+    "words": 259,
+    "published_at": "2026-10-10T04:04:12.757844+00:00"
+  },
+  {
+    "slug": "survei-visa-46-konsumen-asia-pacific-siap-pakai-stablecoin-dalam-5-tah",
+    "title": "Survei Visa: 46% Konsumen Asia-Pacific Siap Pakai Stablecoin dalam 5 Tahun",
+    "source": "Market Intel",
+    "source_url": "https://www.coindesk.com/business/2026/10/05/1-2-billion-apac-consumers-could-adopt-stablecoins-by-2031-according-to-visa",
+    "words": 255,
+    "published_at": "2026-10-10T03:26:17.523288+00:00"
+  },
+  {
+    "slug": "dragonfly-partner-sebut-bunker-mode-bukan-solusi-usulkan-cryptographic",
+    "title": "Dragonfly Partner Sebut 'Bunker Mode' Bukan Solusi, Usulkan 'Cryptographic Recovery Mode'",
+    "source": "Market Intel",
+    "source_url": "https://cointelegraph.com/news/dragonfly-bunker-mode-doomerism-proactive-blockchain-measures",
+    "words": 257,
+    "published_at": "2026-10-10T02:52:32.893007+00:00"
+  },
+  {
+    "slug": "senator-demands-cantor-fitzgerald-reveal-tether-ties-as-lutnick-family",
+    "title": "Senator Demands Cantor Fitzgerald Reveal Tether Ties as Lutnick Family Profits Balloon",
+    "source": "Market Intel",
+    "source_url": "https://decrypt.co/380619/senate-democrat-cantor-fitzgerald-tether-lutnick",
+    "words": 335,
+    "published_at": "2026-10-10T02:18:43.653251+00:00"
+  },
+  {
+    "slug": "90-violent-crypto-cases-in-france-in-seven-months-and-93-of-victims-we",
+    "title": "90 Violent Crypto Cases In France In Seven Months, And 93% Of Victims Were French",
+    "source": "Market Intel",
+    "source_url": "https://cointelegraph.com/magazine/france-is-worlds-most-dangerous-place-for-bitcoiners-90-attacks-in-7-months",
+    "words": 396,
+    "published_at": "2026-10-10T01:04:30.236176+00:00"
+  },
+  {
     "slug": "tether-bekukan-145-juta-usdt-milik-thorchain-buka-lagi-dua-jam-kemudia",
     "title": "Tether Bekukan 1,45 Juta USDT Milik THORChain, Buka Lagi Dua Jam Kemudian",
     "source": "Market Intel",
