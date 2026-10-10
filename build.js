@@ -173,12 +173,15 @@ const TICKER = `  <div class="ticker" aria-label="Cryptocurrency prices">
  */
 function head(o) {
   // Truncate over-length descriptions so Search Console never flags them.
-  // Cut at the last word boundary inside 158 chars, then add an ellipsis.
-  if (o.desc && o.desc.length > 158) {
-    const cut = o.desc.slice(0, 158);
+  // Truncate AFTER esc() — escaping turns a single character into several
+  // (&quot; is 6 chars), so a pre-escape length check lets escaped output
+  // run past the limit.
+  const truncateDesc = (s) => {
+    if (!s || s.length <= 158) return s;
+    const cut = s.slice(0, 158);
     const lastSpace = cut.lastIndexOf(' ');
-    o = Object.assign({}, o, { desc: cut.slice(0, lastSpace) + '…' });
-  }
+    return cut.slice(0, lastSpace) + '…';
+  };
   const blocks = (() => {
     if (!o.jsonld) return '';
     const arr = Array.isArray(o.jsonld) ? o.jsonld : [o.jsonld];
@@ -193,7 +196,7 @@ function head(o) {
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>${esc(o.title)}</title>
-  <meta name="description" content="${esc(o.desc)}" />
+  <meta name="description" content="${truncateDesc(esc(o.desc))}" />
   ${o.keywords ? `<meta name="keywords" content="${esc(o.keywords)}" />` : ''}
   <meta name="author" content="ClownOnChains" />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1" />
@@ -201,12 +204,12 @@ function head(o) {
   <meta property="og:type" content="${o.ogType || 'website'}" />
   <meta property="og:url" content="${o.canonical}" />
   <meta property="og:title" content="${esc(o.title)}" />
-  <meta property="og:description" content="${esc(o.desc)}" />
+  <meta property="og:description" content="${truncateDesc(esc(o.desc))}" />
   <meta property="og:image" content="${SITE}/assets/og-cover.png" />
   <meta property="og:site_name" content="ClownOnChains" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="${esc(o.title)}" />
-  <meta name="twitter:description" content="${esc(o.desc)}" />
+  <meta name="twitter:description" content="${truncateDesc(esc(o.desc))}" />
   <meta name="twitter:image" content="${SITE}/assets/og-cover.png" />
   <meta name="theme-color" content="#171009" />
   <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
