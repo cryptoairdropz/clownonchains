@@ -114,23 +114,39 @@
   syncToTop();
 
   /* ---------- academy level filter ---------- */
-  // Catatan: #tut-chips / #tut-grid tidak ada di markup build.js, jadi blok
-  // ini inert. Dibiarkan apa adanya — bukan bagian dari perubahan ini.
-  var tutGrid = $('#tut-grid');
-  if (tutGrid) {
-    var tutChips = $('#tut-chips');
-    if (tutChips) {
-      tutChips.addEventListener('click', function (e) {
-        var b = e.target.closest('.chip');
-        if (!b) return;
-        tutChips.querySelectorAll('.chip').forEach(function (c) { c.classList.toggle('on', c === b); });
-        var f = b.getAttribute('data-f');
-        tutGrid.querySelectorAll('.tut-card').forEach(function (c) {
-          c.style.display = (f === 'All' || c.getAttribute('data-level') === f) ? '' : 'none';
+  // Filter level Academy: kartu dikelompokkan per level dalam .acad-group,
+    // jadi menyaring berarti menyembunyikan group yang tidak cocok — bukan
+    // kartu individual, karena satu group = satu level.
+    var acadGrid = document.querySelector('.acad-groups');
+    var acadChips = document.querySelector('.acad-filter');
+    if (acadGrid && acadChips) {
+      var groups = Array.prototype.slice.call(acadGrid.querySelectorAll('.acad-group'));
+      var emptyState = document.querySelector('.acad-empty');
+
+      function applyTutFilter(level) {
+        var shown = 0;
+        groups.forEach(function (g) {
+          var match = level === 'all' || g.getAttribute('data-level') === level;
+          g.hidden = !match;
+          if (match) shown += g.querySelectorAll('.tut-card').length;
         });
+        if (emptyState) emptyState.hidden = shown !== 0;
+      }
+
+      acadChips.addEventListener('click', function (e) {
+        var btn = e.target.closest('[data-filter]');
+        if (!btn) return;
+        var level = btn.getAttribute('data-filter');
+        acadChips.querySelectorAll('[data-filter]').forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle('is-active', on);
+          b.setAttribute('aria-pressed', on ? 'true' : 'false');
+        });
+        applyTutFilter(level);
       });
+
+      applyTutFilter('all');
     }
-  }
 
   /* ---------- email subscribe (local confirmation) ---------- */
   var emailForm = $('#email-form');

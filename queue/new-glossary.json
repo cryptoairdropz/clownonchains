@@ -1,0 +1,242 @@
+[
+  {
+    "slug": "wallet",
+    "term": "Wallet",
+    "short": "The tool that holds your keys and signs transactions. The wallet itself never stores coins.",
+    "body": "A wallet is an interface for holding keys, not coins. Your tokens live on the blockchain; the wallet stores the private key that proves you control an address and signs transactions with it.\n\nSelf-custodial wallets such as MetaMask, Phantom and Rabby keep the key on your device. Exchange accounts also call themselves wallets but the key belongs to the exchange, which means the balance depends on that company's solvency.\n\nThe practical split: use a hot wallet for small balances and active transactions, keep long-term holdings in a hardware wallet, and never paste a seed phrase into any website."
+  },
+  {
+    "slug": "public-key",
+    "term": "Public Key / Address",
+    "short": "The shareable half of a key pair. It is the account address other people send funds to.",
+    "body": "Your public address is the half of your key pair that is meant to be shared. It is derived from your private key, and it is what appears in explorers, on exchanges, and in every transaction you send or receive.\n\nThere is no way to work backwards from an address to your private key, which is what makes sharing one safe. What is not safe is sending funds to the wrong address, because a blockchain has no undo button.\n\nOn modern chains the address and the public key are effectively the same string. Older formats like Bitcoin's legacy addresses use a different, hash-based format for the address and the key separately."
+  },
+  {
+    "slug": "multisig-wallet",
+    "term": "Multisig Wallet",
+    "short": "A wallet that requires several signatures to move funds, usually from several separate devices.",
+    "body": "A multisig wallet holds several private keys and needs a set number of them, such as two of three, before any transaction can execute. That means one stolen device cannot drain the account.\n\nTeams use it for treasuries and protocol controls. Individuals use it as an inheritance arrangement, where a successor key only becomes usable after a condition is met.\n\nThe trade-off is operational friction. Every transfer needs coordination across devices or signers, so if one holder loses access to their key, you can end up locked out of your own funds."
+  },
+  {
+    "slug": "phishing",
+    "term": "Phishing",
+    "short": "Fake sites and messages that trick you into signing a malicious transaction or revealing a key.",
+    "body": "Crypto phishing is usually built around a fake version of a real site: a wallet pop-up, a support message on Discord, or a presale link in a group. The goal is to get you to sign a transaction that grants an attacker control of your funds, not to steal your seed phrase directly.\n\nThe modern variant is more dangerous than the old one. A malicious signature request can transfer your tokens to an address forever without ever touching your keys, so nothing looks stolen and the wallet still shows a full balance.\n\nPractical habits: bookmark the sites you use, never connect from a link in a message, and treat any request to approve an unfamiliar contract as a loss until proven otherwise."
+  },
+  {
+    "slug": "two-factor-authentication",
+    "term": "Two-Factor Authentication (2FA)",
+    "short": "A second login step, usually an app code or a hardware key, on top of a password.",
+    "body": "Two-factor authentication adds a second requirement to a login: something you know (the password) and something you have (a phone, a hardware key, an authenticator app).\n\nThe choice matters. SMS codes can be taken by SIM-swapping, which is how most exchange account takeovers happen. An authenticator app or a hardware security key is meaningfully stronger and costs nothing to set up.\n\nEnable it on the exchange, on the email address attached to the exchange account, and on your password manager. Anyone who gets into your email first can otherwise reset your exchange password."
+  },
+  {
+    "slug": "smart-contract-audit",
+    "term": "Smart Contract Audit",
+    "short": "An external review of contract code for bugs, before the contract holds real money.",
+    "body": "An audit is a paid review of a smart contract's source code, looking for logic errors, reentrancy holes, and missing access controls. It is the closest thing crypto has to a safety inspection.\n\nAn audit lowers risk without removing it. Auditors review one version of the code and one moment in time, they miss things, and they do not test against every future condition the contract can meet. A clean audit is evidence of care, not a guarantee.\n\nPractical check: read who did the audit, whether the code has changed since, and whether the team acted on the findings. A published report that lists unresolved critical issues is a warning, not a formality."
+  },
+  {
+    "slug": "order-book",
+    "term": "Order Book",
+    "short": "The live list of open buy and sell offers for a pair, showing price and size at each level.",
+    "body": "An order book is the list of unfilled orders on an exchange, with bids on one side and asks on the other. The gap between the best bid and the best ask is the spread, and it is the cost of trading immediately in both directions.\n\nDepth matters more than headline volume. An order book with thousands of dollars resting at the top and nothing behind it will move sharply on any size order, which is where slippage and liquidation risk come from.\n\nOn a DEX there is no order book in this sense. The pool's reserves act as the equivalent, and the price you get depends on the size of your trade relative to the pool."
+  },
+  {
+    "slug": "limit-order",
+    "term": "Limit Order",
+    "short": "An order to buy or sell at a price you choose, not the current market price. It may never fill.",
+    "body": "A limit order sets the price you are willing to trade at. If the market reaches it, the order fills; if it never does, the order simply sits open or expires.\n\nThis is why exchanges charge a lower maker fee for limit orders: your order rests on the book and adds liquidity, whereas a market order takes it. On high-volume trading that difference is often larger than any referral discount.\n\nThe cost of using limits is non-filling. A stop-loss that never triggers looks identical to a stop-loss that worked, so it needs to be checked rather than assumed."
+  },
+  {
+    "slug": "market-order",
+    "term": "Market Order",
+    "short": "An order to buy or sell immediately at whatever the best available price is.",
+    "body": "A market order fills instantly at the best price currently on the book. You accept whatever price is available in exchange for the certainty of execution.\n\nThat trade-off is invisible until size matters. A market order large relative to the available depth walks through several price levels, and the average fill can be materially worse than the quoted price.\n\nUse market orders for small size and for exits where not getting out is the bigger risk. For anything sized to the book, use a limit order or accept that you are paying for immediacy."
+  },
+  {
+    "slug": "liquidation",
+    "term": "Liquidation",
+    "short": "An engine force-closing a leveraged position when losses exceed the collateral posted.",
+    "body": "A leveraged position can be closed automatically by the exchange when the loss against the collateral reaches a set threshold. The collateral is taken to cover the debt, usually with a penalty fee.\n\nIn practice this happens on moves that look unremarkable on a daily chart. Crypto can move several percent in minutes, and leverage that would survive a normal day can be wiped out by a single wick.\n\nKeeping a liquidation price well away from the current price is the whole point. Most losses that people did not expect came from a position whose liquidation line was closer than it looked."
+  },
+  {
+    "slug": "leverage",
+    "term": "Leverage",
+    "short": "Borrowed exposure that lets you trade a larger position than your own capital covers.",
+    "body": "Leverage means controlling a position larger than the margin you posted. Ten times leverage on a small deposit gives you the upside and the downside of a position ten times as large.\n\nReturns and losses scale together. Leverage does not improve a strategy, it increases the size of the outcome, including the outcome where the position goes against you and the margin is consumed.\n\nFees, funding payments, and liquidation thresholds all apply on the full borrowed size, so a leveraged position that would be unremarkable as a spot holding can lose principal in days without ever moving much."
+  },
+  {
+    "slug": "perpetual-swap",
+    "term": "Perpetual Swap",
+    "short": "A futures contract with no expiry that tracks spot price through funding and margin.",
+    "body": "A perpetual swap tracks the price of an underlying asset and has no settlement date. Because nothing forces it to converge on spot at an expiry, it needs a payment mechanism between longs and shorts, which is the funding rate.\n\nIt is the most traded derivatives product in crypto, and it is the easiest way to lose money quickly. Margin is small, funding is charged continuously, and positions are liquidatable.\n\nUse one when you have a specific view on direction and can set a loss limit in advance. Holding a swap in the hope of a longer-term gain means paying funding and risking liquidation along the way."
+  },
+  {
+    "slug": "funding-rate",
+    "term": "Funding Rate",
+    "short": "A periodic payment between long and short perpetual positions, set by how one-sided the market is.",
+    "body": "The funding rate keeps a perpetual contract tracking spot. When the contract trades above spot, longs pay shorts; when it trades below, shorts pay longs. It is applied on a fixed schedule and changes continuously between payments.\n\nThe rate is a crowding indicator as much as a cost. A persistently positive rate means longs are the crowded side, and holding through that costs real money every interval.\n\nAnnualising the per-interval rate shows whether the carry is worth it. If the cost of holding a swap exceeds what you expect the position to earn, you are paying to maintain the view."
+  },
+  {
+    "slug": "candlestick",
+    "term": "Candlestick",
+    "short": "A chart bar showing the open, high, low and close prices for a period, with the range drawn as a wick.",
+    "body": "A candlestick compresses a period of trading into one bar. The body spans the open to the close, and the wick shows the highest and lowest price reached in between.\n\nThe same data has to be read with its time frame attached. A day candle and a week candle can point in opposite directions, and neither is wrong. Most bad trades come from reading a short time frame and acting as if it were the longer one.\n\nCandles describe what already happened and say nothing about why. Volume and the surrounding context carry more information than the shape of the bar itself."
+  },
+  {
+    "slug": "dollar-cost-averaging",
+    "term": "Dollar-Cost Averaging (DCA)",
+    "short": "Buying a fixed amount at fixed intervals so your average price smooths out volatility.",
+    "body": "Dollar-cost averaging means committing the same amount on a schedule, regardless of price. It converts an all-or-nothing entry decision into many smaller ones.\n\nIt reduces the damage of buying at the top, which is its real purpose. It also lowers the damage of buying at the bottom, because much of your capital sits in waiting rather than in the asset.\n\nThe method suits assets you already believe in and can leave alone. It is not a strategy for tokens you need to enter at a specific level, and it accumulates positions in assets that keep falling for reasons that have nothing to do with entry price."
+  },
+  {
+    "slug": "market-cap",
+    "term": "Market Capitalisation",
+    "short": "Price multiplied by total supply. The standard size measure for ranking tokens by value.",
+    "body": "Market cap is the price of a token multiplied by the number of tokens in circulation. It gives one figure for comparing tokens of very different sizes.\n\nCirculating supply is what matters, and projects release tokens over time. A large unlock scheduled for next month can add supply faster than any plausible demand growth, which pushes the cap down even with a flat price.\n\nFully diluted valuation multiplies price by total supply instead. The gap between the two is the part of the token that does not exist yet, and it is a claim on future price rather than current value."
+  },
+  {
+    "slug": "volatility",
+    "term": "Volatility",
+    "short": "How widely and how quickly a price moves. Higher volatility means a wider range of outcomes.",
+    "body": "Volatility measures the size and frequency of price movements. Crypto is historically more volatile than most asset classes, with moves that would be extraordinary in equities treated as routine.\n\nIt cuts both ways. A wider range of outcomes means more room for a leveraged position to be liquidated and more room for a stop-loss to trigger on noise.\n\nVolatility is not the same as a trend. An asset can be extremely volatile while going nowhere, which is the worst environment for both leveraged trading and tight stop placements."
+  },
+  {
+    "slug": "altcoin",
+    "term": "Altcoin",
+    "short": "Any cryptocurrency that is not Bitcoin, used loosely to mean everything beyond the majors.",
+    "body": "Altcoin means any coin other than Bitcoin, and the word is usually stretched to mean anything other than the largest and most liquid assets.\n\nThe category is extremely uneven. It includes both long-running infrastructure projects with real usage and freshly launched tokens whose entire market cap depends on a message channel.\n\nThe practical distinction is not the ticker, it is liquidity. How much volume the pair actually trades at, how deep the order book is, and whether you can exit at a price close to the screen price tell you more about risk than the project category does."
+  },
+  {
+    "slug": "drawdown",
+    "term": "Drawdown",
+    "short": "The peak-to-trough fall in price or account value from the highest point reached.",
+    "body": "Drawdown is the decline from the highest value an account or asset has reached to its subsequent low. It measures how bad it got, which is the number that determines whether a position survives.\n\nIt is asymmetric on the way back. Recovering a 50% drawdown needs a 100% gain, and a 20% drawdown needs 25%, so losses stay in the account long after the recovery is complete.\n\nBecause leverage resets the math, a drawdown on a leveraged position ends in liquidation rather than recovery. Sizing positions so a large drawdown is survivable is more useful than predicting where the peak was."
+  },
+  {
+    "slug": "memecoin",
+    "term": "Memecoin",
+    "short": "A token whose value comes from community attention rather than any cash flow or utility.",
+    "body": "A memecoin is a token with no designed utility, no revenue model and often no working product. The price is driven by attention, narrative and liquidity in the pool.\n\nThat makes the mechanics unusually important, because the value is thin and concentrated. A small holder group, a shallow pool and retained minting rights are normal in this category and often fatal.\n\nIt is possible to trade them successfully with strict position sizing and a rule about taking profit. It is not possible to treat one as a long-term holding and expect a product to eventually justify the price."
+  },
+  {
+    "slug": "tokenomics",
+    "term": "Tokenomics",
+    "short": "The supply design of a token: how much exists, who holds it, and how much is released over time.",
+    "body": "Tokenomics is the study of a token's supply: total supply, circulating supply, how much each category of holder controls, and the schedule on which new tokens are released.\n\nThree numbers do most of the work. Circulating supply sets the current market cap. The insider allocation tells you how much of it could move at once. The unlock schedule tells you how fast new supply arrives.\n\nA whitepaper section on tokenomics is usually where a token's risk is written down honestly. Read it there rather than inferring the structure from the price chart."
+  },
+  {
+    "slug": "token-unlock",
+    "term": "Token Unlock",
+    "short": "A scheduled release of previously locked tokens into circulation, often sold by early investors and the team.",
+    "body": "A token unlock is when tokens that were locked at launch become transferable. Teams and investors usually hold the largest locked allocations, so an unlock adds sellable supply on a known date.\n\nThe effect is predictable in direction and difficult in size. If a significant share of supply unlocks at once and the daily volume does not absorb it, the price has to fall for the supply to clear.\n\nUnlocks are published in advance, so they belong in your decision before the event rather than after it. Holding through a large unlock is a position you are choosing, not one you can attribute to the market."
+  },
+  {
+    "slug": "utility-token",
+    "term": "Utility Token",
+    "short": "A token that grants access to a function within a product, from fee discounts to staking rights.",
+    "body": "A utility token is one that does something: pay a fee, access a service, stake for rewards, or settle a fee discount. It is a claim on the use of a product rather than a claim on its profits.\n\nThat distinction matters for judging demand. Fee revenue shows real usage in dollars, which is hard to fake. Emissions paid to users show a project buying its own activity, which is easy to fake and easy to end.\n\nA token whose only function is to be traded on an exchange is not a utility token, no matter what the documentation says. If you cannot name what the token does, the price reflects speculation alone."
+  },
+  {
+    "slug": "governance-token",
+    "term": "Governance Token",
+    "short": "A token that carries voting rights over a protocol's parameters, spending and upgrades.",
+    "body": "A governance token gives holders the right to vote on proposals: fee changes, emissions, treasury spending, protocol upgrades. In some protocols voting power depends on the size of the holding rather than one vote per token.\n\nThe practical question is what the vote can actually change. If a small group controls enough tokens to pass everything, the token is a way to follow a project rather than a way to influence it.\n\nDelegated and unclaimed votes are the usual failure mode. Large holders rarely vote, which leaves a smaller group deciding, often with incentives that differ from those of the retail holders they represent."
+  },
+  {
+    "slug": "launchpad",
+    "term": "Launchpad",
+    "short": "A platform that sells new token allocations through a lottery, a tiered sale, or a pool.",
+    "body": "A launchpad is an interface for buying a token at launch: committing funds beforehand, a lottery for oversubscribed sales, or a liquidity pool with a time limit to get in.\n\nThe structure is a timing advantage. Early participants can buy at a price set before the market knows demand, at the cost of accepting the token terms without much scrutiny.\n\nLock-up periods are the usual catch. An allocation that cannot be sold for months is not a cheaper price, it is a different risk profile, and it should be compared with the same lens as any other commitment of capital."
+  },
+  {
+    "slug": "points-program",
+    "term": "Points Programme",
+    "short": "A promise of future allocation based on usage instead of a token that exists today.",
+    "body": "A points programme credits usage with points and implies those points will convert into future rewards. Nothing in the market has to pay them, because the token does not exist yet.\n\nThe programme is a marketing tool that works because the implied reward is large and immediate to the person counting the points. It succeeds exactly while users believe in the conversion.\n\nThis is the difference between points and an airdrop: a points programme is a promise from a team, an airdrop is tokens already on-chain and claimable. Anything paid to you before distribution should be valued at zero until the distribution happens."
+  },
+  {
+    "slug": "token-burn",
+    "term": "Token Burn",
+    "short": "Destroying tokens permanently by sending them to an unspendable address, reducing total supply.",
+    "body": "A burn sends tokens to an address that no one controls the key for, so the supply cannot move again. Fees paid in a token and then destroyed work the same way.\n\nIt reduces supply, which is mechanically supportive for price if demand holds. It does not by itself create demand, and it says nothing about where the remaining supply sits.\n\nA burn that pays for real activity is closer to a real buyback than one that burns from an allocation created for that purpose. Check where the burned tokens came from before treating a burn announcement as news."
+  },
+  {
+    "slug": "flash-loan",
+    "term": "Flash Loan",
+    "short": "An uncollateralised loan that must be borrowed and repaid within a single transaction.",
+    "body": "A flash loan lets you borrow a large amount with no collateral, provided you return it plus a fee inside the same transaction. One transaction means the entire sequence either completes or reverts entirely.\n\nIn practice they are arbitrage and manipulation tools, not consumer credit. In a single block, a bot can borrow, exploit a price difference between pools, repay, and keep the difference.\n\nMost large DeFi hacks started with a flash loan because it removed the capital requirement for an attack. The vulnerability was in the protocol, but the loan provided the balance to reach it."
+  },
+  {
+    "slug": "oracle",
+    "term": "Oracle",
+    "short": "A service that feeds off-chain data like prices into a smart contract that cannot read the internet.",
+    "body": "A smart contract cannot look up a price by itself. An oracle is the service that supplies that figure on-chain, which makes every contract that depends on a price dependent on the oracle's accuracy.\n\nDecentralised oracles aggregate multiple data sources with economic incentives designed to keep them honest. That design reduces the trust in a single provider but adds latency, cost, and failure modes.\n\nIf a protocol's headline number depends on an oracle, the real risk surface is the contract that consumes the data. Liquidation thresholds with a stale price are where those failures usually show up."
+  },
+  {
+    "slug": "reentrancy",
+    "term": "Reentrancy",
+    "short": "A contract flaw where an external call lets an attacker re-enter before state is updated.",
+    "body": "Reentrancy happens when a contract sends funds out before it has updated its own bookkeeping, and the recipient's callback calls back in before that update is done. The contract sees the same state twice and pays out twice.\n\nIt is one of the most common patterns in historic DeFi exploits because the code reads correctly. The order of a few lines is the entire bug, and it survives an audit that checks logic rather than call ordering.\n\nMost current contracts defend against it by applying the check-effects-interactions pattern: update your state first, then move funds. When reviewing a new protocol, that ordering is one of the fastest things to verify."
+  },
+  {
+    "slug": "concentrated-liquidity",
+    "term": "Concentrated Liquidity",
+    "short": "A pool design where providers choose a price range for their funds and earn more inside it.",
+    "body": "Concentrated liquidity lets a provider choose the price range their capital serves, instead of spreading it across all prices. Inside that range the capital is used more efficiently, so fees per unit of liquidity are higher.\n\nThe trade-off is active management. When price leaves the range your position stops earning entirely and sits in one token, so a provider who is not paying attention holds an unexpected exposure.\n\nA strategy based on narrow ranges around the current price can look like free yield and behaves like a leveraged position in the meantime. The returns are real, and so is the repositioning risk."
+  },
+  {
+    "slug": "dex-aggregator",
+    "term": "DEX Aggregator",
+    "short": "A router that splits a trade across several pools to find the best available price.",
+    "body": "A DEX aggregator searches many pools and routes a single trade through whichever combination quotes best, splitting it across several sources when that is cheaper than any one pool.\n\nFor thin pairs it is the difference between a fill near the screen price and a bad fill, because the router is quoting against total available liquidity rather than one pool's reserves.\n\nIt adds a layer of contract in the middle of the transaction. Check the routers you use, and remember that the quoted price is only as good as the simulation: a swap can be profitable on paper and worse in execution."
+  },
+  {
+    "slug": "wrapped-token",
+    "term": "Wrapped Token",
+    "short": "A token representing an asset from another chain or format, so it can be used inside one contract.",
+    "body": "A wrapped token locks an asset in a contract and issues a token with the same value for use elsewhere. Wrapped Ether, for instance, exists so Ether can be deposited into lending markets that only accept ERC-20 tokens.\n\nThe wrapper is the trust point. Whoever controls the contract that holds the original asset can affect the value of every wrapped unit, which is why bridges and wrappers concentrate assets and attackers together.\n\nMost wrappers keep the same issuer as the original asset, so the added risk is the wrapper contract, not a new claim on reserves. Verify which contract you are approving before signing."
+  },
+  {
+    "slug": "unbonding-period",
+    "term": "Unbonding Period",
+    "short": "A waiting period between deciding to unstake and being able to withdraw, used to keep stake locked.",
+    "body": "An unbonding period is a queue between an unstake request and actual withdrawal. It exists so a validator who misbehaves can still be slashed before their funds leave.\n\nThe length is set per network and can range from days to weeks. During that window the tokens are earning nothing and cannot be sold, which makes them different from assets you could exit at any time.\n\nStakers planning to react to a price move need to account for it. A position that is liquid on the chart may be unavailable for two weeks after the decision to sell."
+  },
+  {
+    "slug": "validator",
+    "term": "Validator",
+    "short": "A node that stakes tokens to propose and attest to blocks, earning rewards for correct behaviour.",
+    "body": "A validator checks transactions, proposes blocks, and attests to the blocks others propose. It has to stake the chain's native token as collateral, which is what makes misbehaviour expensive.\n\nCorrect behaviour earns a share of transaction fees and, on some chains, issuance. Incorrect behaviour loses part of the stake through slashing, which is the enforcement mechanism behind proof of stake.\n\nValidators require hardware, uptime, and monitoring. Delegation exists because most holders cannot run one: they delegate stake to an operator and accept an additional party in the trust chain for a share of the rewards."
+  },
+  {
+    "slug": "node",
+    "term": "Node",
+    "short": "A copy of a blockchain running on a machine, keeping its own ledger in sync with the network.",
+    "body": "A node stores the chain's history and verifies every block it receives against the rules of the protocol. Running one means you are not trusting anyone else's account of what happened.\n\nLight nodes keep headers and fetch the data they need. Full nodes store the complete chain, and archive nodes keep every historical state, which is what chain analysis tooling depends on.\n\nIt is rarely necessary. A hardware wallet and a public block explorer cover the security needs of almost every user, and the operational cost of running a node is only justified by infrastructure and analysis use cases."
+  },
+  {
+    "slug": "halving",
+    "term": "Halving",
+    "short": "A programmed cut to the block reward for miners or validators, usually halving supply growth every four years.",
+    "body": "A halving reduces the new tokens created per block by half. Bitcoin's schedule does this roughly every four years, cutting issuance until the reward becomes negligible.\n\nIt was designed to keep inflation of the asset low and predictable regardless of price. The secondary effect is narrative: a fixed date on which a known supply reduction arrives.\n\nThe event is entirely scheduled and known years in advance, so it is not new information on the day. What varies is how much of it is already reflected in the price beforehand."
+  },
+  {
+    "slug": "base-fee",
+    "term": "Base Fee",
+    "short": "The protocol-set floor price per unit of gas on Ethereum, which rises and falls with demand.",
+    "body": "Since the fee burn upgrade, Ethereum sets a base fee algorithmically each block based on how full recent blocks were. It rises when demand exceeds available space and falls when blocks are under target.\n\nThe number you see in a wallet is not the base fee. It is the base fee multiplied by a priority tip you choose, which is why two people sending identical transactions at the same moment can pay very different amounts.\n\nBecause it responds to block space, the base fee is the clearest signal of network demand. It also means that timing a transaction to a quiet period is often worth more than optimising anything about the transaction itself."
+  },
+  {
+    "slug": "dao",
+    "term": "DAO",
+    "short": "A decentralised autonomous organisation: rules and treasury controlled by token-holder votes, not a company board.",
+    "body": "A DAO is an organisation whose rules, treasury and decisions live in contracts and votes rather than in a management team's discretion. Holding the governance token is the mechanism of control.\n\nThe appeal is that rules are public and a treasury cannot simply disappear. The recurring problem is that voting participation is low, so a small group of holders makes decisions for everyone, often without much transparency about their own position.\n\nA DAO is a governance structure, not a magic word. Check who holds the votes, what the treasury actually holds, and whether there is any mechanism to fix a bad decision once it has been made."
+  },
+  {
+    "slug": "proof-of-reserves",
+    "term": "Proof of Reserves",
+    "short": "Evidence that a platform holds enough assets to cover user balances, checked at a point in time.",
+    "body": "Proof of reserves is an attestation or on-chain check that a custodian's assets exceed user deposits. It answers the narrow question of whether the money is there.\n\nIt is not an audit. It says nothing about whether the assets are unencumbered, whether liabilities are correctly recorded, or what happens between checks. A snapshot proof taken at a quiet moment can look perfect while the solvency position is deteriorating.\n\nFor a stablecoin issuer, a verifiable on-chain balance against outstanding supply is the meaningful test. For an exchange, treat a proof of reserves as one input, and treat the withdrawal experience as a more honest one."
+  }
+]

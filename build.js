@@ -875,7 +875,7 @@ function buildAcademyIndex(d) {
     const items = d.TUTORIALS.filter((t) => t.level === lv);
     if (!items.length) return '';
     return `
-      <section class="acad-group" aria-labelledby="h-lv-${lv}">
+      <section class="acad-group" data-level="${lv}" aria-labelledby="h-lv-${lv}">
         <div class="acad-group-head">
           <h2 class="section-title" id="h-lv-${lv}" style="font-size:20px;margin:0">
             <span class="ic lvl-${lv}" aria-hidden="true">●</span> ${lv}</h2>
@@ -989,8 +989,12 @@ ${NAV}
       <div class="section-head">
         <h2 class="section-title" id="h-lessons" style="margin:0"><span class="ic" aria-hidden="true">📖</span> All lessons</h2>
       </div>
+      <div class="acad-filter" role="group" aria-label="Filter lessons by level">
+        ${levels.filter((lv) => d.TUTORIALS.some((t) => t.level === lv)).map((lv, i) => `<button class="chip${i === 0 ? ' is-active' : ''}" type="button" data-filter="${lv}" aria-pressed="${i === 0 ? 'true' : 'false'}">${lv}</button>`).join('')}
+      </div>
       <div class="acad-groups">${groups}
       </div>
+      <p class="acad-empty" hidden>No lessons at this level yet.</p>
     </section>
 
     <section class="block" style="max-width:1120px;margin:0 auto" aria-labelledby="h-gloss">

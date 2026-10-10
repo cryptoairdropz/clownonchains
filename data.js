@@ -413,6 +413,14 @@ const ANGLES = [
 // ------------------------------------------------------------
 const NEWS = [
   {
+    slug:"tether-bekukan-145-juta-usdt-milik-thorchain-buka-lagi-dua-jam-kemudia",
+    t:"Tether Bekukan 1,45 Juta USDT Milik THORChain, Buka Lagi Dua Jam Kemudian",
+    s:"Market Intel",
+    d:"Just now",
+    src:"https://cointelegraph.com/news/thorchain-tether-freezing-usdt-addresses",
+    body:"Pada Jumat lalu, Tether membekukan sekitar 1,45 juta USDT yang tersimpan di vault THORChain. Alamat-alamat itu dibuka lagi sekitar dua jam kemudian, tanpa penjelasan apa pun dari penerbit stablecoin itu.\n\n## Empat wallet ikut tersangkut\n\nTechnical co-founder THORChain, Chad Barraford, menulis di X bahwa address vault jaringan masuk daftar blacklist Tether. Dana terdampak tersebar di empat wallet, dan trading di jaringan sempat berhenti selama sekitar dua jam. Jumlahnya sendiri tidak besar, tapi mekanismenya yang bikin was-was: begitu satu address masuk daftar, seluruh saldo di address itu ikut beku dan tidak bisa dipakai sampai penerbitnya memutuskan melepas.\n\nMenurut Barraford, timnya bahkan tidak tahu alasan pembekuan itu, dan tidak ada komunikasi dengan Tether sebelum kejadian. Ia berharap masalah ini cuma kekeliruan atau salah paham.\n\nYang bikin situasi ini aneh: THORChain adalah jaringan cross-chain non-kustodial. User memegang asetnya sendiri tanpa menitipkannya ke exchange, tapi aset itu tetap USDT — dan USDT punya tombol matikan di tangan penerbitnya.\n\n## Pola yang berulang\n\nKasus THORChain bukan yang pertama dalam sepekan terakhir. Conduit Technology menggugat Tether, mengaku 2,76 juta USDt di salah satu dompetnya dibekukan sehubungan dengan investigasi otoritas Brasil yang dimulai tahun 2024. Dua warga Thailand juga menggugat Tether pada Agustus atas pembekuan 42,4 juta USDt, dengan tuduhan bahwa pembekuan itu menyusul permintaan tak resmi dari Homeland Security Investigations AS.\n\nSaat laporan itu ditulis, permintaan komentar ke Tether dan THORChain belum dijawab.\n\n## Kenapa ini penting buat kamu\n\nPelajarannya cukup simpel: jangan nyimpen dana besar dalam bentuk satu stablecoin di protocol DeFi mana pun. Stablecoin bukan aset yang lepas dari kendali — selama masih ada pihak pusat yang bisa menekan tombol blacklist, risikonya masih ada.\n\nJadi, bagi dana ke beberapa stablecoin bukan nasihat konservatif. Itu proteksi dasar."
+  },
+  {
     slug:"hsbc-dan-ant-digital-uji-ai-agent-bayar-pakai-deposit-tokenisasi",
     t:"HSBC dan Ant Digital Uji AI Agent Bayar Pakai Deposit Tokenisasi",
     s:"Market Intel",

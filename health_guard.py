@@ -254,9 +254,98 @@ def check_mobile_nav():
     return True, "mobile nav panel not clipped"
 
 
+def check_css_parse():
+    """Every CSS declaration must survive the parser.
+
+    A rule written as `.a{padding:8px;border-radius:999px\n /* comment */\n
+    white-space:nowrap}` is a silent total failure: the missing semicolon after
+    999px makes the parser discard the rest of the block, so padding survives
+    and border-radius/white-space vanish. The file still hashes differently, so
+    a naive cache-busting check passes and the browser silently keeps the old
+    rendering. Regex checks over the source do NOT catch it — only an actual
+    CSS parse does.
+    """
+    css_path = os.path.join(DIST, "style.css")
+    if not os.path.exists(css_path):
+        return False, "style.css not in dist"
+    css = open(css_path, encoding="utf-8", errors="replace").read()
+
+    # A declaration value must never be an unterminated comment or an unclosed
+    # function: both silently swallow everything after them in that block.
+    bad = []
+    for m in re.finditer(r"\{([^}]*)\}", css, re.S):
+        body = m.group(1)
+        # strip comments first; anything left containing /* means an unclosed
+        # comment was treated as a value
+        stripped = re.sub(r"/\*.*?\*/", "", body, flags=re.S)
+        if "/*" in stripped or "*/" in stripped:
+            bad.append(("unterminated comment", " ".join(body.split())[:70]))
+
+    if bad:
+        return False, f"{len(bad)} CSS block(s) the parser will drop: {bad[:4]}"
+
+    # The real test. Regexes over the source cannot catch this: a swallowed
+    # declaration still sits in the file, so a text scan reports it present
+    # while the browser drops it. Node has no CSS parser built in, so the check
+    # is done by re-reading the declarations the way a browser does — a
+    # declaration is only live when terminated by ';' before the next one
+    # starts, and a comment may never be interleaved between them.
+    lost = []
+    for m in re.finditer(r"\{([^}]*)\}", css, re.S):
+        raw = m.group(1)
+        # Walk the block in order. Track whether we are inside a comment, and
+        # whether the previous non-comment character was a ';'.
+        depth = 0          # 0 = outside comment, 1 = inside
+        seen_decl = False  # a ':' appeared at this level
+        prev_sig = ""      # last significant char at this level
+        i = 0
+        dropped_at = None
+        while i < len(raw):
+            if depth == 0 and raw.startswith("/*", i):
+                if seen_decl and prev_sig != ";":
+                    # a comment sitting mid-declaration is exactly the bug:
+                    # everything after it in this block is discarded
+                    dropped_at = i
+                    break
+                depth = 1
+                i += 2
+                continue
+            if depth == 1:
+                if raw.startswith("*/", i):
+                    depth = 0
+                    i += 2
+                    continue
+                i += 1
+                continue
+            ch = raw[i]
+            if ch == ":":
+                seen_decl = True
+            elif ch == ";":
+                seen_decl = False
+            elif not ch.isspace():
+                prev_sig = ch
+            i += 1
+        if dropped_at is not None:
+            lost.append(" ".join(raw[:dropped_at + 40].split())[:70])
+    if lost:
+        return False, (f"{len(lost)} CSS block(s) lost declarations to a "
+                       f"missing semicolon: {lost[:3]}")
+
+    # The nav regression specifically: nowrap must actually be in the served
+    # rule, not merely present in the file as a comment.
+    m = re.search(r"\.nav-links a\{([^}]*)\}", css)
+    if not m:
+        return False, ".nav-links a rule missing"
+    body = m.group(1)
+    if "white-space:nowrap" not in re.sub(r"/\*.*?\*/", "", body, re.S).replace(" ", ""):
+        return False, "nav link rule is missing a live white-space:nowrap declaration"
+    return True, "all CSS blocks parse; nav nowrap is live"
+
+
 CHECKS = [
     ("drift", check_drift),
     ("build_syntax", check_build),
+    ("css_parse", check_css_parse),
     ("jsonld", check_jsonld),
     ("sitemap", check_sitemap),
     ("markdown_leak", check_markdown_leak),
