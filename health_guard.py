@@ -342,6 +342,60 @@ def check_css_parse():
     return True, "all CSS blocks parse; nav nowrap is live"
 
 
+def check_automation_queues():
+    """The two content cronjobs depend on these files existing and parsing.
+
+    Both read queue/news-raw.json and queue/blog-posts.json. A rename or a
+    half-written JSON there stops the cron silently — the job still reports
+    "ok" because it never reached the point of failing.
+    """
+    problems = []
+    news_q = os.path.join(ROOT, "queue", "news-raw.json")
+    posts = os.path.join(ROOT, "queue", "blog-posts.json")
+    published = os.path.join(ROOT, "queue", "published.json")
+
+    for path, minimum in ((news_q, 1), (posts, 50), (published, 1)):
+        if not os.path.exists(path):
+            problems.append(f"{os.path.basename(path)} missing")
+            continue
+        try:
+            data = json.load(open(path, encoding="utf-8"))
+        except json.JSONDecodeError as e:
+            problems.append(f"{os.path.basename(path)} invalid JSON: {e.msg}")
+            continue
+        n = len(data) if isinstance(data, (list, dict)) else 0
+        if n < minimum:
+            problems.append(f"{os.path.basename(path)} has {n} items, expected >= {minimum}")
+    return (False, "; ".join(problems)) if problems else (
+        True, "news queue, blog posts and published log all parse")
+
+
+def check_no_unmerged_queue():
+    """Generated content files that merge_content.py consumes must not be
+    sitting un-merged. A leftover file means a writer finished and nobody
+    spliced it, so the site is quietly missing that content."""
+    stray = []
+    for name, target in (("new-tutorials.json", "TUTORIALS"),
+                         ("new-glossary.json", "GLOSSARY")):
+        path = os.path.join(ROOT, "queue", name)
+        if not os.path.exists(path):
+            continue
+        try:
+            items = json.load(open(path, encoding="utf-8"))
+        except json.JSONDecodeError:
+            stray.append(f"{name} is invalid JSON — merge will skip it")
+            continue
+        src = open(os.path.join(ROOT, "data.js"), encoding="utf-8").read()
+        missing = 0
+        for it in items:
+            key = it.get("title") or it.get("slug")
+            if key and f'"{key}"' not in src:
+                missing += 1
+        if missing:
+            stray.append(f"{name}: {missing} entr{'y' if missing == 1 else 'ies'} not yet merged into {target}")
+    return (False, "; ".join(stray)) if stray else (True, "no un-merged generated content")
+
+
 CHECKS = [
     ("drift", check_drift),
     ("build_syntax", check_build),
@@ -351,6 +405,8 @@ CHECKS = [
     ("markdown_leak", check_markdown_leak),
     ("content_minimum", check_content_minimum),
     ("mobile_nav", check_mobile_nav),
+    ("automation_queues", check_automation_queues),
+    ("no_unmerged_queue", check_no_unmerged_queue),
     ("live", check_live),
 ]
 
