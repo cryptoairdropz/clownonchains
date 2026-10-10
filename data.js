@@ -340,6 +340,14 @@ const ANGLES = [
 // ------------------------------------------------------------
 const NEWS = [
   {
+    slug:"hsbc-dan-ant-digital-uji-ai-agent-bayar-pakai-deposit-tokenisasi",
+    t:"HSBC dan Ant Digital Uji AI Agent Bayar Pakai Deposit Tokenisasi",
+    s:"Market Intel",
+    d:"Just now",
+    src:"https://cointelegraph.com/news/hsbc-ant-digital-test-ai-agent-payments-using-tokenized-deposits",
+    body:"HSBC dan Ant Digital Technologies baru saja uji coba sistem yang bikin AI agent bisa bayar pakai deposit bank yang udah di-tokenisasi. Ini bukan sekadar eksperimen — ini bukti konkret bank besar mulai serius ngintegrasiin AI sama blockchain.\n\n## Apa yang sebenarnya diuji\n\nHSBC nyediain settlement dan real-time risk checks, sementara Ant Digital koordinasi akses layanan dan pembayaran lewat network Anvita Flow. Mereka pakai Jovay Testnet, sebuah layer-2 blockchain testing environment. Hasilnya: AI agent bisa pilih layanan digital dan langsung selesaian pembayaran. Transaksi yang terjadi masuk kategori micropayment — biasanya kurang dari $2. Perusahaan bilang ini cuma verifikasi teknis, bukan commercial launch atau live customer offering.\n\n## Bank lain juga ngujian\n\nHSBC bukan satu-satunya. Sygnum, bank digital asset Swiss, bulan Mei udah test AI agent di blockchain mainnet — tiap transaksi harus di-approve dan di-sign customer. CaixaBank juga udah selesaian transaksi kartu yang di-initiate AI agent pakai Visa Intelligent Commerce. Augustus Bank CEO Ferdinand Dalwitz argue traditional clearing banks masih pakai sistem lama yang desainnya bukan bukan buat transaksi otomatis 24/7.\n\n## Apa artinya buat kamu\n\nKalau bank-bank gede mulai bangun infrastruktur buat AI agent, blockchain bakal jadi layer pembayaran yang makin bukan cuma teori. Buat kamu yang main DeFi atau airdrop, ini sinyal bahwa adopsi blockchain dari institusi makin nyata. Bukan lagi soal \"kapan bank masuk crypto\" — tapi \"bank udah masuk, cuma belum buka ke publik.\" Kalau AI agent jadi norma, on-chain volume bisa naik signifikan karena transaksi mesin yang nggak butuh manusia. Ini juga berarti stablecoin dan tokenized deposit bakal makin relevan sebagai jembatan antara AI economy sama sistem keuangan tradisional."
+  },
+  {
     slug:"starknet-pertimbangkan-pisah-dari-ethereum-demi-target-anti-kuantum-20",
     t:"Starknet Pertimbangkan Pisah dari Ethereum Demi Target Anti-Kuantum 2027",
     s:"Market Intel",
