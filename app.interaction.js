@@ -96,15 +96,22 @@
   });
   document.body.appendChild(toTop);
 
-  var ticking = false;
-  window.addEventListener('scroll', function () {
-    if (ticking) return;
-    ticking = true;
-    window.requestAnimationFrame(function () {
-      toTop.classList.toggle('show', window.scrollY > 600);
-      ticking = false;
-    });
-  }, { passive: true });
+  // Scroll memancing banyak event; class.toggle murah tapi tetap cukup, jadi
+  // update cukup dijarang 80ms. Dipakai setTimeout (bukan rAF) supaya tetap
+  // jalan walau tab sedang tersembunyi.
+  var scrollTimer = null;
+  function syncToTop() {
+    toTop.classList.toggle('show', (window.scrollY || window.pageYOffset || 0) > 600);
+  }
+  function onScroll() {
+    if (scrollTimer !== null) return;
+    scrollTimer = setTimeout(function () {
+      scrollTimer = null;
+      syncToTop();
+    }, 80);
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  syncToTop();
 
   /* ---------- academy level filter ---------- */
   // Catatan: #tut-chips / #tut-grid tidak ada di markup build.js, jadi blok
