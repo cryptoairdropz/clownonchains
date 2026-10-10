@@ -172,6 +172,13 @@ const TICKER = `  <div class="ticker" aria-label="Cryptocurrency prices">
  * @returns {string} penuh <head>
  */
 function head(o) {
+  // Truncate over-length descriptions so Search Console never flags them.
+  // Cut at the last word boundary inside 158 chars, then add an ellipsis.
+  if (o.desc && o.desc.length > 158) {
+    const cut = o.desc.slice(0, 158);
+    const lastSpace = cut.lastIndexOf(' ');
+    o = Object.assign({}, o, { desc: cut.slice(0, lastSpace) + '…' });
+  }
   const blocks = (() => {
     if (!o.jsonld) return '';
     const arr = Array.isArray(o.jsonld) ? o.jsonld : [o.jsonld];
@@ -318,7 +325,7 @@ function buildHome(d) {
 
   return `${head({
     title: 'Crypto Airdrops 2026 — Free Airdrop Tracker | ClownOnChains',
-    desc: 'Track the best free crypto airdrops of 2026 — status, allocation and step-by-step tasks. Plus a free crypto academy on wallet safety, airdrop farming and DeFi mechanics.',
+    desc: 'Track the best free crypto airdrops of 2026 — status, allocation and step-by-step tasks, plus a free crypto academy.',
     keywords: 'crypto airdrops 2026, free airdrop tracker, airdrop farming, grass airdrop, layerzero airdrop, zksync airdrop, scroll airdrop',
     canonical: `${SITE}/`,
     jsonld: [websiteLd, orgLd, itemListLd, faqLd],
@@ -424,7 +431,7 @@ function buildAirdrops(d) {
 
   return `${head({
     title: 'Crypto Airdrops 2026 — Free Airdrop Tracker | ClownOnChains',
-    desc: 'Track the best free crypto airdrops of 2026: Grass, LayerZero, zkSync Era, Scroll. Status, allocation and step-by-step tasks for each project, updated daily.',
+    desc: 'Track the best free crypto airdrops of 2026: Grass, LayerZero, zkSync Era, Scroll. Status, allocation and tasks, updated daily.',
     keywords: 'crypto airdrops 2026, free airdrop tracker, grass airdrop, layerzero airdrop, zksync airdrop, scroll airdrop',
     canonical: `${SITE}/airdrops/`,
     jsonld: [breadcrumbLd, itemListLd],

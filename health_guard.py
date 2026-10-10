@@ -420,6 +420,33 @@ def check_no_unmerged_queue():
     return (False, "; ".join(stray)) if stray else (True, "no un-merged generated content")
 
 
+def check_meta_description():
+    """Meta description must stay within Google's ~155 character window.
+
+    Over-length descriptions get truncated in the SERP, which means the
+    hand-written tail — usually the part that sells the page — is discarded.
+    Google flags this as "too long or too short", so it shows up as an issue
+    in Search Console."""
+    over, missing = [], 0
+    for f in glob.glob(os.path.join(DIST, "**", "index.html"), recursive=True):
+        h = open(f, encoding="utf-8", errors="replace").read()
+        m = re.search(r'<meta\s+name="description"\s+content="([^"]*)"', h, re.I)
+        if not m:
+            missing += 1
+            continue
+        n = len(m.group(1))
+        if n > 160:
+            rel = os.path.relpath(f, DIST)
+            over.append(f"{rel}: {n} chars")
+    problems = []
+    if over:
+        problems.append(f"{len(over)} over 160 chars: {over[:4]}")
+    if missing:
+        problems.append(f"{missing} pages missing meta description")
+    return (False, "; ".join(problems)) if problems else (
+        True, "all meta descriptions within length")
+
+
 CHECKS = [
     ("drift", check_drift),
     ("build_syntax", check_build),
@@ -429,6 +456,7 @@ CHECKS = [
     ("markdown_leak", check_markdown_leak),
     ("content_minimum", check_content_minimum),
     ("mobile_nav", check_mobile_nav),
+    ("meta_description", check_meta_description),
     ("automation_queues", check_automation_queues),
     ("no_unmerged_queue", check_no_unmerged_queue),
     ("live", check_live),
