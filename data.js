@@ -1081,7 +1081,22 @@ const TRACKS = [
   {
     slug:"defi-degen", name:"DeFi Degen", level:"Advanced", icon:"\u2699\ufe0f",
     desc:"For people who already provide liquidity and want to stop paying tuition to the market.",
-    lessons:["Introduction to Impermanent Loss", "Staking vs Yield Farming: The Difference", "Reading a Crypto Chart: Candlesticks Explained", "Understanding Supertrend (95, 5) and Multi-Indicator Setups"] }
+    lessons:["Introduction to Impermanent Loss", "Staking vs Yield Farming: The Difference", "Reading a Crypto Chart: Candlesticks Explained", "Understanding Supertrend (95, 5) and Multi-Indicator Setups"] },
+  {
+    slug:"onchain-analyst", name:"On-Chain Analyst", level:"Intermediate", icon:"🔍",
+    desc:"Read a blockchain instead of guessing. What wallets actually do on-chain, where liquidity comes from, and how to tell a real protocol from a claim.",
+    lessons:["Reading On-Chain Activity Without Fooling Yourself","Reading a Project's Team and Treasury Wallets","What a Token Unlock Schedule Is and Why It Matters","How Liquidity Pools Price Assets Without an Order Book","Layer 2 Fees Compared: Optimistic vs ZK Rollups in Practice","Oracle Price Manipulation and How DeFi Protocols Get Prices Wrong","Reading Token Unlock Schedules and Vesting Cliffs for Supply Pressure"]
+  },
+  {
+    slug:"derivatives-risk", name:"Derivatives and Risk", level:"Advanced", icon:"⚙️",
+    desc:"Leverage, funding and liquidation mechanics, so you can size a position instead of guessing. Advanced material, explained without the maths theatre.",
+    lessons:["Perpetual Funding Rates and Basis Trades","Decentralised Perpetuals: Funding, Oracle Prices and Counterparty Exposure","Options Greeks: Delta, Theta, Vega and Implied Volatility Explained","Liquidation Mechanics: Health Factors, Maintenance Margins and Liquidations","Concentrated Liquidity: Choosing a Price Range That Survives Volatility","Restaking and Its Risk Surface","Yield Farming Risk: Where the Yield Comes From","How Mempool Transactions Work and Where MEV Comes From"]
+  },
+  {
+    slug:"strategy-builder", name:"Strategy Builder", level:"Advanced", icon:"📐",
+    desc:"Turn research into a plan you can actually follow. Position sizing, risk units and the mechanics behind a position that survives.",
+    lessons:["How to Build a Structured Crypto Strategy With Position Sizing and Risk Units"]
+  },
 ];
 
 // ------------------------------------------------------------
